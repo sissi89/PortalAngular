@@ -1,0 +1,71 @@
+[
+    {
+     "tipo":"red",
+     "compo":329,
+     "fiduciario":"card Debitore",
+     "tipo_sinistro":"RCA",
+     "data_incarico":"2022-10-9",
+     "nr_incarico_sinistro":"231",
+     "nr_incarico":"345679",
+     "prestazione_richiesta":"",
+     "assicurato":"Silvana Mazzaglia",
+     "targa_assicurato":"AX918HG",
+     "controparte":"Mario Rossi",
+     "targa_controparte":"BG564HY",
+     "nr_int":23,
+     "data_ultimo":"2022-9-23"
+
+
+
+
+    },{
+        "tipo":"green",
+        "compo":456,
+        "fiduciario":"card Debitore",
+        "tipo_sinistro":"RCA",
+        "data_incarico":"2022-10-9",
+        "nr_incarico_sinistro":"231",
+        "nr_incarico":"3456797777",
+        "prestazione_richiesta":"",
+        "assicurato":"Mario Bianchi",
+        "targa_assicurato":"AX918YU",
+        "controparte":" Penelope Cruz",
+        "targa_controparte":"BY564HY",
+        "nr_int":21,
+        "data_ultimo":"2022-9-23"
+
+    },{
+        "tipo":"green",
+        "compo":654,
+        "fiduciario":"card Debitore",
+        "tipo_sinistro":"RCA",
+        "data_incarico":"2022-9-7",
+        "nr_incarico_sinistro":"456",
+        "nr_incarico":"3456797777",
+        "prestazione_richiesta":"",
+        "assicurato":"Mario Bianchi",
+        "targa_assicurato":"AX918HG",
+        "controparte":" Penelope Cruz",
+        "targa_controparte":"BG564HY",
+        "nr_int":21,
+        "data_ultimo":"2022-9-23"
+
+    },
+    {
+        "tipo":"yellow",
+        "compo":476,
+        "fiduciario":"card Debitore",
+        "tipo_sinistro":"CARD MONO FIRMA TOTALE",
+        "data_incarico":"2022-9-7",
+        "nr_incarico_sinistro":"456",
+        "nr_incarico":"3456797777",
+        "prestazione_richiesta":"",
+        "assicurato":"ATZENI ALESSANDRO",
+        "targa_assicurato":"AX918TG",
+        "controparte":" Penelope Cruz",
+        "targa_controparte":"BG564OY",
+        "nr_int":21,
+        "data_ultimo":"2022-9-23"
+
+    }
+]

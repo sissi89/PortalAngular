@@ -1,24 +1,54 @@
-<div class="auth-wrapper d-flex justify-content-center">
-    <!-- <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="onSubmit()"    > -->
-    <form class="form-signin" [formGroup]="loginForm"    >
-        <h1 class="h3 mb-3 font-weight-normal text-center">Login </h1>
-        
-        <div class="form-group">
-            <label>Email address</label>
-            <input type="email" class="form-control"  formControlName="username" required>
-          <!-- <div *ngIf='!success'> <h5 class="text-danger"> {{email}}</h5> </div>  -->
-        </div>
+<div class="gradient-custom vh-100">
+  <div class="container">
+    <h1 class="card-title text-center mt-5" style="-webkit-text-stroke: 1px black;">Login</h1>
+    <div class="col d-flex justify-content-center align-content-center">
+      <div class="card mt-1">
+        <div class="card-body">
+          <form class="form-signin mt-3" [formGroup]="loginForm" >
+         <!--    <form class="form-signin mt-3" [formGroup]="loginForm" (ngSubmit)="onSubmit()"></form> -->
+            <div class="form-group">
+              <label>Username</label>
+              <input type="email" class="form-control" formControlName="username" required placeholder="example@gmail.com">
+            </div>
 
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" class="form-control" formControlName="password"  required minlength="6">
-            <!-- <div *ngIf='!success'> <h5 class="text-danger"> {{password}}</h5> </div>  -->
-        </div>
-        
-        <button type="button" class="btn btn-block btn-primary" (click)="navigate()">Log in</button> <br>
-        <!-- <button type="button" class="btn btn-block btn-primary" (click)="onSubmit()">Log in</button> <br> -->
-    </form>
-   
-   
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" class="form-control" formControlName="password" required minlength="6"
+                placeholder="*********">
 
+            </div>
+            <!-- <span *ngIf="!access_token" class="text-danger">{{errors}}</span> -->
+
+            <button type="submit" class="btn btn-block btn-primary mt-3">Log in</button>
+            <div class="col d-flex justify-content-center mt-3">
+             <!--  <span (click)="navigate()" class="text-primary font">Prima volta? Registrati</span> -->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="auth-wrapper d-flex justify-content-center">
+            <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <h1 class="h3 mb-3 font-weight-normal text-center">Login </h1>
+
+                <div class="form-group">
+                    <label>Email address</label>
+                    <input type="email" class="form-control" formControlName="email" required>
+
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" formControlName="password" required minlength="6">
+
+                </div>
+                <span *ngIf="!access_token" class="text-danger">{{errors}}</span>
+
+                <button type="submit" class="btn btn-block btn-primary">Log in</button> <br>
+                <span (click)="navigate()" class="text-primary"><u>Register now</u></span>
+            </form>
+        </div> -->
   </div>
+</div>
+   
+

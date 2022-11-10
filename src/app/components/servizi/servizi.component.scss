@@ -1,0 +1,29 @@
+.circle-tipy{
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+ 
+}
+.pagination .ngx-pagination .current {
+    background: red;
+  }
+
+.pagination  .ngx-pagination li {
+border: 1px solid #CCCC;
+margin-right: 0px;
+}
+
+.pagination .ngx-pagination a::after{
+    display: none;
+}
+
+.pagination  .ngx-pagination li::before{
+    display: none;
+}
+
+.pagination .ngx-pagination li::after{
+    display: none;
+}
+
+.pagination  .ngx-pagination a::before{
+    display: none;}

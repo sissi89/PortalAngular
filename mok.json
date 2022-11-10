@@ -67,5 +67,20 @@
         "nr_int":21,
         "data_ultimo":"2022-9-23"
 
+    },{
+        "tipo":"blue",
+        "compo":875,
+        "fiduciario":"card Debitore",
+        "tipo_sinistro":"CARD MONO FIRMA TOTALE",
+        "data_incarico":"2022-7-7",
+        "nr_incarico_sinistro":"45676",
+        "nr_incarico":"3456797777",
+        "prestazione_richiesta":"",
+        "assicurato":"VERDI ALESSANDRO",
+        "targa_assicurato":"CG918TG",
+        "controparte":"Rossi Mario",
+        "targa_controparte":"BG564OY",
+        "nr_int":21,
+        "data_ultimo":"2022-9-23"
     }
 ]

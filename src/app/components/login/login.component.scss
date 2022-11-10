@@ -1,0 +1,59 @@
+.gradient-custom {
+
+    //background: 
+    
+
+    background: #1b6bdb;
+
+
+    background: rgb(2,0,36);
+background: linear-gradient(270deg, rgba(2,0,36,1) 0%, rgba(27,107,208,1) 35%, rgba(0,212,255,1) 100%);
+
+    }
+  
+  .card {
+    border-radius: 12px;
+    height: 300px;
+    width: 50%;
+  }
+  
+  h1 {
+    font-size: xx-large;
+    font-weight: lighter;
+    color: white;
+    font-family: 'Bebas Neue';
+  }
+  
+  label {
+    font-weight: lighter;
+    font-size: large;
+    font-family: 'Bebas Neue';
+  }
+  
+  button {
+    font-family: 'Bebas Neue';
+    font-weight: lighter;
+    font-size: large;
+    background-color: #EBB035;
+    border: solid #EBB035;
+  }
+  
+  span {
+    font-weight: lighter;
+    font-size: large;
+    font-family: 'Bebas Neue', cursive;
+    cursor: pointer;
+  }
+  
+  
+  @media screen and (min-width: 350px) and (max-width: 540px)   {
+    .font {
+      font-size: 98%;
+    }
+  }
+  
+  @media screen and (min-width:300px) and (max-width:760px) {
+    .card {
+      width: 100%;
+    }
+  }

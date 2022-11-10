@@ -1,0 +1,87 @@
+
+ <div class="container">
+    <div class="d-flex justify-content-center">
+        <pagination-controls
+        previousLabel="Prev"
+        nextLabel="Next"
+        (pageChange)="onTableDataChange($event)">
+        </pagination-controls>
+    </div>
+    <table  class="table-primary table-striped-columns">
+    
+        <tr> 
+            <th class="col-xs-1">Tipo </th> 
+            <th class="col-xs-1">Compo</th>
+            <th class="col-xs-1">Fiduciario</th>
+            <th class="col-xs-1">Tipo sx</th>
+            <th class="col-xs-1">Dt.incarico</th>
+            <th class="col-xs-1">Nr.sx</th>
+            <th class="col-xs-1">Nr. incarico</th>
+            <th class="col-xs-1">Prestazione_richiesta</th>
+            <th class="col-xs-1">Assicurato</th>
+            <th class="col-xs-1">Targa assicurato</th>
+            <th class="col-xs-1">Controparte</th>
+            <th class="col-xs-1">Targa Controparte</th>
+            <th class="col-xs-1">Nr. int</th>
+            <th class="col-xs-1">Data ultimo interno</th>
+
+        </tr> 
+    
+        <tr *ngFor="let s of services | paginate
+        : {
+            itemsPerPage: tableSize,
+            currentPage: page,
+            totalItems: count
+        }; let i = index">
+    
+            <td>
+                <h4><div class="circle-tipy" [style.backgroundColor]="s.tipo"> </div>  </h4>
+            
+            </td>
+            <td>
+                <h4>{{s.compo}} </h4>
+            </td>
+            <td>
+                <h4>{{s.fiduciario}}</h4>
+            </td>
+            <td>
+                <h4>{{s.tipo_sinistro}}</h4>
+            </td>
+            <td>
+                <h4>{{s.data_incarico | date:'dd/MM/yy'}}</h4>
+            </td>
+            <td>
+                <h4>{{s.nr_incarico_sinistro}}</h4>
+            </td>
+            <td>
+                <h4>{{s.nr_incarico}}</h4>
+            </td>
+            <td>
+                <h4>{{s.prestazione_richiesta}}</h4>
+            </td>
+            <td>
+                <h4>{{s.assicurato}}</h4>
+            </td>
+            <td>
+                <h4>{{s.targa_assicurato}}</h4>
+            </td>
+            <td>
+                <h4>{{s.controparte}}</h4>
+            </td>
+            <td>
+                <h4>{{s.targa_controparte}}</h4>
+            </td>
+            <td>
+                <h4>{{s.nr_int}}</h4>
+            </td>
+            <td>
+                <h4>{{s.data_ultimo | date:'dd/MM/yy'}}</h4>
+            </td>
+        </tr>
+    
+    </table>
+    
+
+</div>
+
+ 

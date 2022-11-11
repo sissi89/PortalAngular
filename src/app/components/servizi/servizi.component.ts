@@ -18,11 +18,14 @@ export class ServiziComponent implements OnInit {
   count: number = 0;
   tableSize: number = 3;
   tableSizes: any = [3, 6, 9, 12];
+  red:number =0;
+  colors:string[]=['red','green','blue','yellow']
 
   constructor(public service:ServiziService) { }
 
   ngOnInit(): void {
     this.loadServizi();
+    
   }
 
 
@@ -35,12 +38,22 @@ export class ServiziComponent implements OnInit {
   }
   onTableDataChange(event: any) {
     this.page = event;
-    this.loadServizi();
+   
   }
   onTableSizeChange(event: any): void {
     this.tableSize = event.target.value;
     this.page = 1;
-    this.loadServizi();
+ 
   }
 
+  counter(color:any):number{
+    // inizializzo il contatore
+    let i = 0;
+    this.services.filter((e:Service)=>{
+      // per ogni elemento che sodisfa la condizione aggiungo 1 al contatore
+      e.tipo === color ? i+=1 : i
+    })
+    return i
+  }
 }
+

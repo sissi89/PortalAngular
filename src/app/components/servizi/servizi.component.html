@@ -1,5 +1,10 @@
 
  <div class="container">
+    <div class=' d-flex justify-content-around '>
+        <div  *ngFor="let c of colors">
+            <div class="circle-tipy-number" [style.backgroundColor]="c"> {{counter(c)}}</div> 
+        </div>
+    </div>
     <div class="d-flex justify-content-center">
         <pagination-controls
         previousLabel="Prev"
@@ -80,8 +85,8 @@
         </tr>
     
     </table>
-    
+    {{counter('green')}} 
 
 </div>
 
- 
+{{services.length}}

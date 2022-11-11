@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Service } from 'src/app/model/model';
+import { Tipologia } from 'src/app/model/tipo';
 import { ServiziService } from 'src/app/services/servizi.service';
 
 @Component({
@@ -19,7 +20,19 @@ export class ServiziComponent implements OnInit {
   tableSize: number = 3;
   tableSizes: any = [3, 6, 9, 12];
   red:number =0;
-  colors:string[]=['red','green','blue','yellow']
+  //colors:string[]=['red','green','blue','yellow']
+  colors:Tipologia[]=[{
+    "color":"red",
+    "tipo":"Urgenze",
+    
+  },{
+    "color":"yellow",
+    "tipo":"Incarichi aperti",
+    
+  },{
+    "color":"green",
+    "tipo":"Incarichi chiusi"
+  }]
 
   constructor(public service:ServiziService) { }
 

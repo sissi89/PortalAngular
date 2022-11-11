@@ -1,10 +1,15 @@
 
  <div class="container">
-    <div class=' d-flex justify-content-around '>
-        <div  *ngFor="let c of colors">
-            <div class="circle-tipy-number" [style.backgroundColor]="c"> {{counter(c)}}</div> 
+    <div class='mt-4 d-flex justify-content-around bg-light p-2 rounded'>
+        <div  class="d-flex justifiy-content-between" *ngFor="let c of colors">
+            <button class="btn text-dark" [style.backgroundColor]="c.color"> <p class="text-center">{{counter(c.color)}}</p></button> 
+        <div class="mr-3" style="margin: 1.2em;">
+            {{c.tipo}}
+        </div>
+
         </div>
     </div>
+    <hr>
     <div class="d-flex justify-content-center">
         <pagination-controls
         previousLabel="Prev"
@@ -12,7 +17,7 @@
         (pageChange)="onTableDataChange($event)">
         </pagination-controls>
     </div>
-    <table  class="table-primary table-striped-columns">
+    <table  class="table-primary table-striped-columns ">
     
         <tr> 
             <th class="col-xs-1">Tipo </th> 
@@ -85,8 +90,8 @@
         </tr>
     
     </table>
-    {{counter('green')}} 
+   
 
 </div>
 
-{{services.length}}
+

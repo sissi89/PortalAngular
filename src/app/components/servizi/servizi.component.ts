@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Service } from 'src/app/model/model';
 import { Tipologia } from 'src/app/model/tipo';
 import { ServiziService } from 'src/app/services/servizi.service';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-servizi',
@@ -34,7 +36,7 @@ export class ServiziComponent implements OnInit {
     "tipo":"Incarichi chiusi"
   }]
 
-  constructor(public service:ServiziService) { }
+  constructor(public service:ServiziService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.loadServizi();
@@ -68,5 +70,10 @@ export class ServiziComponent implements OnInit {
     })
     return i
   }
+  openDialog() {
+    this.dialog.open(LoginComponent);
+    
+  }
+
 }
 

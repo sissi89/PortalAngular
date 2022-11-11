@@ -12,12 +12,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { ServiziComponent } from './components/servizi/servizi.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import {MatDialogModule} from '@angular/material/dialog';
+import { TabsComponent } from './components/tabs/tabs.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     LoginComponent,
-    ServiziComponent
+    ServiziComponent,
+    TabsComponent
   ],
   imports: [
     BrowserModule,

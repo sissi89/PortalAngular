@@ -4,6 +4,7 @@ import { Service } from 'src/app/model/model';
 import { Tipologia } from 'src/app/model/tipo';
 import { ServiziService } from 'src/app/services/servizi.service';
 import { LoginComponent } from '../login/login.component';
+import { TabsComponent } from '../tabs/tabs.component';
 
 @Component({
   selector: 'app-servizi',
@@ -71,7 +72,7 @@ export class ServiziComponent implements OnInit {
     return i
   }
   openDialog() {
-    this.dialog.open(LoginComponent);
+    this.dialog.open(TabsComponent);
     
   }
 

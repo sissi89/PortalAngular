@@ -2,7 +2,8 @@
  <div class="container">
     <div class='mt-4 d-flex justify-content-around bg-light p-2 rounded'>
         <div  class="d-flex justifiy-content-between" *ngFor="let c of colors">
-            <button class="btn text-dark" [style.backgroundColor]="c.color" > <p class="text-center">{{counter(c.color)}}</p></button> 
+            <button type="button" class="btn  btn-lg btn-floating" [style.backgroundColor]="c.color"><h2 class="text-center text-black">{{counter(c.color)}}</h2></button>
+      
         <div class="mr-3" style="margin: 1.2em;">
             {{c.tipo}}
         </div>
@@ -17,79 +18,104 @@
         (pageChange)="onTableDataChange($event)">
         </pagination-controls>
     </div>
-    <table  class="table-primary table-striped-columns ">
+    <div class="d-flex  flex-column flex-lg-row bg-light rounded p-3">
+        <table  class="table table-striped mt-125 ">
+            <thead>
+                <tr> 
+                    <th  scope="col">Tipo </th> 
+                    <th class="col-xs-1">Compo</th>
+                    <th class="col-xs-1">Fiduciario</th>
+                    <th class="col-xs-1">Tipo sx</th>
+                    <th class="col-xs-1">Dt.incarico</th>
+                    <th class="col-xs-1">Nr.sx</th>
+                    <th class="col-xs-1">Nr. incarico</th>
+                    
     
-        <tr> 
-            <th class="col-xs-1">Tipo </th> 
-            <th class="col-xs-1">Compo</th>
-            <th class="col-xs-1">Fiduciario</th>
-            <th class="col-xs-1">Tipo sx</th>
-            <th class="col-xs-1">Dt.incarico</th>
-            <th class="col-xs-1">Nr.sx</th>
-            <th class="col-xs-1">Nr. incarico</th>
-            <th class="col-xs-1">Prestazione_richiesta</th>
-            <th class="col-xs-1">Assicurato</th>
-            <th class="col-xs-1">Targa assicurato</th>
-            <th class="col-xs-1">Controparte</th>
-            <th class="col-xs-1">Targa Controparte</th>
-            <th class="col-xs-1">Nr. int</th>
-            <th class="col-xs-1">Data ultimo interno</th>
-
-        </tr> 
-    
-        <tr *ngFor="let s of services | paginate
-        : {
-            itemsPerPage: tableSize,
-            currentPage: page,
-            totalItems: count
-        }; let i = index">
-    
-            <td>
-                <h4><div class="circle-tipy" [style.backgroundColor]="s.tipo"> </div>  </h4>
+                </tr> 
+            </thead>
             
-            </td>
-            <td>
-                <h4 (click)=" openDialog() ">{{s.compo}} </h4>
-            </td>
-            <td>
-                <h4>{{s.fiduciario}}</h4>
-            </td>
-            <td>
-                <h4>{{s.tipo_sinistro}}</h4>
-            </td>
-            <td>
-                <h4>{{s.data_incarico | date:'dd/MM/yy'}}</h4>
-            </td>
-            <td>
-                <h4>{{s.nr_incarico_sinistro}}</h4>
-            </td>
-            <td>
-                <h4>{{s.nr_incarico}}</h4>
-            </td>
-            <td>
-                <h4>{{s.prestazione_richiesta}}</h4>
-            </td>
-            <td>
-                <h4>{{s.assicurato}}</h4>
-            </td>
-            <td>
-                <h4>{{s.targa_assicurato}}</h4>
-            </td>
-            <td>
-                <h4>{{s.controparte}}</h4>
-            </td>
-            <td>
-                <h4>{{s.targa_controparte}}</h4>
-            </td>
-            <td>
-                <h4>{{s.nr_int}}</h4>
-            </td>
-            <td>
-                <h4>{{s.data_ultimo | date:'dd/MM/yy'}}</h4>
-            </td>
-        </tr>
+            <tr *ngFor="let s of services | paginate
+            : {
+                itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+            }; let i = index">
+        
+                <td>
+                    <h4><div class="circle-tipy" [style.backgroundColor]="s.tipo"> </div>  </h4>
+                
+                </td>
+                <td>
+                    <h4 (click)=" openDialog() ">{{s.compo}} </h4>
+                </td>
+                <td>
+                    <h4>{{s.fiduciario}}</h4>
+                </td>
+                <td>
+                    <h4>{{s.tipo_sinistro}}</h4>
+                </td>
+                <td>
+                    <h4>{{s.data_incarico | date:'dd/MM/yy'}}</h4>
+                </td>
+                <td>
+                    <h4>{{s.nr_incarico_sinistro}}</h4>
+                </td>
+                <td>
+                    <h4>{{s.nr_incarico}}</h4>
+                </td>
+                
+            </tr>
+        
+        </table>
+       
+        <table  class="table table-striped ">
+            <thead>
+                <tr> 
+                    
+                    <th class="col-xs-1">P. richiesta</th>
+                    <th class="col-xs-1">Assicurato</th>
+                    <th class="col-xs-1">Targa assicurato</th>
+                    <th class="col-xs-1">Controparte</th>
+                    <th class="col-xs-1">Targa Controparte</th>
+                    <th class="col-xs-1">Nr. int.</th>
+                    <th class="col-xs-1">Data ultimo interno</th>
     
-    </table>
+                </tr> 
+            </thead>
+            
+            <tr *ngFor="let s of services | paginate
+            : {
+                itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+            }; let i = index">
+        
+                
+                <td>
+                    <h4>{{s.prestazione_richiesta}}</h4>
+                </td>
+                <td>
+                    <h4>{{s.assicurato}}</h4>
+                </td>
+                <td>
+                    <h4>{{s.targa_assicurato}}</h4>
+                </td>
+                <td>
+                    <h4>{{s.controparte}}</h4>
+                </td>
+                <td>
+                    <h4>{{s.targa_controparte}}</h4>
+                </td>
+                <td>
+                    <h4>{{s.nr_int}}</h4>
+                </td>
+                <td>
+                    <h4>{{s.data_ultimo | date:'dd/MM/yy'}}</h4>
+                </td>
+            </tr>
+        
+        </table>
+    </div>
     <div class="d-flex justify-content-center">
         <pagination-controls
         previousLabel="Prev"
@@ -97,7 +123,7 @@
         (pageChange)="onTableDataChange($event)">
         </pagination-controls>
     </div>
-
 </div>
+
 
 

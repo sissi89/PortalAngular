@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Service } from 'src/app/model/model';
 import { Tipologia } from 'src/app/model/tipo';
 import { ServiziService } from 'src/app/services/servizi.service';
-import { LoginComponent } from '../login/login.component';
+
 import { TabsComponent } from '../tabs/tabs.component';
 
 @Component({

@@ -2,7 +2,7 @@
     {
      "tipo":"red",
      "compo":329,
-     "fiduciario":"Eventi atmosferici",
+     "fiduciario":"",
      "tipo_sinistro":"RCA",
      "data_incarico":"2022-10-9",
      "nr_incarico_sinistro":"231",
@@ -21,7 +21,7 @@
     },{
         "tipo":"green",
         "compo":456,
-        "fiduciario":"Eventi atmosferici",
+        "fiduciario":"",
         "tipo_sinistro":"RCA",
         "data_incarico":"2022-10-9",
         "nr_incarico_sinistro":"231",
@@ -37,8 +37,8 @@
     },{
         "tipo":"green",
         "compo":654,
-        "fiduciario":"Eventi atmosferici",
-        "tipo_sinistro":"RCA",
+        "fiduciario":"",
+        "tipo_sinistro":"Eventi atmosferici",
         "data_incarico":"2022-9-7",
         "nr_incarico_sinistro":"456",
         "nr_incarico":"3456797777",
@@ -54,7 +54,7 @@
     {
         "tipo":"yellow",
         "compo":476,
-        "fiduciario":"Eventi atmosferici",
+        "fiduciario":"",
         "tipo_sinistro":"CARD MONO FIRMA TOTALE",
         "data_incarico":"2022-9-7",
         "nr_incarico_sinistro":"456",
@@ -70,7 +70,7 @@
     },{
         "tipo":"blue",
         "compo":875,
-        "fiduciario":"Eventi atmosferici",
+        "fiduciario":"",
         "tipo_sinistro":"CARD MONO FIRMA TOTALE",
         "data_incarico":"2022-7-7",
         "nr_incarico_sinistro":"45676",

@@ -42,10 +42,11 @@ margin-right: 0px;
 
 .size-small{
     font-size: smaller;
-    font-weight: 500;
+ 
 }
 .size-large{
-    font-size: large;
+    font-size: small;
+   
 }
 
 .div-circle{
@@ -59,5 +60,77 @@ margin-right: 0px;
   justify-content: center;
   align-items: center;
   border-radius: 12px;
+}
+.center-flex{
+    display: flex;
+    justify-content: center;
+}
+.mt-25{
+    margin-top: 25vh;
+}
+.c-spinne ::ng-deep .mat-progress-spinner circle, .mat-spinner circle{
+    stroke: #333366;
+}
+/* Table Styles */
+
+.table-wrapper{
+   
+    box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+}
+
+.fl-table {
+    border-radius: 0.313rem;
+    font-size: 0.75rem;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: white;
+   
+}
+
+.fl-table .td-1, .fl-table .th-1 {
+    text-align: center;
+    padding: 0.3rem;
+}
+
+.fl-table .td-1 {
+    border-right: 1px solid #f8f8f8;
+    font-size: 0.75rem;
+}
+
+.fl-table thead .th-1 {
+    color: #ffffff;
+    background:  #cc3333;
+    border: #333366;
+    border-radius: 7px;
+}
+
+
+.fl-table thead .th-1:nth-child(odd) {
+    color: #ffffff;
+    background: #333366;
+    border:white;
+    border-radius: 7px;
+}
+
+.fl-table .tr-1:nth-child(even) {
+    background: #F8F8F8;
+}
+.tr-1{
+    font-size: smaller;
+}
+
+/* Responsive */
+
+@media (max-width: 767px) {
+   /* .column-sm{
+    flex-direction: column;
+   } */
+   .column-sm{
+    flex-direction: column;
+   }
 }
 

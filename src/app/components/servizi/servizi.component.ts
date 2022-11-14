@@ -13,17 +13,18 @@ import { TabsComponent } from '../tabs/tabs.component';
 })
 export class ServiziComponent implements OnInit {
   services:Service[]=[];
-  nameColumn:string[]=['Tipo','Comp','Fiduciario','Tipo Sinistro','Dt. Incarico','Nr. Sinistro',
-  'Nr. Incarico','Prestazione richiesta','Assicurato','Targa assicurato','Controparte','Targa Controparte',
+  nameColumn:string[]=['T','Comp','Fiduciario','Tipo Sinistro','Dt. Incarico','Nr. Sinistro',
+  'Nr. Incarico'];
+  nameColumn2:string[]=['Prestazione richiesta','Assicurato','Targa assicurato','Controparte','Targa Controparte',
   'Nr. interno','Dt. ultm. int'];
   title = 'dataTableDemo';
 
   page: number = 1;
   count: number = 0;
-  tableSize: number = 3;
+  tableSize: number = 2;
   tableSizes: any = [3, 6, 9, 12];
   red:number =0;
-  //colors:string[]=['red','green','blue','yellow']
+  
   colors:Tipologia[]=[{
     "color":"red",
     "tipo":"Urgenze",
@@ -35,6 +36,9 @@ export class ServiziComponent implements OnInit {
   },{
     "color":"green",
     "tipo":"Incarichi chiusi"
+  },{
+    "color":"blue",
+    "tipo":"Tutti gli incarichi"
   }]
 
   constructor(public service:ServiziService, public dialog: MatDialog) { }
@@ -75,6 +79,8 @@ export class ServiziComponent implements OnInit {
     this.dialog.open(TabsComponent);
     
   }
+
+
 
 }
 

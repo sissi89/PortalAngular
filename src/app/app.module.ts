@@ -13,7 +13,7 @@ import { ServiziComponent } from './components/servizi/servizi.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import {MatDialogModule} from '@angular/material/dialog';
 import { TabsComponent } from './components/tabs/tabs.component';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +32,8 @@ import { TabsComponent } from './components/tabs/tabs.component';
     HttpClientModule,
     NgxPaginationModule ,
     MatTabsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

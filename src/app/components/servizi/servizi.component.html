@@ -1,9 +1,14 @@
-
- <div class="container">
+<div class="center-flex mt-25 c-spinne "*ngIf="services.length <= 0  ">
+    <mat-spinner [diameter]="200"></mat-spinner>
+</div>
+ <div *ngIf="services.length > 0" class="container">
     <div class='mt-4 d-flex justify-content-between  '>
-        <div  class="d-flex justifiy-content-around bg-light p-2 rounded" *ngFor="let c of colors">
-            <div class="d-flex justify-content-around">
-                <div type="button" class="div-circle m-1 " [style.backgroundColor]="c.color"><h2 class="text-center text-black m-1">{{counter(c.color)}}</h2></div>
+        <div  class="d-flex justifiy-content-around bg-light p-2 rounded  " *ngFor="let c of colors">
+            <div class="d-flex justify-content-around column-sm ">
+                <div type="button" class="div-circle m-1 " [style.backgroundColor]="c.color">
+                    <h2 class="text-center text-black m-1" *ngIf="c.color != 'blue'"> {{counter(c.color)}}</h2>
+                    <h2 class="text-center text-black m-1" *ngIf="c.color === 'blue'"> {{services.length}}</h2>
+                </div>
                 <div class="mr-3" style="margin: 1.2em;">
                     {{c.tipo}}
                 </div>
@@ -14,6 +19,9 @@
         </div>
     </div>
     <hr>
+    <div>
+        
+    </div>
     <div class="d-flex justify-content-center">
         <pagination-controls
         previousLabel="Prev"
@@ -21,67 +29,75 @@
         (pageChange)="onTableDataChange($event)">
         </pagination-controls>
     </div>
-    <div class="d-flex  flex-column flex-lg-row bg-light rounded p-3">
+    <div class="d-flex flex-column flex-md-column flex-lg-row  bg-light rounded p-3">
         
-        <table  class="table table-responsive text-nowrap mt-125  ">
+        <table  class="table table-responsive text-nowrap  fl-table ">
             <thead>
                 <tr> 
-                    <th  scope="col">Tipo </th> 
-                    <th class="col-xs-1">Compo</th>
-                    <th class="col-xs-1">Fiduciario</th>
-                    <th class="col-xs-1">Tipo sinistro</th>
-                    <th class="col-xs-1">Dt. incarico</th>
-                    <th class="col-xs-1">Nr. sx</th>
-                    <th class="col-xs-1">Nr. incarico</th>
+                 
+                    <th class="th-1" *ngFor=" let c of nameColumn" >
+                        {{c}}
+                    </th>
                 </tr> 
             </thead>
-            
+           
+                <tr> 
+                <th *ngFor=" let c of nameColumn">
+                    <input type="text"  class="form-control" >
+                </th> 
+           
+           
             <tr *ngFor="let s of services | paginate
             : {
                 itemsPerPage: tableSize,
                 currentPage: page,
                 totalItems: count
             }; let i = index">
-        
-                <td>
+              
+                <td class="td-1">
+                    
+                   
                     <h4><div class="circle-tipy" [style.backgroundColor]="s.tipo"> </div>  </h4>
                 
                 </td>
-                <td>
+                <td class="td-1">
                     <h4 (click)=" openDialog() " class="text-uppercase">{{s.compo}} </h4>
                 </td>
-                <td>
-                    <h4 ngClass='{{s.fiduciario.length > 17 && "size-small" }}' class="text-uppercase">{{s.fiduciario}}</h4>
+                <td class="td-1">
+                    <h4 ngClass='{{s.fiduciario.length > 17 ? "size-small" : "size-large" }}' class="text-uppercase">{{s.fiduciario}}</h4>
                 </td>
-                <td>
-                    <h4 ngClass='{{s.tipo_sinistro.length > 17 && "size-small" }}' class="text-uppercase">{{s.tipo_sinistro}}</h4>
+                <td class="td-1">
+                    <h4 ngClass='{{s.tipo_sinistro.length > 17 ? "size-small" : "size-large"}}' class="text-uppercase">{{s.tipo_sinistro}}</h4>
                 </td>
-                <td>
-                    <h4 class="text-uppercase">{{s.data_incarico | date:'dd/MM/yy'}}</h4>
+                <td class="td-1">
+                    <h4 class="text-uppercase size-large">{{s.data_incarico | date:'dd/MM/yy'}}</h4>
                 </td>
-                <td>
-                    <h4 class="text-uppercase">{{s.nr_incarico_sinistro}}</h4>
+                <td class="td-1">
+                    <h4 class="text-uppercase size-large">{{s.nr_incarico_sinistro}}</h4>
                 </td>
-                <td>
-                    <h4 class="text-uppercase">{{s.nr_incarico}}</h4>
+                <td class="td-1">
+                    <h4 class="text-uppercase size-large">{{s.nr_incarico}}</h4>
                 </td>
                 
             </tr>
         
         </table>
        
-        <table  class="table table-striped  ">
+        <table  class="table table-striped fl-table ">
             <thead>
                 <tr> 
-                    <th class="col-xs-1">P. richiesta</th>
-                    <th class="col-xs-1">Assicurato</th>
-                    <th class="col-xs-1">Targa assicurato</th>
-                    <th class="col-xs-1">Controparte</th>
-                    <th class="col-xs-1">Targa Controparte</th>
-                    <th class="col-xs-1">Nr. int.</th>
-                    <th class="col-xs-1">Data ultimo interlocutore</th>
+                 
+                    <th class="th-1" *ngFor=" let c of nameColumn2" >
+                        {{c}}
+                    </th>
                 </tr> 
             </thead>
+           
+                <tr> 
+                    <th *ngFor=" let c of nameColumn2">
+                        <input type="text"  class="form-control">
+                    </th> 
+                </tr>
             
             <tr *ngFor="let s of services | paginate
             : {
@@ -92,25 +108,25 @@
         
                 
                 <td>
-                    <h4 class="text-uppercase">{{s.prestazione_richiesta}}</h4>
+                    <h4 class="text-uppercase " ngClass='{{s.prestazione_richiesta.length > 13 ? "size-small" : "size-large" }}'>{{s.prestazione_richiesta}}</h4>
                 </td>
                 <td>
-                    <h4 class="text-uppercase">{{s.assicurato}}</h4>
+                    <h4 class="text-uppercase" ngClass='{{s.assicurato.length > 13 ? "size-small" : "size-large" }}'>{{s.assicurato}}</h4>
                 </td>
                 <td>
-                    <h4 class="text-uppercase">{{s.targa_assicurato}}</h4>
+                    <h4 class="text-uppercase size-large">{{s.targa_assicurato}}</h4>
                 </td>
                 <td>
-                    <h4 class="text-uppercase">{{s.controparte}}</h4>
+                    <h4 class="text-uppercase " ngClass='{{s.controparte.length > 13 ? "size-small" : "size-large"}}'>{{s.controparte}}</h4>
                 </td>
                 <td>
-                    <h4 class="text-uppercase">{{s.targa_controparte}}</h4>
+                    <h4 class="text-uppercase size-large">{{s.targa_controparte}}</h4>
                 </td>
                 <td>
-                    <h4 class="text-uppercase">{{s.nr_int}}</h4>
+                    <h4 class="text-uppercase size-large">{{s.nr_int}}</h4>
                 </td>
                 <td>
-                    <h4 class="text-uppercase">{{s.data_ultimo | date:'dd/MM/yy'}}</h4>
+                    <h4 class="text-uppercase size-large">{{s.data_ultimo | date:'dd/MM/yy'}}</h4>
                 </td>
             </tr>
         

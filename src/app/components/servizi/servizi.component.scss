@@ -39,3 +39,25 @@ margin-right: 0px;
 .mt-125{
     margin-top: 1.25rem;
 }
+
+.size-small{
+    font-size: smaller;
+    font-weight: 500;
+}
+.size-large{
+    font-size: large;
+}
+
+.div-circle{
+    font-size: 2rem;
+  width: 3rem;
+  height: 1rem;
+
+  
+  padding: 1rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+}
+

@@ -1,25 +1,33 @@
-<div >
-    <div mat-dialog-actions class="d-flex justify-content-end">
+<div  class="container">
+    <div mat-dialog-actions class="d-flex justify-content-end m-1">
       
-        <button  mat-button mat-dialog-close type="button" class="close btn bg-danger" aria-label="Close">
+        <button  mat-button mat-dialog-close type="button" class="close btn bg-danger " aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
       
     </div>
-    <div>
-        <mat-tab-group mat-align-tabs="center">
+    <div >
+        <mat-tab-group mat-align-tabs="left" >
+            
+                <mat-tab class="bg-danger" >
+                    <ng-template mat-tab-label>
+                        <button class="close btn bg-danger">Generale</button>
+                    </ng-template>
+                    Generale
+                </mat-tab>
        
-            <mat-tab label="Generale">
-              
-               Generale
-            </mat-tab>
-            <mat-tab label="comunicazione">
-              
+           
+            <mat-tab label="Comunicazione">
+                <ng-template mat-tab-label>
+                    <button class="close btn bg-success">Comunicazione</button>
+                </ng-template>
                 Comunicazione
             </mat-tab>
             <mat-tab label="Documenti">
-               
-                Documenti
+               <ng-template mat-tab-label>
+                    <button class="close btn bg-success">Documenti</button>
+                </ng-template>
+                 Documenti
             </mat-tab>
           </mat-tab-group>
 

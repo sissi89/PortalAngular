@@ -1,12 +1,15 @@
 
  <div class="container">
-    <div class='mt-4 d-flex justify-content-around bg-light p-2 rounded'>
-        <div  class="d-flex justifiy-content-between" *ngFor="let c of colors">
-            <button type="button" class="btn  btn-lg btn-floating" [style.backgroundColor]="c.color"><h2 class="text-center text-black">{{counter(c.color)}}</h2></button>
-      
-        <div class="mr-3" style="margin: 1.2em;">
-            {{c.tipo}}
-        </div>
+    <div class='mt-4 d-flex justify-content-between  '>
+        <div  class="d-flex justifiy-content-around bg-light p-2 rounded" *ngFor="let c of colors">
+            <div class="d-flex justify-content-around">
+                <div type="button" class="div-circle m-1 " [style.backgroundColor]="c.color"><h2 class="text-center text-black m-1">{{counter(c.color)}}</h2></div>
+                <div class="mr-3" style="margin: 1.2em;">
+                    {{c.tipo}}
+                </div>
+            </div>
+           
+        
 
         </div>
     </div>
@@ -19,18 +22,17 @@
         </pagination-controls>
     </div>
     <div class="d-flex  flex-column flex-lg-row bg-light rounded p-3">
-        <table  class="table table-striped mt-125 ">
+        
+        <table  class="table table-responsive text-nowrap mt-125  ">
             <thead>
                 <tr> 
                     <th  scope="col">Tipo </th> 
                     <th class="col-xs-1">Compo</th>
                     <th class="col-xs-1">Fiduciario</th>
-                    <th class="col-xs-1">Tipo sx</th>
-                    <th class="col-xs-1">Dt.incarico</th>
-                    <th class="col-xs-1">Nr.sx</th>
+                    <th class="col-xs-1">Tipo sinistro</th>
+                    <th class="col-xs-1">Dt. incarico</th>
+                    <th class="col-xs-1">Nr. sx</th>
                     <th class="col-xs-1">Nr. incarico</th>
-                    
-    
                 </tr> 
             </thead>
             
@@ -46,40 +48,38 @@
                 
                 </td>
                 <td>
-                    <h4 (click)=" openDialog() ">{{s.compo}} </h4>
+                    <h4 (click)=" openDialog() " class="text-uppercase">{{s.compo}} </h4>
                 </td>
                 <td>
-                    <h4>{{s.fiduciario}}</h4>
+                    <h4 ngClass='{{s.fiduciario.length > 17 && "size-small" }}' class="text-uppercase">{{s.fiduciario}}</h4>
                 </td>
                 <td>
-                    <h4>{{s.tipo_sinistro}}</h4>
+                    <h4 ngClass='{{s.tipo_sinistro.length > 17 && "size-small" }}' class="text-uppercase">{{s.tipo_sinistro}}</h4>
                 </td>
                 <td>
-                    <h4>{{s.data_incarico | date:'dd/MM/yy'}}</h4>
+                    <h4 class="text-uppercase">{{s.data_incarico | date:'dd/MM/yy'}}</h4>
                 </td>
                 <td>
-                    <h4>{{s.nr_incarico_sinistro}}</h4>
+                    <h4 class="text-uppercase">{{s.nr_incarico_sinistro}}</h4>
                 </td>
                 <td>
-                    <h4>{{s.nr_incarico}}</h4>
+                    <h4 class="text-uppercase">{{s.nr_incarico}}</h4>
                 </td>
                 
             </tr>
         
         </table>
        
-        <table  class="table table-striped ">
+        <table  class="table table-striped  ">
             <thead>
                 <tr> 
-                    
                     <th class="col-xs-1">P. richiesta</th>
                     <th class="col-xs-1">Assicurato</th>
                     <th class="col-xs-1">Targa assicurato</th>
                     <th class="col-xs-1">Controparte</th>
                     <th class="col-xs-1">Targa Controparte</th>
                     <th class="col-xs-1">Nr. int.</th>
-                    <th class="col-xs-1">Data ultimo interno</th>
-    
+                    <th class="col-xs-1">Data ultimo interlocutore</th>
                 </tr> 
             </thead>
             
@@ -92,31 +92,31 @@
         
                 
                 <td>
-                    <h4>{{s.prestazione_richiesta}}</h4>
+                    <h4 class="text-uppercase">{{s.prestazione_richiesta}}</h4>
                 </td>
                 <td>
-                    <h4>{{s.assicurato}}</h4>
+                    <h4 class="text-uppercase">{{s.assicurato}}</h4>
                 </td>
                 <td>
-                    <h4>{{s.targa_assicurato}}</h4>
+                    <h4 class="text-uppercase">{{s.targa_assicurato}}</h4>
                 </td>
                 <td>
-                    <h4>{{s.controparte}}</h4>
+                    <h4 class="text-uppercase">{{s.controparte}}</h4>
                 </td>
                 <td>
-                    <h4>{{s.targa_controparte}}</h4>
+                    <h4 class="text-uppercase">{{s.targa_controparte}}</h4>
                 </td>
                 <td>
-                    <h4>{{s.nr_int}}</h4>
+                    <h4 class="text-uppercase">{{s.nr_int}}</h4>
                 </td>
                 <td>
-                    <h4>{{s.data_ultimo | date:'dd/MM/yy'}}</h4>
+                    <h4 class="text-uppercase">{{s.data_ultimo | date:'dd/MM/yy'}}</h4>
                 </td>
             </tr>
         
         </table>
     </div>
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center mt-125">
         <pagination-controls
         previousLabel="Prev"
         nextLabel="Next"
@@ -124,6 +124,9 @@
         </pagination-controls>
     </div>
 </div>
+
+
+
 
 
 

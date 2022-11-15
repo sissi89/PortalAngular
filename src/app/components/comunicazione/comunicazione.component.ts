@@ -11,7 +11,7 @@ import { TabsComponent } from '../tabs/tabs.component';
   styleUrls: ['./comunicazione.component.scss']
 })
 export class ComunicazioneComponent implements OnInit {
-  options:string[]=['Comunicazione a mandante','Comunicazione da compagnia','Comunicazione interna','Da network',
+  options:string[]=['','Comunicazione a mandante','Comunicazione da compagnia','Comunicazione interna','Da network',
   'Interlocutoria a mandante','Sollecito incarico','Sollecito riserva'];
   comunicationForm:FormGroup;
  constructor( public fb:FormBuilder, private toast:ToastService,public dialogRef: MatDialogRef<TabsComponent>){

@@ -2,13 +2,13 @@
     <div class="row justify-content-around">
         <div class="col-6 " >
             <div *ngFor="let n of names">
-                <h4>{{n}}</h4>
+                <h5>{{n}}</h5>
             </div>
            
         </div>
     
         <div class="col-6 ">
-            <h4 *ngIf="service?.fiduciario?.length != 0">{{service?.fiduciario }}</h4>
+           <h4 *ngIf="service?.fiduciario?.length != 0">{{service?.fiduciario }}</h4>
             <h4 *ngIf="service?.fiduciario?.length === 0 ">Dato non disponibile</h4>
             <h4>{{service?.compa}}</h4>
             <h4>{{service?.data_ultimo}}</h4>
@@ -25,18 +25,18 @@
     <div class="row justify-content-around">
         <div class="col-6 " >
             <div *ngFor="let n of names2">
-                <h4>{{n}}</h4>
+               <h5>{{n}}</h5>
             </div>
            
         </div>
         <div class="col-6 ">
             
-            <h4>{{service?.assicurato}}</h4>
-            <h4></h4>
-            <h4>{{service?.tipo_sinistro}}</h4>
-            <h4>{{service?.targa_assicurato}}</h4>
-            <h4>{{service?.controparte}}</h4>
-            <h4>{{service?.targa_controparte}}</h4>
+            <h5>{{service?.assicurato}}</h5>
+      
+            <h5>{{service?.tipo_sinistro}}</h5>
+            <h5>{{service?.targa_assicurato}}</h5>
+            <h5>{{service?.controparte}}</h5>
+            <h5>{{service?.targa_controparte}}</h5>
 
         </div>
 

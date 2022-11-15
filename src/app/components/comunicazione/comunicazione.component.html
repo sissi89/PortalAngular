@@ -1,20 +1,20 @@
 <div class="container p-5">
     <form class="form-control" [formGroup]="comunicationForm" (ngSubmit)="onSubmit()" >
         <div class="mb-3">
-            <select class="form-select" aria-label="Default select example" formControlName="option">
-                <option *ngFor="let  o of options">
+            <select class="form-select" aria-label="Default select example" formControlName="option" >
+                <option *ngFor="let  o of options" value="{{o}}">
                     {{o}}
     
                 </option>
             </select>
         </div>
         <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="text_area"></textarea>
+         
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" formControlName="text_area"></textarea>
 
         </div>
         <div class="mb-3">
-            <label for="formFileSm" class="form-label">Small file input example</label>
+         
             <input class="form-control form-control-sm" id="formFileSm" type="file" formControlName="upload_file">
           </div>
      

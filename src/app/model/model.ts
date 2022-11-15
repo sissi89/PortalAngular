@@ -1,12 +1,13 @@
 
 
 export interface Service{
+    id:string,
     tipo:'red'|'green'|'yellow',
-    compo:number,
+    compa:number,
     fiduciario:string,
     tipo_sinistro:string,
     data_incarico:Date,
-    nr_incarico_sinistro:number,
+    nr_sinistro:number,
     nr_incarico:number,
     prestazione_richiesta:string,
     assicurato:string,
@@ -15,5 +16,6 @@ export interface Service{
     targa_controparte:string,
     nr_int:number,
     data_ultimo:Date;
+
 
 }

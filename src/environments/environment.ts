@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  api:'http://localhost:3000/sinistri'
+  api:'http://localhost:3000/sinistri',
+  auth:'http://localhost:3000/auth'
 
 };
 

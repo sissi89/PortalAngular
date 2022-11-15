@@ -5,11 +5,14 @@ import { ServiziComponent } from './components/servizi/servizi.component';
 
 const routes: Routes = [
   {
-    path:'Login',
+    path:'',
     component:LoginComponent
   },{
     path:'Servizi',
     component:ServiziComponent
+  },{
+    path:'Login',
+    component:LoginComponent
   }
 ];
 

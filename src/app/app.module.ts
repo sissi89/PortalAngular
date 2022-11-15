@@ -14,13 +14,18 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import {MatDialogModule} from '@angular/material/dialog';
 import { TabsComponent } from './components/tabs/tabs.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { GeneraleComponent } from './components/generale/generale.component';
+import { ComunicazioneComponent } from './components/comunicazione/comunicazione.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     LoginComponent,
     ServiziComponent,
-    TabsComponent
+    TabsComponent,
+    GeneraleComponent,
+    ComunicazioneComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +38,10 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     NgxPaginationModule ,
     MatTabsModule,
     MatDialogModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSnackBarModule
+   
+
   ],
   providers: [],
   bootstrap: [AppComponent]

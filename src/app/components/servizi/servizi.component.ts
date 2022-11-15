@@ -18,7 +18,7 @@ export class ServiziComponent implements OnInit {
   nameColumn2:string[]=['Prestazione richiesta','Assicurato','Targa assicurato','Controparte','Targa Controparte',
   'Nr. interno','Dt. ultm. int'];
   title = 'dataTableDemo';
-
+  role:string ='';
   page: number = 1;
   count: number = 0;
   tableSize: number = 2;
@@ -45,6 +45,9 @@ export class ServiziComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadServizi();
+    this.getRole();
+   
+
     
   }
 
@@ -75,10 +78,22 @@ export class ServiziComponent implements OnInit {
     })
     return i
   }
-  openDialog() {
+  openDialog(id:string) {
     this.dialog.open(TabsComponent);
-    
+    localStorage.setItem('id',id)
   }
+  
+  getRole(){
+   let r = localStorage.getItem('role');
+  console.log('role',r)
+   if(r){
+
+    this.role = r;
+    
+   }
+   
+  }
+
 
 
 

@@ -19,7 +19,7 @@
     <div>
         
     </div>
-    <div *ngIf="role === 'admin' ">
+    <div *ngIf="getRole() === 'admin' ">
         <div  class="d-flex justify-content-center">
             <pagination-controls
             previousLabel="Prev"

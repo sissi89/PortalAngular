@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,  OnInit} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Service } from 'src/app/model/model';
 import { Tipologia } from 'src/app/model/tipo';
@@ -18,7 +18,7 @@ export class ServiziComponent implements OnInit {
   nameColumn2:string[]=['Prestazione richiesta','Assicurato','Targa assicurato','Controparte','Targa Controparte',
   'Nr. interno','Dt. ultm. int'];
   title = 'dataTableDemo';
-  role:string ='';
+  //role:string ='';
   page: number = 1;
   count: number = 0;
   tableSize: number = 2;
@@ -43,16 +43,16 @@ export class ServiziComponent implements OnInit {
 
   constructor(public service:ServiziService, public dialog: MatDialog) { }
 
+
   ngOnInit(): void {
     this.loadServizi();
-    this.getRole();
-   
-
     
   }
 
 
   loadServizi(){
+    this.getRole();
+   // console.log('role',this.role)
     this.service.getAllService().subscribe(data=>{
       console.log('data:',data);
       this.services = data;
@@ -85,12 +85,16 @@ export class ServiziComponent implements OnInit {
   
   getRole(){
    let r = localStorage.getItem('role');
-  console.log('role',r)
+   
+  //console.log('role',r)
    if(r){
 
-    this.role = r;
+   return r;
     
+   }else{
+    return ''
    }
+   //this.loadServizi();
    
   }
 

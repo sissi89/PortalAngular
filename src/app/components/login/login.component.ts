@@ -27,7 +27,8 @@ export class LoginComponent implements OnInit {
 
   }
 
-  navigate(){
+  onSubmit(){
+    this.getRole();
     this.router.navigateByUrl('/Servizi');
   }
 

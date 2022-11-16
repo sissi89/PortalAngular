@@ -1,10 +1,10 @@
-<div class=" container gradient-custom vh-100 mt-5 d-flex justify-content-center align-items-center">
+<div class=" container gradient-custom vh-76 mt-5 d-flex justify-content-center align-items-center">
   <div class="container">
     <!-- <h1 class="card-title text-center mt-5" style="-webkit-text-stroke: 1px black;">Login</h1> -->
-    <div class="col d-flex justify-content-center align-content-center mt-5">
+    <div class="col d-flex justify-content-center align-content-center mt-5" >
       <div class="card mt-1">
         <div class="card-body">
-          <form class="form-signin mt-3" [formGroup]="loginForm" >
+          <form class="form-signin mt-3" [formGroup]="loginForm" (ngSubmit)=" onSubmit()" >
          <!--    <form class="form-signin mt-3" [formGroup]="loginForm" (ngSubmit)="onSubmit()"></form> -->
             <div class="form-group">
               <label>Username</label>
@@ -21,7 +21,7 @@
 
             <button type="submit" class="btn btn-block btn-primary mt-3">Log in</button>
             <div class="col d-flex justify-content-center mt-3">
-             <!--  <span (click)="navigate()" class="text-primary font">Prima volta? Registrati</span> -->
+           
             </div>
           </form>
         </div>

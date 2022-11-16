@@ -19,7 +19,7 @@
     <div>
         
     </div>
-    <div *ngIf="getRole() === 'admin' ">
+    <div *ngIf="getRole() === 'admin' || getRole() === 'operatore' || getRole() == 'Fiduciario' ">
         <div  class="d-flex justify-content-center">
             <pagination-controls
             previousLabel="Prev"
@@ -29,22 +29,31 @@
         </div>
         <div class="d-flex flex-column flex-md-column flex-lg-row  bg-light rounded p-3">
             
-            <table  class="table table-responsive text-nowrap  fl-table ">
+            <table  class="table table-responsive text-nowrap table-striped fl-table ">
                 <thead  style="background-color: #002d72;">
+                    
                     <tr> 
+                     <th class="th-1">T</th>
+                     <th class="th-1">Compagnia</th>
+                     <th  *ngIf="getRole() != 'Fiduciario'" class="th-1">Fiduciario</th>
+                     <th class="th-1"> Tipo sinistro</th>
+                     <th class="th-1">Dt.incarico</th>
                      
-                        <th class="th-1" *ngFor=" let c of nameColumn" >
-                            {{c}}
-                        </th>
                     </tr> 
                 </thead>
                
-                    <tr> 
-                    <th *ngFor=" let c of nameColumn">
+                    <tr *ngIf="getRole() != 'Fiduciario'" > 
+                        <th  *ngFor=" let c of nameColumn">
                         <input type="text"  class="form-control" >
-                    </th> 
+                        </th> 
                
+                    </tr>
+                    <tr *ngIf="getRole() === 'Fiduciario'" > 
+                        <th  *ngFor=" let c of nameColumnLessFiduciario">
+                        <input type="text"  class="form-control" >
+                        </th> 
                
+                    </tr>
                 <tr *ngFor="let s of services | paginate
                 : {
                     itemsPerPage: tableSize,
@@ -62,14 +71,15 @@
                         <h4  class="text-uppercase">{{s.compa}} </h4>
                     </td>
                     <td class="td-1">
-                        <h4 ngClass='{{s.fiduciario.length > 17 ? "size-small" : "size-large" }}' class="text-uppercase">{{s.fiduciario}}</h4>
-                    </td>
-                    <td class="td-1">
                         <!-- con pipe-->
                         <h4 class="text-uppercase">{{s.tipo_sinistro | typesLeft }}</h4>
                          <!-- con metodo --> 
                        <!--  <h4 class="text-uppercase">{{getNumberleft(s.tipo_sinistro) }}</h4> -->
                     </td>
+                     <td *ngIf="getRole() != 'Fiduciario'"class="td-1">
+                        <h4  ngClass='{{s.fiduciario.length > 17 ? "size-small" : "size-large" }}' class="text-uppercase">{{s.fiduciario}}</h4>
+                    </td> 
+                 
                     <td class="td-1">
                         <h4 class="text-uppercase size-large">{{s.data_incarico | date:'dd/MM/yy'}}</h4>
                     </td>
@@ -128,6 +138,7 @@
             </pagination-controls>
         </div>
     </div>
+    
    
 </div>
 

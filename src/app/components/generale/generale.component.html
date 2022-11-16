@@ -1,5 +1,5 @@
-<div class="container bg-light rounded mt-2 pd-2 ">
-    <div class="row justify-content-around">
+<!--  <div class="container bg-light rounded mt-2 pd-2 ">
+     <div class="row justify-content-around">
         <div class="col-6 " >
             <div *ngFor="let n of names">
                 <h5>{{n}}</h5>
@@ -41,5 +41,32 @@
     </div>
 
 
-</div>
+    
 
+</div>  -->
+ <div class="container  d-flex justify-content-between ">
+    <div class=" bg-light rounded mt-2 pd-2 p-3">
+        <h3><b>Dati Generali</b></h3>
+        <h4>Fiduciario :  {{service?.fiduciario}}</h4>
+        <h4>Compagnia : {{service?.compa}}</h4>
+        <h4>Data incarico : {{service?.data_incarico | date:'dd/MM/yy'}}</h4>
+        <h4>Numero sinistro : {{service?.nr_sinistro}}</h4>
+        <h4>Tipo sinistro : {{service?.tipo_sinistro | typesLeft}}</h4>
+        <h4>Data incarico : {{service?.data_incarico}}</h4>
+        
+    </div>
+    <div class=" bg-light rounded mt-2 pd-2 p-3">
+        <div>
+            <h3><b>Assicurato</b></h3>
+            <h4> Nome e cognome:  {{service?.assicurato}}</h4>
+            <h4>Targa : {{service?.targa_assicurato}}</h4>
+        </div>
+        <div>
+            <h3><b>Controparte</b></h3>
+            <h4>Nome e cognome : {{service?.controparte}}</h4>
+            <h4>Targa : {{service?.targa_controparte}} </h4>
+        </div>
+     
+        
+    </div>
+</div> 

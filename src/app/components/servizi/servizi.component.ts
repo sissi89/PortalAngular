@@ -16,6 +16,7 @@ export class ServiziComponent implements OnInit {
   services:Service[]=[];
   nameColumn:string[]=['T','Compagnia','Fiduciario','Tipo Sinistro','Dt. Incarico',
   ];
+  nameColumnLessFiduciario:string[]=['T','Compagnia','Tipo Sinistro','Dt. Incarico']
   nameColumn2:string[]=['Nr. Sinistro','Nr. Incarico','Prestazione richiesta','Assicurato','Controparte',
   ];
   title = 'dataTableDemo';
@@ -48,7 +49,7 @@ export class ServiziComponent implements OnInit {
     this.loadServizi();
    // this.services
  
-    console.log('sssss',this.getNumberleft(2))
+   
   }
 
 
@@ -88,66 +89,53 @@ export class ServiziComponent implements OnInit {
   }
   
   getRole():string | any{
-   let r = localStorage.getItem('role');
-   let f = localStorage.getItem('fiduciario');
+ /*   let r = localStorage.getItem('role');
   //console.log('role',r)
    if(r){
 
    return r ;
     
-   }
+   } */
+   return localStorage.getItem('role');
    
   }
+  // Fiduciario
   getTrustee():string | any{
-    let f = localStorage.getItem('fiduciario');
+    /* let f = localStorage.getItem('fiduciario');
     if(f){
       return f;
-    }
+    } */
+    return localStorage.getItem('fiduciario');
   }
-  
+ 
   // numero sinistro 
 
   getNumberleft(number:any):string{
     if(number){
       switch(number){
         case 1 :
-          
-        return number = 'R.C.A';
-       
-           
+          return number = 'R.C.A';
         case 2 :
-         return  number= 'C.A.R.D';
-         
+          return  number= 'C.A.R.D'; 
         case 3 :
-        return  number = 'C.V.T';
+          return  number = 'C.V.T';
         default:
           return 'nnnn';
       }
 
     }
-    console.log('sssssssss',number)
+ 
     return number;
       
 
     
   }
  
+ 
 
 
 
 
 }
-/* 
-var levels = this.props.levels.map((level, i) => {
-  switch (i) {
-    case 1:
-      // do something
-      break;
-    case 2:
-      // do something
-      break;
-    case 3:
-      // do something
-      break;
-  }
-} */
+
+

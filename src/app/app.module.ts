@@ -16,7 +16,11 @@ import { TabsComponent } from './components/tabs/tabs.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { GeneraleComponent } from './components/generale/generale.component';
 import { ComunicazioneComponent } from './components/comunicazione/comunicazione.component';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+//import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { DocumentiComponent } from './components/documenti/documenti.component';
+
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { TypesLeftPipe } from './types-left.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +29,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     ServiziComponent,
     TabsComponent,
     GeneraleComponent,
-    ComunicazioneComponent
+    ComunicazioneComponent,
+    DocumentiComponent,
+    TypesLeftPipe
   ],
   imports: [
     BrowserModule,
@@ -39,7 +45,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatTabsModule,
     MatDialogModule,
     MatProgressSpinnerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    
    
 
   ],

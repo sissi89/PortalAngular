@@ -1,0 +1,18 @@
+<div class="container p-5">
+    <form class="form-control" [formGroup]="documentForm" (ngSubmit)="onSubmit()" >
+      
+        <div class="mb-3">
+         <h6> Documento 1</h6>
+            <input class="form-control form-control-sm" id="formFileSm" type="file" formControlName="document1">
+          </div>
+          <div class="mb-3">
+          <h6> Documento 2</h6>
+            <input class="form-control form-control-sm" id="formFileSm" type="file" formControlName="document2">
+          </div>
+     
+        <button type="submit" class="btn bg-danger"> Invia</button>
+        
+
+    </form>
+
+</div>

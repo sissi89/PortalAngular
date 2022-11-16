@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 //import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 @Injectable({
@@ -6,7 +7,7 @@ import { Injectable } from '@angular/core';
 })
 export class ToastService {
 
-  constructor(/* public _snackBar:MatSnackBar */) { }
+  constructor( public _snackBar:MatSnackBar) { }
  /*   snackBar(messagge: string, style: string) {
     let config = new MatSnackBarConfig();
     config.duration = 3000;
@@ -15,6 +16,28 @@ export class ToastService {
     config.horizontalPosition = 'right';
 
     this._snackBar.open(messagge, '', config);
+     snackBar(messagge: string, style: string) {
+    let config = new MatSnackBarConfig();
+    config.duration = 3000;
+    config.panelClass = [style];
+    config.verticalPosition = 'top';
+    config.horizontalPosition = 'right';
+
+    this._snackBar.open(messagge, '', config);
+
+  }
 
   } */ 
+
+  snackBar(messagge: string, style: string){
+    let config = new MatSnackBarConfig();
+    config.duration = 3000;
+    config.panelClass = [style];
+    config.verticalPosition ='top';
+    config.horizontalPosition ='right';
+
+    this._snackBar.open(messagge,'',config);
+  }
+  
+
 }

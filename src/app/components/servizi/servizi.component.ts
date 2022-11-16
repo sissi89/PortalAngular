@@ -1,3 +1,4 @@
+import { getNsPrefix } from '@angular/compiler';
 import { Component,  OnInit} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Service } from 'src/app/model/model';
@@ -13,17 +14,16 @@ import { TabsComponent } from '../tabs/tabs.component';
 })
 export class ServiziComponent implements OnInit {
   services:Service[]=[];
-  nameColumn:string[]=['T','Comp','Fiduciario','Tipo Sinistro','Dt. Incarico','Nr. Sinistro',
-  'Nr. Incarico'];
-  nameColumn2:string[]=['Prestazione richiesta','Assicurato','Targa assicurato','Controparte','Targa Controparte',
-  'Nr. interno','Dt. ultm. int'];
+  nameColumn:string[]=['T','Compagnia','Fiduciario','Tipo Sinistro','Dt. Incarico',
+  ];
+  nameColumn2:string[]=['Nr. Sinistro','Nr. Incarico','Prestazione richiesta','Assicurato','Controparte',
+  ];
   title = 'dataTableDemo';
-  //role:string ='';
   page: number = 1;
   count: number = 0;
   tableSize: number = 2;
   tableSizes: any = [3, 6, 9, 12];
-  red:number =0;
+  red:number = 0;
   
   colors:Tipologia[]=[{
     "color":"red",
@@ -46,7 +46,9 @@ export class ServiziComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadServizi();
-    
+   // this.services
+ 
+    console.log('sssss',this.getNumberleft(2))
   }
 
 
@@ -57,7 +59,9 @@ export class ServiziComponent implements OnInit {
       console.log('data:',data);
       this.services = data;
       console.log('services:',this.services)
+      
     })
+   
   }
   onTableDataChange(event: any) {
     this.page = event;
@@ -83,23 +87,67 @@ export class ServiziComponent implements OnInit {
     localStorage.setItem('id',id)
   }
   
-  getRole(){
+  getRole():string | any{
    let r = localStorage.getItem('role');
-   
+   let f = localStorage.getItem('fiduciario');
   //console.log('role',r)
    if(r){
 
-   return r;
+   return r ;
     
-   }else{
-    return ''
    }
-   //this.loadServizi();
    
   }
+  getTrustee():string | any{
+    let f = localStorage.getItem('fiduciario');
+    if(f){
+      return f;
+    }
+  }
+  
+  // numero sinistro 
+
+  getNumberleft(number:any):string{
+    if(number){
+      switch(number){
+        case 1 :
+          
+        return number = 'R.C.A';
+       
+           
+        case 2 :
+         return  number= 'C.A.R.D';
+         
+        case 3 :
+        return  number = 'C.V.T';
+        default:
+          return 'nnnn';
+      }
+
+    }
+    console.log('sssssssss',number)
+    return number;
+      
+
+    
+  }
+ 
 
 
 
 
 }
-
+/* 
+var levels = this.props.levels.map((level, i) => {
+  switch (i) {
+    case 1:
+      // do something
+      break;
+    case 2:
+      // do something
+      break;
+    case 3:
+      // do something
+      break;
+  }
+} */

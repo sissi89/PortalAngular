@@ -37,8 +37,8 @@ export class ComunicazioneComponent implements OnInit {
       
       this.dialogRef.close(); //<- chiude la modal del altro componente
     }else{
-  //this.toast.snackBar('Compilare tutti i campi','bg-danger')
-  alert('compilare tutti i campi')
+  
+    this.toast.snackBar('Compilare tutti i campi','bg-danger')
       
     }
 

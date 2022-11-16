@@ -7,7 +7,7 @@ export interface Service{
     fiduciario:string,
     tipo_sinistro:string,
     data_incarico:Date,
-    nr_sinistro:number,
+    nr_sinistro:string | number,
     nr_incarico:number,
     prestazione_richiesta:string,
     assicurato:string,

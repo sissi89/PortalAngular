@@ -19,9 +19,7 @@
         </div>
 
     </div>
-  <!--    names2:string[]=[
- ' Tipo sinistro',		'Tipo incarico	',
- ' Annotazioni'];; -->
+ 
     <div class="row justify-content-around">
         <div class="col-6 " >
             <div *ngFor="let n of names2">
@@ -33,7 +31,7 @@
             
             <h5>{{service?.assicurato}}</h5>
       
-            <h5>{{service?.tipo_sinistro}}</h5>
+            <h5>{{service?.tipo_sinistro | typesLeft}}</h5>
             <h5>{{service?.targa_assicurato}}</h5>
             <h5>{{service?.controparte}}</h5>
             <h5>{{service?.targa_controparte}}</h5>

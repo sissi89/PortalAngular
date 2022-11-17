@@ -44,7 +44,7 @@
     
 
 </div>  -->
- <div class="container  d-flex justify-content-between ">
+<!--  <div class="container  d-flex justify-content-between ">
     <div class=" bg-light rounded mt-2 pd-2 p-3">
         <h3><b>Dati Generali</b></h3>
         <h4>Fiduciario :  {{service?.fiduciario}}</h4>
@@ -69,4 +69,68 @@
      
         
     </div>
-</div> 
+</div>  -->
+<div class="container bg-light p-3">
+    <div class="d-flex justify-content-between">
+        <h4><b>Dati Generali</b></h4>
+        <div class="circle-tipy " [style.backgroundColor]="service?.tipo"> </div> 
+    </div>
+   
+    <table style="width:100%" class="table table-responsive text-nowrap table-striped fl-table">
+        <thead  >
+        <tr>
+          <th>Fiduciario :</th>
+          <td>{{service?.fiduciario}}</td>
+        </tr>
+        <tr>
+          <th>Compagnia :</th>
+          <td>{{service?.compa}}</td>
+        </tr>
+        <tr>
+          <th>Data incarico : </th>
+          <td>{{service?.data_incarico | date:'dd/MM/yy'}}</td>
+        </tr>
+        <tr>
+            <th>Numero sinistro :</th>
+            <td>{{service?.nr_sinistro}}</td>
+        </tr>
+        <tr>
+            <th>Tipo sinistro : </th>
+            <td>{{service?.tipo_sinistro | typesLeft}}</td>
+        </tr>
+        </thead>
+      </table>
+      <div class="d-flex justify-content-around  pd-3">
+        <div>
+            <h4><b>Assicurato</b></h4>
+            <table style="width:100%" class="table table-responsive text-nowrap table-striped fl-table pd-3">
+                <thead  >
+                    <tr >
+                      <th >Nome e Cognome :</th>
+                      <td >{{service?.assicurato}}</td>
+                    </tr>
+                    <tr>
+                      <th >Targa :</th>
+                      <td >{{service?.targa_assicurato}}</td>
+                    </tr>
+                  
+                    </thead>
+              </table>
+            
+        </div>
+        <div>
+            <h4><b>Controparte</b></h4>
+            <table style="width:100%" class="table table-responsive text-nowrap table-striped fl-table">
+                <thead >
+                <tr >
+                  <td >{{service?.controparte}}</td>
+                </tr>
+                <tr >
+                  <td >{{service?.targa_controparte}}</td>
+                </tr>
+              
+                </thead>
+              </table>
+        </div>
+      </div>
+</div>

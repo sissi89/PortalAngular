@@ -2,8 +2,8 @@
     <mat-spinner [diameter]="200"></mat-spinner>
 </div>
  <div *ngIf="services.length > 0" class="container">
-    <div class='mt-4 d-flex justify-content-between  '>
-        <div  class="d-flex justifiy-content-around bg-light p-2 rounded  " *ngFor="let c of colors">
+    <div class='mt-4 d-flex justify-content-between bg-light p-2 rounded  '>
+        <div  class="d-flex justifiy-content-around  bg-white p-2 rounded  " *ngFor="let c of colors">
             <div class="d-flex justify-content-around column-sm ">
                 <div type="button" class="div-circle m-1  " [style.backgroundColor]="c.color">
                     <h2 class="text-center text-black m-1" *ngIf="c.color != 'blue'"> {{counter(c.color)}}</h2>
@@ -54,36 +54,38 @@
                         </th> 
                
                     </tr>
-                <tr *ngFor="let s of services | paginate
-                : {
-                    itemsPerPage: tableSize,
-                    currentPage: page,
-                    totalItems: count
-                }; let i = index" (click)=" openDialog(s.id) ">
-                  
-                    <td class="td-1">
-                        
-                       
-                       <div class="circle-tipy m-auto" [style.backgroundColor]="s.tipo"> </div>  
+              
+                    <tr *ngFor="let s of services | paginate
+                    : {
+                        itemsPerPage: tableSize,
+                        currentPage: page,
+                        totalItems: count
+                    }; let i = index" (click)=" openDialog(s.id) ">
                     
-                    </td>
-                    <td class="td-1">
-                        <h4  class="text-uppercase">{{s.compa}} </h4>
-                    </td>
-                    <td class="td-1">
-                        <!-- con pipe-->
-                        <h4 class="text-uppercase">{{s.tipo_sinistro | typesLeft }}</h4>
-                         <!-- con metodo --> 
-                       <!--  <h4 class="text-uppercase">{{getNumberleft(s.tipo_sinistro) }}</h4> -->
-                    </td>
-                     <td *ngIf="getRole() != 'Fiduciario'"class="td-1">
-                        <h4  ngClass='{{s.fiduciario.length > 17 ? "size-small" : "size-large" }}' class="text-uppercase">{{s.fiduciario}}</h4>
-                    </td> 
-                 
-                    <td class="td-1">
-                        <h4 class="text-uppercase size-large">{{s.data_incarico | date:'dd/MM/yy'}}</h4>
-                    </td>
-                </tr>
+                        <td class="td-1">
+                            
+                        
+                        <div class="circle-tipy m-auto" [style.backgroundColor]="s.tipo"> </div>  
+                        
+                        </td>
+                        <td class="td-1">
+                            <h4  class="text-uppercase">{{s.compa}} </h4>
+                        </td>
+                        <td class="td-1">
+                            <!-- con pipe-->
+                            <h4 class="text-uppercase">{{s.tipo_sinistro | typesLeft }}</h4>
+                            <!-- con metodo --> 
+                        <!--  <h4 class="text-uppercase">{{getNumberleft(s.tipo_sinistro) }}</h4> -->
+                        </td>
+                        <td *ngIf="getRole() != 'Fiduciario'"class="td-1">
+                            <h4  ngClass='{{s.fiduciario.length > 17 ? "size-small" : "size-large" }}' class="text-uppercase">{{s.fiduciario}}</h4>
+                        </td> 
+                    
+                        <td class="td-1">
+                            <h4 class="text-uppercase size-large">{{s.data_incarico | date:'dd/MM/yy'}}</h4>
+                        </td>
+                    </tr>
+             
             </table>
             <table  class="table table-striped fl-table ">
                 <thead  style="background-color: #002d72;">
@@ -100,7 +102,7 @@
                         <input type="text"  class="form-control">
                     </th> 
                 </tr>
-                
+               
                 <tr *ngFor="let s of services | paginate
                 : {
                     itemsPerPage: tableSize,
@@ -132,16 +134,15 @@
         </div>
         <div class="d-flex justify-content-center mt-125">
             <pagination-controls
-            previousLabel="Prev"
-            nextLabel="Next"
-            (pageChange)="onTableDataChange($event)">
+                previousLabel="Prev"
+                nextLabel="Next"
+                (pageChange)="onTableDataChange($event)">
             </pagination-controls>
         </div>
     </div>
     
    
 </div>
-
 
 
 

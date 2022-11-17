@@ -1,3 +1,31 @@
 .pd-2{
     padding: 2rem;
 }
+/* div */
+.circle-tipy{
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+ 
+}
+
+/* Table Styles */
+
+.table-wrapper{
+   
+    box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+}
+
+.fl-table {
+    border-radius: 0.313rem;
+    font-size: 0.75rem;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: white;
+   
+}
+

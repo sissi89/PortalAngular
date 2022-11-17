@@ -20,7 +20,7 @@ import { ComunicazioneComponent } from './components/comunicazione/comunicazione
 import { DocumentiComponent } from './components/documenti/documenti.component';
 
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { TypesLeftPipe } from './types-left.pipe';
+import { TypesLeftPipe } from './pipes/types-left.pipe';
 @NgModule({
   declarations: [
     AppComponent,

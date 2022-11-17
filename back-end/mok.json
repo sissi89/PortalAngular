@@ -1,0 +1,121 @@
+{
+    "sinistri":[
+    {
+        "id": "1" ,
+     "tipo":"red",
+     "compa":329,
+     "fiduciario":" Rossi",
+     "tipo_sinistro":1,
+     "data_incarico":"2022-10-9",
+     "nr_sinistro":"231",
+     "nr_incarico":"345679",
+     "prestazione_richiesta":"",
+     "assicurato":"Silvana Mazzaglia",
+     "targa_assicurato":"AX918HG",
+     "controparte":"Mario Rossi",
+     "targa_controparte":"BG564HY",
+     "nr_int":23,
+     "data_ultimo":"2022-9-23"
+
+
+
+
+    },{
+        "id":" 2",
+        "tipo":"green",
+        "compa":456,
+        "fiduciario":" Bianchi",
+        "tipo_sinistro":2,
+        "data_incarico":"2022-10-9",
+        "nr_sinistro":"231",
+        "nr_incarico":"3456797777",
+        "prestazione_richiesta":"",
+        "assicurato":"Mario Bianchi",
+        "targa_assicurato":"AX918YU",
+        "controparte":" Penelope Cruz",
+        "targa_controparte":"BY564HY",
+        "nr_int":21,
+        "data_ultimo":"2022-9-23"
+
+    },{
+        "id":" 3",
+        "tipo":"green",
+        "compa":654,
+        "fiduciario":" Verdi",
+        "tipo_sinistro":3,
+        "data_incarico":"2022-9-7",
+        "nr_sinistro":"456",
+        "nr_incarico":"3456797777",
+        "prestazione_richiesta":"",
+        "assicurato":"Mario Bianchi",
+        "targa_assicurato":"AX918HG",
+        "controparte":" Penelope Cruz",
+        "targa_controparte":"BG564HY",
+        "nr_int":21,
+        "data_ultimo":"2022-9-23"
+
+    },
+    {
+        "id": "4",
+        "tipo":"yellow",
+        "compa":476,
+        "fiduciario":" Rossi",
+        "tipo_sinistro":2,
+        "data_incarico":"2022-9-7",
+        "nr_sinistro":"456",
+        "nr_incarico":"3456797777",
+        "prestazione_richiesta":"",
+        "assicurato":"ATZENI ALESSANDRO",
+        "targa_assicurato":"AX918TG",
+        "controparte":" Penelope Cruz",
+        "targa_controparte":"BG564OY",
+        "nr_int":21,
+        "data_ultimo":"2022-9-23"
+
+    },{
+        "id": "5",
+        "tipo":"red",
+        "compa":875,
+        "fiduciario":"Rossi",
+        "tipo_sinistro":1,
+        "data_incarico":"2022-7-7",
+        "nr_sinistro":"45676",
+        "nr_incarico":"3456797777",
+        "prestazione_richiesta":"",
+        "assicurato":"VERDI ALESSANDRO",
+        "targa_assicurato":"CG918TG",
+        "controparte":"Rossi Mario",
+        "targa_controparte":"BG564OY",
+        "nr_int":21,
+        "data_ultimo":"2022-9-23"
+    },{
+        "id": "6",
+        "tipo":"red",
+        "compa":875,
+        "fiduciario":" Bianchi",
+        "tipo_sinistro":3,
+        "data_incarico":"2022-7-7",
+        "nr_sinistro":"45676",
+        "nr_incarico":"3456797777",
+        "prestazione_richiesta":"",
+        "assicurato":"VERDI ALESSANDRO",
+        "targa_assicurato":"CG918TG",
+        "controparte":"Rossi Mario",
+        "targa_controparte":"BG564OY",
+        "nr_int":21,
+        "data_ultimo":"2022-9-23"
+    }
+],
+"auth":[
+
+  {  
+    "status":"ok",
+    "token":"jwt",
+    "scope":"Fiduciario",
+    "fiduciario":" Bianchi",
+    "username":"Utente",
+    "password":"Utente2022!"}
+]
+
+
+}

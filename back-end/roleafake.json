@@ -1,0 +1,10 @@
+{
+    "role":{
+        "status":"ok",
+    "token":"jwt",
+    "scope":"admin",
+    "username":"Utente",
+    "password":"Utente2022!"
+    }
+}
+

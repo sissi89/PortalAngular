@@ -21,43 +21,13 @@ a:hover{
     color: #333366;
 }
 
-.a-active:active{
-    color:#ff3333;
-    
-}
-.a-active:link {
-    color: green;
-  }
 
-.a-active:hover{
-    color:#ff3333;
-    transform: scale(1.10, 1.10);
-    transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
 
-}
+
 .a-active:visited{
-    color:#ff3333;
+    color:#333366;
     transform: scale(1.10, 1.10);
     transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
  
 }
 
-/* unvisited link */
-a:link {
-    color: grey;
-  }
-  
-  /* visited link */
-  a:visited {
-    color: green;
-  }
-  
-  /* mouse over link */
-  a:hover {
-    color: red;
-  }
-  
-  /* selected link */
-  a:active {
-    color: yellow;
-  } 

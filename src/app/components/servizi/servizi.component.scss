@@ -122,6 +122,22 @@ margin-right: 0px;
 }
 .tr-1{
     font-size: smaller;
+    :hover{
+        color:#cc3333;
+    }
+}
+.tr-1{
+    
+        color:#333366;
+        transform: scale(1.10, 1.10);
+        transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
+     
+    
+}
+h4:hover{
+    color:#cc3333;
+    transform: scale(1.10, 1.10);
+    transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
 }
 
 /* Responsive */

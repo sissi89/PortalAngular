@@ -36,7 +36,10 @@ export class GeneraleComponent implements OnInit {
      //  console.log(this.service)
      })
      
+
    }
+
+   
  
    
  

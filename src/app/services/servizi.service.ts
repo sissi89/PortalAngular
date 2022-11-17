@@ -11,7 +11,7 @@ const { api, auth } = environment;
 })
 
 export class ServiziService {
-   role = 'rolefake.json';
+ 
   constructor(private http:HttpClient) { }
 
   getAllService():Observable<Service[]>{

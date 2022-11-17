@@ -14,11 +14,9 @@ import { TabsComponent } from '../tabs/tabs.component';
 })
 export class ServiziComponent implements OnInit {
   services:Service[]=[];
-  nameColumn:string[]=['T','Compagnia','Fiduciario','Tipo Sinistro','Dt. Incarico',
-  ];
-  nameColumnLessFiduciario:string[]=['T','Compagnia','Tipo Sinistro','Dt. Incarico']
-  nameColumn2:string[]=['Nr. Sinistro','Nr. Incarico','Prestazione richiesta','Assicurato','Controparte',
-  ];
+  nameColumn:string[]=['T','Compagnia','Fiduciario','Tipo Sinistro','Dt. Incarico'];
+  nameColumnLessFiduciario:string[]=['T','Compagnia','Tipo Sinistro','Dt. Incarico'];
+  nameColumn2:string[]=['Nr. Sinistro','Nr. Incarico','Prestazione richiesta','Assicurato','Controparte'];
   title = 'dataTableDemo';
   page: number = 1;
   count: number = 0;
@@ -64,7 +62,7 @@ export class ServiziComponent implements OnInit {
     })
    
   }
-  onTableDataChange(event: any) {
+  onTableDataChange(event:any) {
     this.page = event;
    
   }
@@ -74,7 +72,7 @@ export class ServiziComponent implements OnInit {
  
   }
 
-  counter(color:any):number{
+  counter(color:string):number{
     // inizializzo il contatore
     let i = 0;
     this.services.filter((e:Service)=>{
@@ -88,23 +86,14 @@ export class ServiziComponent implements OnInit {
     localStorage.setItem('id',id)
   }
   
-  getRole():string | any{
- /*   let r = localStorage.getItem('role');
-  //console.log('role',r)
-   if(r){
+  getRole(){
 
-   return r ;
-    
-   } */
    return localStorage.getItem('role');
    
   }
   // Fiduciario
-  getTrustee():string | any{
-    /* let f = localStorage.getItem('fiduciario');
-    if(f){
-      return f;
-    } */
+  getTrustee(){
+   
     return localStorage.getItem('fiduciario');
   }
  

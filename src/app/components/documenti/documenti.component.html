@@ -1,14 +1,14 @@
- <div class="container p-5">
-  <div >
-    <h1>Documenti</h1>
-    <div *ngFor="let s of service?.documents" class="d-flex">
-      <p>{{s.name}}</p>
+ <div class="container p-5 bg-light">
+  <div class="form-control">
+  
+    <div *ngFor="let s of service?.documents" class="d-flex justify-content-around">
+      <p class="mt-2">{{s.name}}</p>
       <!-- scarico il file  da url-->
       <span class="btn  bg-primary" (click)="  download(s.name,s.url)">Download</span>
       
     </div>
   </div>
-    <form class="form-control" [formGroup]="documentForm" (ngSubmit)="  onSubmit()" >
+    <form class="form-control mt-2" [formGroup]="documentForm" (ngSubmit)="  onSubmit()" >
       
         <div class="mb-3">
          <h6> Documento 1</h6>
@@ -31,16 +31,7 @@
 
 
 </div> 
-<div>
-	<a 
-    href="https://res.cloudinary.com/demo/image/upload/example_pdf.pdf" 
-    class="btn btn-default" 
-    style="margin-left: 20px;" 
-    target="_blank" 
-    download="example_pdf.pdf">
-		Download Import File Template
-	</a>
-</div>
+
 <!-- <h1>Angular 12 Multiple File Upload Example - ItSolutionStuff.com</h1>
        
 <form [formGroup]="myForm" (ngSubmit)="submit()">

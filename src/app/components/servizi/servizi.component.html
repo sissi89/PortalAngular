@@ -2,7 +2,10 @@
     <mat-spinner [diameter]="200"></mat-spinner>
 </div>
  <div *ngIf="services.length > 0" class="container">
-    <div class='mt-4 d-flex justify-content-between bg-light p-2 rounded  '>
+    <section class="mt-2 p-3 text-center text-color"> <h1>Elenco Incarichi</h1></section>
+    
+    <div class=' d-flex justify-content-between bg-light p-2 rounded  '>
+       
         <div  class="d-flex justifiy-content-around  bg-white p-2 rounded  " *ngFor="let c of colors">
             <div class="d-flex justify-content-around column-sm ">
                 <div type="button" class="div-circle m-1  " [style.backgroundColor]="c.color">
@@ -19,7 +22,9 @@
     <div>
         
     </div>
+
     <div *ngIf="getRole() === 'admin' || getRole() === 'operatore' || getRole() == 'Fiduciario' ">
+       
         <div  class="d-flex justify-content-center">
             <pagination-controls
             previousLabel="Prev"
@@ -145,7 +150,6 @@
     
    
 </div>
-
 
 
 

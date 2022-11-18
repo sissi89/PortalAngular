@@ -1,15 +1,9 @@
+$blue: #333366;
+$red:#cc3333;
 .round-nav{
     top:10px;
     border-radius: 15px;
 }
-
-
-.navbar-custom{
-   
-    font-size: large;
- color:black;
-}
-
 
 a:hover{
     transform: scale(1.10, 1.10);
@@ -18,16 +12,20 @@ a:hover{
 
 .f-2{
     font-size: 1.50rem;
-    color: #333366;
+    color: $blue;
 }
 
-
-
-
 .a-active:visited{
-    color:#333366;
+    color:$blue;
     transform: scale(1.10, 1.10);
     transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
- 
+}
+
+.c-blue{
+  color:$blue;
+}
+
+.b-blue{
+  border-color: $blue;
 }
 

@@ -1,4 +1,6 @@
-/* Styles for tab labels */
+$blue: #333366;
+$red:#cc3333;
+/* tabs */
 .mat-tab-label {
     min-width: 25px !important;
     padding: 5px;
@@ -14,14 +16,21 @@
 /* Styles for the ink bar */
 .mat-ink-bar {
     background-color: green;
+    border: $red;
 }
 .mat-tab-label.mat-tab-label-active:active {
     background-color:  transparent;
+    border: $red;
 }
 .mat-ripple .mat-tab-label , .mat-focus-indicator .ng-star-inserted .mat-tab-label-active{
-    background-color: #cc3333;
+    background-color: $red;
+    border:$red;
 }
 .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
-    background-color:  #cc3333;
+    background-color:  $red;
     text-decoration: none;
+    border: $red;
+}
+.mat-tab-label-content{
+    color:$blue;
 }

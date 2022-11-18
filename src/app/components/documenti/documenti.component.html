@@ -1,13 +1,27 @@
-<div class="container p-5">
-    <form class="form-control" [formGroup]="documentForm" (ngSubmit)="onSubmit()" >
+ <div class="container p-5">
+  <div >
+    <h1>Documenti</h1>
+    <div *ngFor="let s of service?.documents" class="d-flex">
+      <p>{{s.name}}</p>
+      <!-- scarico il file  da url-->
+      <span class="btn  bg-primary" (click)="  download(s.name,s.url)">Download</span>
+      
+    </div>
+  </div>
+    <form class="form-control" [formGroup]="documentForm" (ngSubmit)="  onSubmit()" >
       
         <div class="mb-3">
          <h6> Documento 1</h6>
-            <input class="form-control form-control-sm" id="formFileSm" type="file" formControlName="document1">
+            <input class="form-control form-control-sm" id="formFileSm" multiple type="file" formControlName="document1" (change)="onFileChange($event)">
           </div>
-          <div class="mb-3">
-          <h6> Documento 2</h6>
-            <input class="form-control form-control-sm" id="formFileSm" type="file" formControlName="document2">
+       
+          <div *ngIf="myFiles.length > 0" >
+      
+            <div *ngFor="let f of myFiles">
+              <p>{{f.name}}</p>
+
+            </div>
+
           </div>
      
         <button type="submit" class="btn bg-danger"> Invia</button>
@@ -15,4 +29,46 @@
 
     </form>
 
+
+</div> 
+<div>
+	<a 
+    href="https://res.cloudinary.com/demo/image/upload/example_pdf.pdf" 
+    class="btn btn-default" 
+    style="margin-left: 20px;" 
+    target="_blank" 
+    download="example_pdf.pdf">
+		Download Import File Template
+	</a>
 </div>
+<!-- <h1>Angular 12 Multiple File Upload Example - ItSolutionStuff.com</h1>
+       
+<form [formGroup]="myForm" (ngSubmit)="submit()">
+  
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input 
+            formControlName="name"
+            id="name" 
+            type="text" 
+            class="form-control">
+        <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
+           
+        </div>
+    </div>
+      
+    <div class="form-group">
+        <label for="file">File</label>
+        <input 
+            formControlName="file"
+            id="file" 
+            type="file" 
+            multiple
+            class="form-control"
+            (change)="onFileChange($event)">
+      
+    </div>
+          
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+ -->

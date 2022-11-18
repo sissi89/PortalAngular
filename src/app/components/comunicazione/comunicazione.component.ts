@@ -22,7 +22,7 @@ export class ComunicazioneComponent implements OnInit {
   });
  }
 
-  
+
 
   ngOnInit(): void {
 
@@ -44,4 +44,5 @@ export class ComunicazioneComponent implements OnInit {
 
   }
 
+  
 }

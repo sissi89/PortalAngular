@@ -1,4 +1,4 @@
-import { getNsPrefix } from '@angular/compiler';
+
 import { Component,  OnInit} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Service } from 'src/app/model/model';
@@ -71,7 +71,7 @@ export class ServiziComponent implements OnInit {
     this.page = 1;
  
   }
-
+// numero tipo
   counter(color:string):number{
     // inizializzo il contatore
     let i = 0;
@@ -81,14 +81,14 @@ export class ServiziComponent implements OnInit {
     })
     return i
   }
+  // modale
   openDialog(id:string) {
     this.dialog.open(TabsComponent);
     localStorage.setItem('id',id)
   }
-  
+  // ruolo
   getRole(){
-
-   return localStorage.getItem('role');
+ return localStorage.getItem('role');
    
   }
   // Fiduciario
@@ -98,7 +98,6 @@ export class ServiziComponent implements OnInit {
   }
  
   // numero sinistro 
-
   getNumberleft(number:any):string{
     if(number){
       switch(number){

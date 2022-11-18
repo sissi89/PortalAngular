@@ -1,3 +1,4 @@
+import { Doc } from "./doc";
 
 
 export interface Service{
@@ -16,6 +17,7 @@ export interface Service{
     targa_controparte:string,
     nr_int:number,
     data_ultimo:Date;
+    documents:Doc[];
 
 
 }

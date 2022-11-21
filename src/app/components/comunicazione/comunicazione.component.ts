@@ -33,7 +33,13 @@ export class ComunicazioneComponent implements OnInit {
     let camps = this.comunicationForm.value
     if(camps.option && camps.text_area && camps.upload_file){
       // inserire qui il codice dove fare la post 
-      console.log(this.comunicationForm.value,'bbbbbb')
+           //codice per la post 
+      /*this.serviziService.post( camps)
+     .subscribe(res => {
+       console.log(res);
+       this.toast.snackBar('Form inviato','bg-success')
+     }) */
+     // console.log(this.comunicationForm.value,'bbbbbb')
       
       this.dialogRef.close(); //<- chiude la modal del altro componente
     }else{

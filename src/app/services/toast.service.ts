@@ -8,26 +8,7 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 export class ToastService {
 
   constructor( public _snackBar:MatSnackBar) { }
- /*   snackBar(messagge: string, style: string) {
-    let config = new MatSnackBarConfig();
-    config.duration = 3000;
-    config.panelClass = [style];
-    config.verticalPosition = 'top';
-    config.horizontalPosition = 'right';
 
-    this._snackBar.open(messagge, '', config);
-     snackBar(messagge: string, style: string) {
-    let config = new MatSnackBarConfig();
-    config.duration = 3000;
-    config.panelClass = [style];
-    config.verticalPosition = 'top';
-    config.horizontalPosition = 'right';
-
-    this._snackBar.open(messagge, '', config);
-
-  }
-
-  } */ 
 
   snackBar(messagge: string, style: string){
     let config = new MatSnackBarConfig();

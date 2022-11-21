@@ -8,7 +8,7 @@
       
     </div>
   </div>
-    <form class="form-control mt-2" [formGroup]="documentForm" (ngSubmit)="  onSubmit()" >
+    <form class="form-control mt-2" [formGroup]="documentForm" (ngSubmit)="onSubmit()" >
       
         <div class="mb-3">
          <h6> Documento 1</h6>
@@ -17,8 +17,11 @@
        
           <div *ngIf="myFiles.length > 0" >
       
-            <div *ngFor="let f of myFiles">
+            <div *ngFor="let f of myFiles ">
               <p>{{f.name}}</p>
+              <span class="btn btn-danger" (click)="deleteFile(f)"> X</span>
+             
+
 
             </div>
 

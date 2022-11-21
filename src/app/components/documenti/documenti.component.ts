@@ -1,5 +1,4 @@
 import { DOCUMENT } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -23,7 +22,8 @@ export class DocumentiComponent implements OnInit {
   constructor(public fb:FormBuilder, public dialogRef: MatDialogRef<TabsComponent>, public toast: ToastService, 
     public serviziService:ServiziService,  @Inject(DOCUMENT) private document: Document) { 
     this.documentForm = this.fb.group({
-      document1: new FormControl(null,Validators.required)
+      document1: new FormControl(null,Validators.required),
+      fileSource: new FormControl('', [Validators.required])
   
     })
   }
@@ -43,7 +43,7 @@ export class DocumentiComponent implements OnInit {
    
   
   }
-  // seervizio
+  // servizio
   getService(id:string){
     this.serviziService.getServiceById(id).subscribe(data=>{
     // console.log('sono richiamata',data)
@@ -57,13 +57,17 @@ export class DocumentiComponent implements OnInit {
   onSubmit(): void{
     let camps = this.documentForm.value
     if(camps.document1 ){
-      // inserire qui il codice dove far fare la post
-      
+      //codice per la post 
+      /*this.serviziService.post( camps)
+     .subscribe(res => {
+       console.log(res);
+       this.toast.snackBar('File inviati','bg-success')
+     }) */
       this.dialogRef.close();
-
+     this.toast.snackBar('File inviati','bg-success')
     }else{
-     // alert('compilare tutti i campi')
-     console.log(camps.value)
+   
+    
      this.toast.snackBar('Compilare tutti i campi','bg-danger')
     }
   }
@@ -73,15 +77,28 @@ export class DocumentiComponent implements OnInit {
     for (var i = 0; i < event.target.files.length; i++) { 
      // console.log('richiamo funzione')
         this.myFiles.push(event.target.files[i]);
+        this.documentForm.patchValue({
+          fileSource: this.myFiles
+
+        });
         
-    }
+    }  
+ 
+ 
     
 }
-/*  public download(downloadUrl: string): void {
-    var blob = new Blob([downloadUrl], { type: 'application/pdf' });
-    var file =  new File([blob], 'sample.pdf', { type: 'application/pdf' });
-    saveAs(file)
-  } */
+// delete file caricato
+
+deleteFile(file:Doc){
+ return  this.myFiles.map((f:Doc,index:number)=>{
+    f == file && this.myFiles.splice(index,1)
+    this.toast.snackBar('File rimosso','bg-success')
+  })
+ 
+  
+
+}
+
   // dowload file
 
   download(url:string, name:string){

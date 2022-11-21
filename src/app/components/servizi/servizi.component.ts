@@ -14,8 +14,8 @@ import { TabsComponent } from '../tabs/tabs.component';
 })
 export class ServiziComponent implements OnInit {
   services:Service[]=[];
-  nameColumn:string[]=['T','Compagnia','Fiduciario','Tipo Sinistro','Dt. Incarico'];
-  nameColumnLessFiduciario:string[]=['T','Compagnia','Tipo Sinistro','Dt. Incarico'];
+  nameColumn:string[]=['T','Compagnia','Fiduciario','Tipo Sinistro','Dt. Incarico','Nr. Sinistro','Nr. Incarico','Prestazione richiesta','Assicurato','Controparte'];
+  nameColumnLessFiduciario:string[]=['T','Compagnia','Tipo Sinistro','Dt. Incarico','Nr. Sinistro','Nr. Incarico','Prestazione richiesta','Assicurato','Controparte'];
   nameColumn2:string[]=['Nr. Sinistro','Nr. Incarico','Prestazione richiesta','Assicurato','Controparte'];
   title = 'dataTableDemo';
   page: number = 1;
@@ -97,7 +97,7 @@ export class ServiziComponent implements OnInit {
     return Number(localStorage.getItem('fiduciario'));
   }
  
-  // numero sinistro 
+  // numero sinistro fatta anche con una pipe
   getNumberleft(number:any):string{
     if(number){
       switch(number){

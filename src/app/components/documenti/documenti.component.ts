@@ -15,9 +15,11 @@ import { saveAs } from 'file-saver';
   styleUrls: ['./documenti.component.scss']
 })
 export class DocumentiComponent implements OnInit {
-  service:Service | undefined;
+  service: Service | undefined;
   documentForm : FormGroup;
   myFiles:Doc [] = [];
+
+  
   download$: Observable<Download> | undefined
   constructor(public fb:FormBuilder, public dialogRef: MatDialogRef<TabsComponent>, public toast: ToastService, 
     public serviziService:ServiziService,  @Inject(DOCUMENT) private document: Document) { 
@@ -28,8 +30,11 @@ export class DocumentiComponent implements OnInit {
     })
   }
 
+  
+
   ngOnInit(): void {
   this.getId()
+  
     console.log(this.service,'ssssss')
   }
  

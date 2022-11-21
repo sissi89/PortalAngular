@@ -7,13 +7,13 @@ export class TypesLeftPipe implements PipeTransform {
   transform(number: any): string {
     switch (number) {
       case 1:
-        return (number = 'R.C.A');
+        return number = 'RCA';
 
       case 2:
-        return (number = 'C.A.R.D');
+        return number = 'C.A.R.D';
 
       case 3:
-        return (number = 'C.V.T');
+        return number = 'C.V.T.';
       default:
         return ' Non presente ';
     }

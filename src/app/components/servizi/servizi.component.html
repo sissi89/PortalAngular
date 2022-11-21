@@ -1,4 +1,4 @@
-<div class="center-flex mt-25 c-spinne "*ngIf="services.length <= 0  ">
+<!-- <div class="center-flex mt-25 c-spinne "*ngIf="services.length <= 0  ">
     <mat-spinner [diameter]="200"></mat-spinner>
 </div>
  <div *ngIf="services.length > 0" class="container">
@@ -23,7 +23,7 @@
         
     </div>
 
-    <div *ngIf="getRole() === 1 || getRole() === 2 || getRole() == 3 ">
+    <div *ngIf="getRole() > 1 || getRole() <= 3 ">
        
         <div  class="d-flex justify-content-center">
             <pagination-controls
@@ -40,7 +40,7 @@
                     <tr> 
                      <th class="th-1">T</th>
                      <th class="th-1">Compagnia</th>
-                     <th  *ngIf="getRole() != 3" class="th-1">Fiduciario</th>
+                     <th  *ngIf="getRole() > 0 && getRole() <  3 " class="th-1">Fiduciario</th>
                      <th class="th-1"> Tipo sinistro</th>
                      <th class="th-1">Dt.incarico</th>
                      
@@ -48,7 +48,7 @@
                     
                 </thead>
                     
-                    <tr *ngIf="getRole() != 3" > 
+                    <tr *ngIf=" getRole() > 0 && getRole() <  3  " > 
                         <th  *ngFor=" let c of nameColumn">
                         <input type="text"  class="form-control" >
                         </th> 
@@ -78,12 +78,12 @@
                             <h4  class="text-uppercase">{{s.compa}} </h4>
                         </td>
                         <td class="td-1">
-                            <!-- con pipe-->
+                            con pipe
                             <h4 class="text-uppercase">{{s.tipo_sinistro | typesLeft }}</h4>
-                            <!-- con metodo --> 
-                        <!--  <h4 class="text-uppercase">{{getNumberleft(s.tipo_sinistro) }}</h4> -->
+                             con metodo --> 
+                        <!--  <h4 class="text-uppercase">{{getNumberleft(s.tipo_sinistro) }}</h4> 
                         </td>
-                        <td *ngIf="getRole() != 3"class="td-1">
+                        <td *ngIf="getRole() > 0  && getRole() < 3 "class="td-1">
                             <h4  ngClass='{{s.fiduciario.length > 17 ? "size-small" : "size-large" }}' class="text-uppercase">{{s.fiduciario}}</h4>
                         </td> 
                     
@@ -148,7 +148,142 @@
     </div>
     
    
+</div> -->
+<div class="center-flex mt-25 c-spinne "*ngIf="services.length <= 0  ">
+    <mat-spinner [diameter]="200"></mat-spinner>
 </div>
+ <div *ngIf="services.length > 0" class="container">
+    <section class="mt-2 p-3 text-center text-color"> <h1>Elenco Incarichi</h1></section>
+    
+    <div class=' d-flex justify-content-between bg-light p-2 rounded  '>
+       
+        <div  class="d-flex justifiy-content-around   p-2 rounded  "  *ngFor="let c of colors">
+            <div class="d-flex justify-content-around column-sm rounded  p-3" [style.backgroundColor]="c.color">
+                
+                    <h2 class="text-center text-black  mt-2" *ngIf="c.color != 'blue'"> {{counter(c.color)}}</h2>
+                    <h2 class="text-center text-black  mt-2" *ngIf="c.color === 'blue'"> {{services.length}}</h2>
+               
+                <div class="mr-3" style="margin: 1.2em;">
+                    {{c.tipo}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div>
+        
+    </div>
+
+    <div *ngIf="getRole() > 1 || getRole() <= 3 ">
+       
+        <div  class="d-flex justify-content-center">
+            <pagination-controls
+            previousLabel="Prev"
+            nextLabel="Next"
+            (pageChange)="onTableDataChange($event)">
+            </pagination-controls>
+        </div>
+        <div >
+            
+            <table  class="table table-responsive text-nowrap table-striped fl-table ">
+                <thead  style="background-color: #002d72;">
+                    
+                    <tr> 
+                     <th class="th-1">T</th>
+                     <th class="th-1">Compagnia</th>
+                     <th  *ngIf="getRole() > 0 && getRole() <  3 " class="th-1">Fiduciario</th>
+                     <th class="th-1"> Tipo sinistro</th>
+                     <th class="th-1">Dt.incarico</th>
+                     <th class="th-1"> Nr. Sinistro</th>
+                     <th class="th-1"> Nr. Incarico</th>
+                     <th class="th-1"> Prestazione richiesta</th>
+                     <th class="th-1"> Assicurato</th>
+                     <th class="th-1"> Controparte</th>
+                    </tr> 
+                    
+                </thead>
+                    
+                    <tr *ngIf=" getRole() > 0 && getRole() <  3  " > 
+                        <th  *ngFor=" let c of nameColumn">
+                        <input type="text"  class="form-control" >
+                        </th> 
+               
+                    </tr>
+                    <tr *ngIf="getRole() === 3" > 
+                        <th  *ngFor=" let c of nameColumnLessFiduciario">
+                        <input type="text"  class="form-control" >
+                        </th> 
+               
+                    </tr>
+              
+                    <tr *ngFor="let s of services | paginate
+                    : {
+                        itemsPerPage: tableSize,
+                        currentPage: page,
+                        totalItems: count
+                    }; let i = index" (click)=" openDialog(s.id) ">
+                    
+                        <td class="td-1">
+                            
+                        
+                        <div class="circle-tipy m-auto" [style.backgroundColor]="s.tipo"> </div>  
+                        
+                        </td>
+                        <td class="td-1">
+                            <h4  class="text-uppercase">{{s.compa}} </h4>
+                        </td>
+                        <td class="td-1">
+                            <!-- con pipe-->
+                            <h4 class="text-uppercase">{{s.tipo_sinistro | typesLeft }}</h4>
+                            <!-- con metodo --> 
+                        <!--  <h4 class="text-uppercase">{{getNumberleft(s.tipo_sinistro) }}</h4> -->
+                        </td>
+                        <td *ngIf="getRole() > 0  && getRole() < 3 "class="td-1">
+                            <h4  ngClass='{{s.fiduciario.length > 17 ? "size-small" : "size-large" }}' class="text-uppercase">{{s.fiduciario}}</h4>
+                        </td> 
+                    
+                        <td class="td-1">
+                            <h4 class="text-uppercase size-large">{{s.data_incarico | date:'dd/MM/yy'}}</h4>
+                        </td>
+                        <td class="td-1">
+                            <h4 class="text-uppercase size-large  ">{{s.nr_sinistro }}</h4>
+                        </td>
+                
+                        <td class="td-1">
+                            <h4 class="text-uppercase size-large">{{s.nr_incarico}}</h4>
+                        </td>
+                        <td>
+                            <h4 class="text-uppercase " ngClass='{{s.prestazione_richiesta.length > 13 ? "size-small" : "size-large" }}'>{{s.prestazione_richiesta}}</h4>
+                        </td>
+                      
+                        <td>
+                            <h4 class="text-uppercase size-large">{{s.targa_assicurato}}</h4>
+                        </td>
+                     
+                        <td>
+                            <h4 class="text-uppercase size-large">{{s.targa_controparte}}</h4>
+                        </td>
+
+                    </tr>
+              
+             
+            </table>
+            <div class="d-flex justify-content-center mt-125">
+                <pagination-controls
+                    previousLabel="Prev"
+                    nextLabel="Next"
+                    (pageChange)="onTableDataChange($event)">
+                </pagination-controls>
+            </div>
+    
+   
+</div>
+
+
+
+
+
+
 
 
 

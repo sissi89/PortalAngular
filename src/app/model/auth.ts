@@ -1,7 +1,7 @@
 export interface Auth{
     status:string,
     token:string,
-    scope:string,
+    scope:number,
     username:string,
     password:string
 }

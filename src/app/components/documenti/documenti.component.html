@@ -18,8 +18,11 @@
           <div *ngIf="myFiles.length > 0" >
       
             <div *ngFor="let f of myFiles ">
-              <p>{{f.name}}</p>
-              <span class="btn btn-danger" (click)="deleteFile(f)"> X</span>
+              <div class="d-flex justify-content-between">
+                <h6>{{f.name}}</h6>
+                <span class="btn btn-danger s-dim" (click)="deleteFile(f)"> x</span>
+              </div>
+              
              
 
 

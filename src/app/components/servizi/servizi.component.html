@@ -23,7 +23,7 @@
         
     </div>
 
-    <div *ngIf="getRole() === 'admin' || getRole() === 'operatore' || getRole() == 'Fiduciario' ">
+    <div *ngIf="getRole() === 1 || getRole() === 2 || getRole() == 3 ">
        
         <div  class="d-flex justify-content-center">
             <pagination-controls
@@ -40,7 +40,7 @@
                     <tr> 
                      <th class="th-1">T</th>
                      <th class="th-1">Compagnia</th>
-                     <th  *ngIf="getRole() != 'Fiduciario'" class="th-1">Fiduciario</th>
+                     <th  *ngIf="getRole() != 3" class="th-1">Fiduciario</th>
                      <th class="th-1"> Tipo sinistro</th>
                      <th class="th-1">Dt.incarico</th>
                      
@@ -48,13 +48,13 @@
                     
                 </thead>
                     
-                    <tr *ngIf="getRole() != 'Fiduciario'" > 
+                    <tr *ngIf="getRole() != 3" > 
                         <th  *ngFor=" let c of nameColumn">
                         <input type="text"  class="form-control" >
                         </th> 
                
                     </tr>
-                    <tr *ngIf="getRole() === 'Fiduciario'" > 
+                    <tr *ngIf="getRole() === 3" > 
                         <th  *ngFor=" let c of nameColumnLessFiduciario">
                         <input type="text"  class="form-control" >
                         </th> 
@@ -83,7 +83,7 @@
                             <!-- con metodo --> 
                         <!--  <h4 class="text-uppercase">{{getNumberleft(s.tipo_sinistro) }}</h4> -->
                         </td>
-                        <td *ngIf="getRole() != 'Fiduciario'"class="td-1">
+                        <td *ngIf="getRole() != 3"class="td-1">
                             <h4  ngClass='{{s.fiduciario.length > 17 ? "size-small" : "size-large" }}' class="text-uppercase">{{s.fiduciario}}</h4>
                         </td> 
                     
@@ -110,12 +110,11 @@
                     </th> 
                 </tr>
                
-                <tr *ngFor="let s of services | paginate
-                : {
-                    itemsPerPage: tableSize,
+                <tr *ngFor="let s of services | paginate : {
+                     itemsPerPage: tableSize,
                     currentPage: page,
                     totalItems: count
-                }; let i = index" (click)=" openDialog(s.id)">
+                    }; let i = index" (click)=" openDialog(s.id)">
                     <td class="td-1">
                         <h4 class="text-uppercase size-large  ">{{s.nr_sinistro }}</h4>
                     </td>

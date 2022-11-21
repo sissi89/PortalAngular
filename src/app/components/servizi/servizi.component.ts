@@ -88,13 +88,13 @@ export class ServiziComponent implements OnInit {
   }
   // ruolo
   getRole(){
- return localStorage.getItem('role');
+ return Number(localStorage.getItem('role'));
    
   }
   // Fiduciario
   getTrustee(){
    
-    return localStorage.getItem('fiduciario');
+    return Number(localStorage.getItem('fiduciario'));
   }
  
   // numero sinistro 

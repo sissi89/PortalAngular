@@ -19,8 +19,10 @@ import { ComunicazioneComponent } from './components/comunicazione/comunicazione
 //import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { DocumentiComponent } from './components/documenti/documenti.component';
 
+
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { TypesLeftPipe } from './pipes/types-left.pipe';
+import { FilterComponent } from './components/filter/filter.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +33,8 @@ import { TypesLeftPipe } from './pipes/types-left.pipe';
     GeneraleComponent,
     ComunicazioneComponent,
     DocumentiComponent,
-    TypesLeftPipe
+    TypesLeftPipe,
+    FilterComponent
   ],
   imports: [
     BrowserModule,

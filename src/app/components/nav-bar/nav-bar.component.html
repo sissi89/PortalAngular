@@ -1,22 +1,23 @@
- <div class="container  ">
+ <div class="container-fluid  ">
 
     <nav class="navbar navbar-expand-lg  round-nav bg-light p-4 ">
         <div class="d-flex justify-content-around">
             <a class="navbar-brand" href="#">
-                <img src="../../../assets/favicon.png" class="d-inline-block align-top img-fluid" alt="">
+                <img src="../../../assets/favicon.png" class="d-inline-block align-top img-fluid img-dim" alt="">
             </a>
         </div>
         <button class="navbar-toggler b-blue" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon c-blue"></span>
         </button>
         <div class="collapse navbar-collapse mr-auto " id="navbarNav" style="justify-content:flex-end">
-        
+          <div class="dropdown">
             <ul class="navbar-nav" *ngFor="let l of links">
-                <li class="nav-item">
-                    <a class="btn nav-link f-2 a-active " routerLink="/{{l}}">{{l}}</a>
+                <li class="nav-item ">
+                    <a class="btn nav-link f-2 a-active  mr-3 text-inherit" routerLink="/{{l}}">{{l}}</a>
                 </li>
            
             </ul>
+          </div>
             <div class="dropdown">
               <a class="btn  dropdown-toggle a-active f-2" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 Servizi
@@ -25,7 +26,7 @@
                 <li><a class="btn nav-link  a-active" routerLink="/Servizi">Elenco Incarichi</a></li>
                 
               </ul>
-          </div>
+            </div>
             
         </div>
       

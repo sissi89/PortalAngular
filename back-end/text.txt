@@ -1,94 +1,58 @@
-lo0: flags=8049<UP,LOOPBACK,RUNNING,MULTICAST> mtu 16384
-	options=1203<RXCSUM,TXCSUM,TXSTATUS,SW_TIMESTAMP>
-	inet 127.0.0.1 netmask 0xff000000 
-	inet6 ::1 prefixlen 128 
-	inet6 fe80::1%lo0 prefixlen 64 scopeid 0x1 
-	nd6 options=201<PERFORMNUD,DAD>
-gif0: flags=8010<POINTOPOINT,MULTICAST> mtu 1280
-stf0: flags=0<> mtu 1280
-anpi1: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
-	options=400<CHANNEL_IO>
-	ether 9e:5c:42:12:e2:a6 
-	inet6 fe80::9c5c:42ff:fe12:e2a6%anpi1 prefixlen 64 scopeid 0x4 
-	nd6 options=201<PERFORMNUD,DAD>
-	media: none
-	status: inactive
-anpi0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
-	options=400<CHANNEL_IO>
-	ether 9e:5c:42:12:e2:a5 
-	inet6 fe80::9c5c:42ff:fe12:e2a5%anpi0 prefixlen 64 scopeid 0x5 
-	nd6 options=201<PERFORMNUD,DAD>
-	media: none
-	status: inactive
-en3: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
-	options=400<CHANNEL_IO>
-	ether 9e:5c:42:12:e2:85 
-	nd6 options=201<PERFORMNUD,DAD>
-	media: none
-	status: inactive
-en4: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
-	options=400<CHANNEL_IO>
-	ether 9e:5c:42:12:e2:86 
-	nd6 options=201<PERFORMNUD,DAD>
-	media: none
-	status: inactive
-en1: flags=8963<UP,BROADCAST,SMART,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1500
-	options=460<TSO4,TSO6,CHANNEL_IO>
-	ether 36:23:9d:fe:70:80 
-	media: autoselect <full-duplex>
-	status: inactive
-en2: flags=8963<UP,BROADCAST,SMART,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1500
-	options=460<TSO4,TSO6,CHANNEL_IO>
-	ether 36:23:9d:fe:70:84 
-	media: autoselect <full-duplex>
-	status: inactive
-ap1: flags=8802<BROADCAST,SIMPLEX,MULTICAST> mtu 1500
-	options=400<CHANNEL_IO>
-	ether b2:be:83:26:5c:3e 
-	media: autoselect
-en0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
-	options=6463<RXCSUM,TXCSUM,TSO4,TSO6,CHANNEL_IO,PARTIAL_CSUM,ZEROINVERT_CSUM>
-	ether b0:be:83:26:5c:3e 
-	inet6 fe80::5:1df7:5edd:2645%en0 prefixlen 64 secured scopeid 0xb 
-	inet 192.168.43.177 netmask 0xffffff00 broadcast 192.168.43.255
-	nd6 options=201<PERFORMNUD,DAD>
-	media: autoselect
-	status: active
-bridge0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
-	options=63<RXCSUM,TXCSUM,TSO4,TSO6>
-	ether 36:23:9d:fe:70:80 
-	Configuration:
-		id 0:0:0:0:0:0 priority 0 hellotime 0 fwddelay 0
-		maxage 0 holdcnt 0 proto stp maxaddr 100 timeout 1200
-		root id 0:0:0:0:0:0 priority 0 ifcost 0 port 0
-		ipfilter disabled flags 0x0
-	member: en1 flags=3<LEARNING,DISCOVER>
-	        ifmaxaddr 0 port 8 priority 0 path cost 0
-	member: en2 flags=3<LEARNING,DISCOVER>
-	        ifmaxaddr 0 port 9 priority 0 path cost 0
-	nd6 options=201<PERFORMNUD,DAD>
-	media: <unknown type>
-	status: inactive
-awdl0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> mtu 1500
-	options=6463<RXCSUM,TXCSUM,TSO4,TSO6,CHANNEL_IO,PARTIAL_CSUM,ZEROINVERT_CSUM>
-	ether 7e:c4:42:de:3e:a3 
-	inet6 fe80::7cc4:42ff:fede:3ea3%awdl0 prefixlen 64 scopeid 0xd 
-	nd6 options=201<PERFORMNUD,DAD>
-	media: autoselect
-	status: active
-llw0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
-	options=400<CHANNEL_IO>
-	ether 7e:c4:42:de:3e:a3 
-	inet6 fe80::7cc4:42ff:fede:3ea3%llw0 prefixlen 64 scopeid 0xe 
-	nd6 options=201<PERFORMNUD,DAD>
-	media: autoselect
-	status: inactive
-utun0: flags=8051<UP,POINTOPOINT,RUNNING,MULTICAST> mtu 1380
-	inet6 fe80::d3ed:73fe:236f:b06%utun0 prefixlen 64 scopeid 0xf 
-	nd6 options=201<PERFORMNUD,DAD>
-utun1: flags=8051<UP,POINTOPOINT,RUNNING,MULTICAST> mtu 2000
-	inet6 fe80::166:31ff:f3ab:13fd%utun1 prefixlen 64 scopeid 0x10 
-	nd6 options=201<PERFORMNUD,DAD>
-utun2: flags=8051<UP,POINTOPOINT,RUNNING,MULTICAST> mtu 1000
-	inet6 fe80::ce81:b1c:bd2c:69e%utun2 prefixlen 64 scopeid 0x11 
-	nd6 options=201<PERFORMNUD,DAD>
+Questa Sono Io
+Non sono estranea all'oscurità
+nasconditi, mi dicono
+perchè non vogliamo le tue parti rotte
+ho imparato a vergognarmi di tutte le mie cicatrici
+scappa via, mi dicono
+nessuno ti amerà così come sei
+
+Ma io non gli permetterò di distruggermi e ridurmi in polvere
+so che c'è un posto per noi
+perchè siamo gloriosi
+Quando le parole più taglienti vogliono tagliarmi
+manderò un'inondazione, le farò affogare
+sono coraggiosa, sono piena di lividi
+sono chi dovrei essere, questa sono io
+guarda fuori, perchè ecco che arrivo
+e sto camminando a ritmo del tamburo che suono
+non ho paura di essere vista
+non mi scuso, questa sono io
+
+Oh-oh-oh-oh...
+
+Un altro round di proiettili colpisce la mia pelle
+beh sparate pure perchè oggi non permetterò che la vergogna mi ingoi
+ci stiamo scaraventando fuori le barricate
+e cerchiamo di raggiungere il sole, siamo guerrieri
+sì, è quello che siamo diventati
+
+Non gli permetterò di distruggermi e ridurmi in polvere
+so che c'è un posto per noiperchè siamo gloriosi
+
+Quando le parole più taglienti vogliono tagliarmi
+manderò un'inondazione, le farò affogare
+sono coraggiosa, sono piena di lividi
+sono chi dovrei essere, questa sono io
+guarda fuori, perchè ecco che arrivo
+e sto camminando a ritmo del tamburo che suono
+non ho paura di essere vista
+non mi scuso, questa sono io
+
+Oh-oh-oh-oh... questa sono io
+
+E so che merito il tuo amore
+non c'è niente di cui non sono degna
+Quando le parole più taglienti vogliono tagliarmi
+manderò un'inondazione, le farò affogare
+questo è coraggio, questa ne è la prova
+questa sono quella che dovrei essere, questa sono io
+
+Guarda fuori perchè ecco che arrivo
+e sto camminando a ritmo del tamburo che suono
+non ho paura di essere vista
+non mi scuso, questa sono io
+
+(Oh-oh-oh-oh, oh-oh-oh-oh, oh-oh-oh-oh)
+manderò un'inondazione
+le farò affogare
+Oh-oh-oh, oh-oh-oh, oh-oh-oh, oh, oh questa sono io

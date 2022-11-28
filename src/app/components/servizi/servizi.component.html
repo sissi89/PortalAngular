@@ -1,167 +1,21 @@
-<!-- <div class="center-flex mt-25 c-spinne "*ngIf="services.length <= 0  ">
-    <mat-spinner [diameter]="200"></mat-spinner>
-</div>
- <div *ngIf="services.length > 0" class="container">
-    <section class="mt-2 p-3 text-center text-color"> <h1>Elenco Incarichi</h1></section>
-    
-    <div class=' d-flex justify-content-between bg-light p-2 rounded  '>
-       
-        <div  class="d-flex justifiy-content-around  bg-white p-2 rounded  " *ngFor="let c of colors">
-            <div class="d-flex justify-content-around column-sm ">
-                <div type="button" class="div-circle m-1  " [style.backgroundColor]="c.color">
-                    <h2 class="text-center text-black m-1" *ngIf="c.color != 'blue'"> {{counter(c.color)}}</h2>
-                    <h2 class="text-center text-black m-1" *ngIf="c.color === 'blue'"> {{services.length}}</h2>
-                </div>
-                <div class="mr-3" style="margin: 1.2em;">
-                    {{c.tipo}}
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div>
-        
-    </div>
-
-    <div *ngIf="getRole() > 1 || getRole() <= 3 ">
-       
-        <div  class="d-flex justify-content-center">
-            <pagination-controls
-            previousLabel="Prev"
-            nextLabel="Next"
-            (pageChange)="onTableDataChange($event)">
-            </pagination-controls>
-        </div>
-        <div class="d-flex flex-column flex-md-column flex-lg-row  bg-light rounded p-3">
-            
-            <table  class="table table-responsive text-nowrap table-striped fl-table ">
-                <thead  style="background-color: #002d72;">
-                    
-                    <tr> 
-                     <th class="th-1">T</th>
-                     <th class="th-1">Compagnia</th>
-                     <th  *ngIf="getRole() > 0 && getRole() <  3 " class="th-1">Fiduciario</th>
-                     <th class="th-1"> Tipo sinistro</th>
-                     <th class="th-1">Dt.incarico</th>
-                     
-                    </tr> 
-                    
-                </thead>
-                    
-                    <tr *ngIf=" getRole() > 0 && getRole() <  3  " > 
-                        <th  *ngFor=" let c of nameColumn">
-                        <input type="text"  class="form-control" >
-                        </th> 
-               
-                    </tr>
-                    <tr *ngIf="getRole() === 3" > 
-                        <th  *ngFor=" let c of nameColumnLessFiduciario">
-                        <input type="text"  class="form-control" >
-                        </th> 
-               
-                    </tr>
-              
-                    <tr *ngFor="let s of services | paginate
-                    : {
-                        itemsPerPage: tableSize,
-                        currentPage: page,
-                        totalItems: count
-                    }; let i = index" (click)=" openDialog(s.id) ">
-                    
-                        <td class="td-1">
-                            
-                        
-                        <div class="circle-tipy m-auto" [style.backgroundColor]="s.tipo"> </div>  
-                        
-                        </td>
-                        <td class="td-1">
-                            <h4  class="text-uppercase">{{s.compa}} </h4>
-                        </td>
-                        <td class="td-1">
-                            con pipe
-                            <h4 class="text-uppercase">{{s.tipo_sinistro | typesLeft }}</h4>
-                             con metodo --> 
-                        <!--  <h4 class="text-uppercase">{{getNumberleft(s.tipo_sinistro) }}</h4> 
-                        </td>
-                        <td *ngIf="getRole() > 0  && getRole() < 3 "class="td-1">
-                            <h4  ngClass='{{s.fiduciario.length > 17 ? "size-small" : "size-large" }}' class="text-uppercase">{{s.fiduciario}}</h4>
-                        </td> 
-                    
-                        <td class="td-1">
-                            <h4 class="text-uppercase size-large">{{s.data_incarico | date:'dd/MM/yy'}}</h4>
-                        </td>
-                    </tr>
-              
-             
-            </table>
-            <table  class="table table-striped fl-table ">
-                <thead  style="background-color: #002d72;">
-                    <tr> 
-                     
-                        <th class="th-1" *ngFor=" let c of nameColumn2" >
-                            {{c}}
-                        </th>
-                    </tr> 
-                </thead>
-            
-                <tr> 
-                    <th *ngFor=" let c of nameColumn2">
-                        <input type="text"  class="form-control">
-                    </th> 
-                </tr>
-               
-                <tr *ngFor="let s of services | paginate : {
-                     itemsPerPage: tableSize,
-                    currentPage: page,
-                    totalItems: count
-                    }; let i = index" (click)=" openDialog(s.id)">
-                    <td class="td-1">
-                        <h4 class="text-uppercase size-large  ">{{s.nr_sinistro }}</h4>
-                    </td>
-            
-                    <td class="td-1">
-                        <h4 class="text-uppercase size-large">{{s.nr_incarico}}</h4>
-                    </td>
-                    <td>
-                        <h4 class="text-uppercase " ngClass='{{s.prestazione_richiesta.length > 13 ? "size-small" : "size-large" }}'>{{s.prestazione_richiesta}}</h4>
-                    </td>
-                  
-                    <td>
-                        <h4 class="text-uppercase size-large">{{s.targa_assicurato}}</h4>
-                    </td>
-                 
-                    <td>
-                        <h4 class="text-uppercase size-large">{{s.targa_controparte}}</h4>
-                    </td>
-                   
-                </tr>
-               
-            </table>
-        </div>
-        <div class="d-flex justify-content-center mt-125">
-            <pagination-controls
-                previousLabel="Prev"
-                nextLabel="Next"
-                (pageChange)="onTableDataChange($event)">
-            </pagination-controls>
-        </div>
-    </div>
-    
-   
-</div> -->
+<!-- loader-->
 <div class="center-flex mt-25 c-spinne "*ngIf="services.length <= 0  ">
     <mat-spinner [diameter]="200"></mat-spinner>
 </div>
- <div *ngIf="services.length > 0" class="container">
-    <section class="mt-2 p-3 text-center text-color"> <h1>Elenco Incarichi</h1></section>
+<!-- end loader-->
+<!-- button -->
+ <div *ngIf="services.length > 0" class="container-fluid">
+    <section class="mt-2 p-3 text-center text-color">
+         <h1>Elenco Incarichi</h1>
+    </section>
     
-    <div class=' d-flex justify-content-between bg-light  rounded  '>
+    <div class=' flex'>
        
-        <div  class="d-flex justifiy-content-around   p-2 rounded  "  *ngFor="let c of colors">
-            <div class="d-flex justify-content-around column-sm rounded  p-3" [style.backgroundColor]="c.color">
+        <div  class="d-flex  rounded  p-2  m0 "  *ngFor="let c of colors">
+            <div class="d-flex justify-content-center column-sm   p-lg-3 p-md-3 ml-0   c-border " [style.backgroundColor]="c.color" [class]="'c-border-'+c.color" >
                 
-                    <h2 class="text-center text-black  mt-2" *ngIf="c.color != 'blue'"> {{counter(c.color)}}</h2>
-                    <h2 class="text-center text-black  mt-2" *ngIf="c.color === 'blue'"> {{services.length}}</h2>
+                <h2 class="text-center text-black  mt-2" *ngIf="c.color != 'blue'"> {{counter(c.color)}}</h2>
+                <h2 class="text-center text-black mt-2 " *ngIf="c.color === 'blue'"> {{services.length}}</h2>
                
                 <div class="mr-3" style="margin: 1.2em;">
                     {{c.tipo}}
@@ -169,12 +23,11 @@
             </div>
         </div>
     </div>
+    <!-- button -->
     <hr>
-    <div>
-        
-    </div>
+    <!--pagination table-->
 
-    <div *ngIf="getRole() > 1 || getRole() <= 3 ">
+    <div *ngIf="getRole() > 1 || getRole() <= 3 " class="testimonial-group">
        
         <div  class="d-flex justify-content-center">
             <pagination-controls
@@ -185,25 +38,25 @@
         </div>
         <div >
             
-            <table  class="table table-responsive text-nowrap table-striped fl-table ">
+            <table  class="table table-responsive text-nowrap table-striped fl-table testimonial-group" (scroll)='checkthis($event)'>
                 <thead  style="background-color: #002d72;">
                     
-                    <tr> 
-                     <th class="th-1">T</th>
+                    <tr class="tr-1"> 
+                     <th class="th-1">Tipo di Urgenza</th>
                      <th class="th-1">Compagnia</th>
                      <th  *ngIf="getRole() > 0 && getRole() <  3 " class="th-1">Fiduciario</th>
                      <th class="th-1"> Tipo sinistro</th>
                      <th class="th-1">Dt.incarico</th>
                      <th class="th-1"> Nr. Sinistro</th>
                      <th class="th-1"> Nr. Incarico</th>
-                     <th class="th-1"> Prestazione richiesta</th>
+                     <th class="th-1"> Prestazione </th>
                      <th class="th-1"> Assicurato</th>
                      <th class="th-1"> Controparte</th>
                     </tr> 
                     
                 </thead>
                     
-                    <tr *ngIf=" getRole() > 0 && getRole() <  3  " > 
+                    <!-- <tr *ngIf=" getRole() > 0 && getRole() <  3  " > 
                         <th  *ngFor=" let c of nameColumn">
                         <input type="text"  class="form-control" >
                         </th> 
@@ -214,6 +67,48 @@
                         <input type="text"  class="form-control" >
                         </th> 
                
+                    </tr> -->
+                    <tr class="tr-1">
+                        <th class="th-1"> 
+                            <input type="text"  class="form-control" placeholder="T urgenza" >
+                        </th>
+                        <th class="th-1"> 
+                            <input type="text"  class="form-control"  placeholder="Compagnia">
+                          <!--   <div class="form-group">
+                                <input class="form-control" formControlName="luogo_partenza" placeholder="Da dove vuoi partire?"
+                                  type="text" list="codes" [(ngModel)]="selectedItem" (change)="filter(selectedItem)" />
+                                <datalist id="codes">
+                                  <option *ngFor="let c of cities" [value]="c.citta">
+                                    {{ c.citta }}
+                                  </option>
+                                </datalist>
+                            </div> -->
+                        </th>
+                        <th *ngIf=" getRole() > 0 && getRole() <  3  " class="th-1"  placeholder="Fiduciario"> 
+                            <input type="text"  class="form-control" placeholder="Fiduciario" >
+                        </th>
+                        <th class="th-1"> 
+                            <input type="text"  class="form-control" placeholder="T sinistro" > <!-- tipo sinistro select-->
+                        </th>
+                        <th class="th-1"> 
+                            <button type="text"  class="form-control c-grey" placeholder="Data incarico" (click)="openDialogFilter()" > {{today | date:'dd/MM/yy'}}</button>
+                        </th>
+                        <th class="th-1"> 
+                            <input type="text"  class="form-control" placeholder="Nr. sinistro" >
+                        </th>
+                        <th class="th-1"> 
+                            <input type="text"  class="form-control" placeholder="Nr. incarico" >
+                        </th>
+                        <th class="th-1"> 
+                            <input type="text"  class="form-control" placeholder="Prestazione ">
+                        </th>
+                        <th class="th-1"> 
+                            <input type="text"  class="form-control" placeholder="Assicurato">
+                        </th>
+                        <th class="th-1"> 
+                            <input type="text"  class="form-control" placeholder="Controparte">
+                        </th>
+                        
                     </tr>
               
                     <tr *ngFor="let s of services | paginate
@@ -221,7 +116,7 @@
                         itemsPerPage: tableSize,
                         currentPage: page,
                         totalItems: count
-                    }; let i = index" (click)=" openDialog(s.id) ">
+                    }; let i = index" (click)=" openDialog(s.id)  " >
                     
                         <td class="td-1">
                             
@@ -232,15 +127,16 @@
                         <td class="td-1">
                             <h4  class="text-uppercase">{{s.compa}} </h4>
                         </td>
+                        
+                        <td *ngIf="getRole() > 0  && getRole() < 3 "class="td-1">
+                            <h4  ngClass='{{s.fiduciario.length > 17 ? "size-small" : "size-large" }}' class="text-uppercase">{{s.fiduciario}}</h4>
+                        </td> 
                         <td class="td-1">
                             <!-- con pipe-->
                             <h4 class="text-uppercase">{{s.tipo_sinistro | typesLeft }}</h4>
                             <!-- con metodo --> 
                         <!--  <h4 class="text-uppercase">{{getNumberleft(s.tipo_sinistro) }}</h4> -->
                         </td>
-                        <td *ngIf="getRole() > 0  && getRole() < 3 "class="td-1">
-                            <h4  ngClass='{{s.fiduciario.length > 17 ? "size-small" : "size-large" }}' class="text-uppercase">{{s.fiduciario}}</h4>
-                        </td> 
                     
                         <td class="td-1">
                             <h4 class="text-uppercase size-large">{{s.data_incarico | date:'dd/MM/yy'}}</h4>
@@ -268,6 +164,11 @@
               
              
             </table>
+            <div class="arrow " *ngIf="atBottom">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#333366" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                     <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                 </svg> 
+            </div>
             <div class="d-flex justify-content-center mt-125">
                 <pagination-controls
                     previousLabel="Prev"
@@ -275,9 +176,16 @@
                     (pageChange)="onTableDataChange($event)">
                 </pagination-controls>
             </div>
+         <!--pagination table-->
+
+         
     
    
 </div>
+
+
+
+
 
 
 

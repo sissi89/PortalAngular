@@ -1,9 +1,11 @@
 
 import { Component,  OnInit} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import * as moment from 'moment';
 import { Service } from 'src/app/model/model';
 import { Tipologia } from 'src/app/model/tipo';
 import { ServiziService } from 'src/app/services/servizi.service';
+import { FilterComponent } from '../filter/filter.component';
 
 import { TabsComponent } from '../tabs/tabs.component';
 
@@ -23,7 +25,8 @@ export class ServiziComponent implements OnInit {
   tableSize: number = 2;
   tableSizes: any = [3, 6, 9, 12];
   red:number = 0;
-  
+  atBottom:boolean = false;
+  today=moment(new Date()).format("YYYY-MM-DD");
   colors:Tipologia[]=[{
     "color":"red",
     "tipo":"Urgenze",
@@ -62,7 +65,7 @@ export class ServiziComponent implements OnInit {
     })
    
   }
-  onTableDataChange(event:any) {
+  onTableDataChange(event:number) {
     this.page = event;
    
   }
@@ -71,7 +74,7 @@ export class ServiziComponent implements OnInit {
     this.page = 1;
  
   }
-// numero tipo
+// contatore
   counter(color:string):number{
     // inizializzo il contatore
     let i = 0;
@@ -79,12 +82,18 @@ export class ServiziComponent implements OnInit {
       // per ogni elemento che sodisfa la condizione aggiungo 1 al contatore
       e.tipo === color ? i+=1 : i
     })
+    console.log(i)
     return i
+    
   }
-  // modale
+  // modal general
   openDialog(id:string) {
     this.dialog.open(TabsComponent);
     localStorage.setItem('id',id)
+  }
+  // modal filtro data
+  openDialogFilter(){
+    this.dialog.open(FilterComponent)
   }
   // ruolo
   getRole(){
@@ -117,6 +126,22 @@ export class ServiziComponent implements OnInit {
       
 
     
+  }
+
+  checkthis(e:any){
+    console.log(e.target.offsetHeight , 
+                e.target.scrollHeight , 
+                e.target.scrollTop,
+                e.target.offsetHeight);
+    if(e.target.scrollWidth < e.target.scrollLeft +e.target.offsetWidth) {
+      // not scrollable
+      this.atBottom = false;
+    } else {
+      // is scrollable
+      this.atBottom = true;
+    }
+
+   
   }
  
  

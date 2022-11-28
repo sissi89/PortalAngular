@@ -32,7 +32,23 @@ $red:#cc3333;
     font-size: small;
    
 }
-
+// contatori
+.flex{
+    display: flex;
+    justify-content: center;
+    
+}
+.cdk-overlay-pane {
+    position: absolute;
+    pointer-events: auto;
+    box-sizing: border-box;
+    z-index: 1000;
+    display: flex;
+    max-width: 100% !important;
+    max-height: 100%;
+}
+ 
+ 
 // cerchio 
 .div-circle{
     font-size: 2rem;
@@ -105,32 +121,128 @@ $red:#cc3333;
 .fl-table .tr-1:nth-child(even) {
     background: #F8F8F8;
 }
-.tr-1{
+.td-1{
     font-size: smaller;
     :hover{
-        color:$red;
+        background-color: rgba( 33, 153, 232, 0.5 );
     }
 }
-.tr-1{
+
+
+tr:hover {
+    /*   color:$red;
+      transform: scale(1.10, 1.10);
+      transition: all .4s cubic-bezier(0.175, 0.885, 0, 1); */
+     background-color:   rgb(33, 153, 232);
+  
     
-        color:$blue;
-        transform: scale(1.10, 1.10);
-        transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
-     
-    
-}
-h4:hover{
-    color:$red;
-    transform: scale(1.10, 1.10);
-    transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
+  } 
+
+
+.c-grey{
+    color: grey;;
 }
 
+table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.m0{
+    margin: -5px;
+}
+/* scroll bar*/
+
+.testimonial-group > .row {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .testimonial-group > .row > .col-xs-4 {
+    display: inline-block;
+    float: none;
+  }
+
+ // freccia
+  .arrow{
+    display: flex;
+    justify-content: center;
+    animation: slide1 1s ease-in-out infinite;
+  margin-left: 9px;
+}
+@keyframes slide1 {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+  
+    50% {
+      transform: translate(10px, 0);
+    }
+  }
+  
+
+
+
+/* .c-border-blue{
+    border-bottom-right-radius: 12px;
+    border-top-right-radius: 12px;
+}
+.c-border-red{
+    border-bottom-left-radius: 12px;
+    border-top-left-radius: 12px;
+}
+ */
+ .c-border{
+    border-radius: 12px;
+ }
 /* Responsive */
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
    
    .column-sm{
     flex-direction: column;
    }
+   html {
+    overflow-y:scroll;
+}
+.arrow{
+    display: flex;
+    justify-content: center;
+    animation: slide1 1s ease-in-out infinite;
+  margin-left: 9px;
+}
+@keyframes slide1 {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+  
+    50% {
+      transform: translate(10px, 0);
+    }
+  }
+  
 }
 
+tr:active {
+    /*   color:$red;
+      transform: scale(1.10, 1.10);
+      transition: all .4s cubic-bezier(0.175, 0.885, 0, 1); */
+     background-color:   rgb(33, 153, 232);
+  
+    
+  } 
+
+/* div {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    animation-name: example;
+    animation-duration: 4s;
+  }
+  
+  @keyframes example {
+    from {background-color: red;}
+    to {background-color: yellow;}
+  } */

@@ -1,11 +1,11 @@
-export interface Doc
-    {name: string, 
+export interface Doc{
+    name: string, 
     url:string,
     lastModified: string,
     lastModifiedDate: Date,
     webkitRelativePath: string, 
-    size: number}
-1
+    size: number
+}
 
 export interface Download {
     content: Blob | null;

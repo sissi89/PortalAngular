@@ -9,7 +9,9 @@ $red:#cc3333;
     font-weight: 700;
     text-decoration: none; 
 }
-
+.btn-red{
+    background-color: $red;
+}
 
 
 
@@ -33,4 +35,14 @@ $red:#cc3333;
 }
 .mat-tab-label-content{
     color:$blue;
+}
+
+.cdk-overlay-pane {
+    position: absolute;
+    pointer-events: auto;
+    box-sizing: border-box;
+    z-index: 1000;
+    display: flex;
+    max-width: 100% !important;
+    max-height: 100%;
 }

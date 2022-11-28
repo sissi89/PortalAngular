@@ -38,11 +38,12 @@ export class ServiziComponent implements OnInit {
   },{
     "color":"green",
     "tipo":"Incarichi chiusi"
-  },{
+  }/*, {
     "color":"blue",
     "tipo":"Tutti gli incarichi"
-  }]
-
+  } */]
+  // servizi filtrati
+ servicesFilter:Service[]=[];
   constructor(public service:ServiziService, public dialog: MatDialog) { }
 
 
@@ -61,6 +62,8 @@ export class ServiziComponent implements OnInit {
       console.log('data:',data);
       this.services = data;
       console.log('services:',this.services)
+      this.servicesFilter = data;
+      console.log(data)
       
     })
    
@@ -128,6 +131,7 @@ export class ServiziComponent implements OnInit {
     
   }
 
+  // mostrare il scroll
   checkthis(e:any){
     console.log(e.target.offsetHeight , 
                 e.target.scrollHeight , 
@@ -144,11 +148,29 @@ export class ServiziComponent implements OnInit {
    
   }
  
+  // filtro per i contatori
+  serviceFilter(tipo:string){
+  
+    this.servicesFilter = this.services.reduce((filters:Service[],service:Service)=>{
+  // se è uguale a quello che stiamo cercando allora l ho inseriamo nell array
+       (service.tipo === tipo ) && filters.push(service)
+
+      return filters 
+    },[])
+
  
+
+  }
+
+ 
+ // tutti gli incarichi
+  all(){
+    // richiamo tutti i servizi
+  return this.loadServizi();
+  }
 
 
 
 
 }
-
 

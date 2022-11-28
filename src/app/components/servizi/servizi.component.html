@@ -12,15 +12,24 @@
     <div class=' flex'>
        
         <div  class="d-flex  rounded  p-2  m0 "  *ngFor="let c of colors">
-            <div class="d-flex justify-content-center column-sm   p-lg-3 p-md-3 ml-0   c-border " [style.backgroundColor]="c.color" [class]="'c-border-'+c.color" >
+            <div class="d-flex justify-content-center column-sm   p-lg-3 p-md-3 ml-0   c-border " [style.backgroundColor]="c.color" [class]="'c-border-'+c.color" (click)="serviceFilter(c.color)">
                 
-                <h2 class="text-center text-black  mt-2" *ngIf="c.color != 'blue'"> {{counter(c.color)}}</h2>
+                <h2 class="text-center text-black  mt-2" *ngIf="c.color != 'blue'" > {{counter(c.color)}}</h2>
                 <h2 class="text-center text-black mt-2 " *ngIf="c.color === 'blue'"> {{services.length}}</h2>
                
                 <div class="mr-3" style="margin: 1.2em;">
                     {{c.tipo}}
                 </div>
             </div>
+        </div>
+        <div  class="d-flex  rounded  p-2  m0 " >
+            <div class="d-flex justify-content-center column-sm   p-lg-3 p-md-3 ml-0   c-border bg-blue " (click)="all()" >
+                <h2 class="text-center text-black mt-2 text-white "> {{services.length}}</h2>
+                <div class="mr-3" style="margin: 1.2em;">
+                  <h4 class="text-white"> Tutti gli incarichi</h4> 
+                </div>
+            </div>
+            
         </div>
     </div>
     <!-- button -->
@@ -69,7 +78,7 @@
                
                     </tr> -->
                     <tr class="tr-1">
-                        <th class="th-1"> 
+                        <th class="th-1">   
                             <input type="text"  class="form-control" placeholder="T urgenza" >
                         </th>
                         <th class="th-1"> 
@@ -111,7 +120,7 @@
                         
                     </tr>
               
-                    <tr *ngFor="let s of services | paginate
+                    <tr *ngFor="let s of servicesFilter | paginate
                     : {
                         itemsPerPage: tableSize,
                         currentPage: page,

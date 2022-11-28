@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
+  // api:'http://localhost:3000/sinistri',
   api:'http://10.0.100.6:3000/sinistri',
+  // auth: 'http://localhost:3000/auth',
   auth:'http://10.0.100.6:3000/auth',
   uplaodFile:'https://res.cloudinary.com/demo/image/upload/'
 };

@@ -1,0 +1,64 @@
+<div mat-dialog-actions class="d-flex justify-content-end m-1">
+      
+    <button  mat-button mat-dialog-close type="button" class="close btn btn-red text-white " aria-label="Close">
+        <span aria-hidden="true"> <b> X</b></span>
+      </button>
+  
+</div>
+<!--  <ng-multiselect-dropdown
+  [placeholder]="'custom placeholder'"
+  [settings]="dropdownSettings"
+  [data]="typesLeft"
+  [(ngModel)]="selectedItems"
+  (onSelect)="onItemSelect($event)"
+  (onSelectAll)="onSelectAll($event)"
+>
+</ng-multiselect-dropdown>  -->
+<!-- <form *ngFor="let value of typesLeft" [formGroup]="form">
+    <button class="btn btn-dark "    (click)="onItemSelect(value)  " formControlName="{{value}}" ngDefaultControl
+ > {{value | typesLeft}} </button>
+
+</form> -->
+<div style="text-align:center">
+   
+  </div>
+  <div class="form-check">
+    <
+          <ul class="list-group">
+            <li class="list-group-item">
+              <input
+                type="checkbox"
+                [(ngModel)]="masterSelected"
+                name="list_name"
+                value="m1"
+                (change)="checkUncheckAll()"
+                class="form-check-input"
+              />
+              <strong>Select/ Unselect All</strong>
+            </li>
+          </ul>
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let item of  typesLeft">
+              <input
+                type="checkbox"
+                [(ngModel)]="item.isSelected"
+                name="list_name"
+                value="{{ item.id }}"
+                (change)="isAllSelected()"
+                class="btn "
+              />
+              
+              {{ item.value | typesLeft }}
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <button class="btn btn-red" (click)="onRegister()">Register</button>
+          <br />
+          <p>{{ checkedList }}</p>
+        </div>
+   
+  
+
+
+

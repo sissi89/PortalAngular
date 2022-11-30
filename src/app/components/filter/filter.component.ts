@@ -11,6 +11,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class FilterComponent implements OnInit {
   dateForm:FormGroup;
+
   today=moment(new Date()).format("YYYY-MM-DD");
   constructor( private fb: FormBuilder, private toast:ToastService,public dialogRef: MatDialogRef<ServiziComponent>) { 
     this.dateForm = this.fb.group({
@@ -26,7 +27,7 @@ export class FilterComponent implements OnInit {
 
   ngOnInit(): void {
     let dateTime = moment(new Date()).format("YYYY-MM-DD")
-    console.log('datetime', dateTime)
+   // console.log('datetime', dateTime)
   }
 
   onSumbit(){

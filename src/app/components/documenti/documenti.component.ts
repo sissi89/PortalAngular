@@ -35,12 +35,12 @@ export class DocumentiComponent implements OnInit {
   ngOnInit(): void {
   this.getId()
   
-    console.log(this.service,'ssssss')
+   // console.log(this.service,'ssssss')
   }
  
   // id service
   getId(){
-    console.log(localStorage.getItem('id'))
+  //  console.log(localStorage.getItem('id'))
     let id = localStorage.getItem('id');
     if(id !=null){
       return this.getService(id)
@@ -53,7 +53,7 @@ export class DocumentiComponent implements OnInit {
     this.serviziService.getServiceById(id).subscribe(data=>{
     // console.log('sono richiamata',data)
      this.service = data;
-     console.log('qqqq',this.service)
+    //('qqqq',this.service)
     })
     
 

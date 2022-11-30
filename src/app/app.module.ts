@@ -18,11 +18,12 @@ import { GeneraleComponent } from './components/generale/generale.component';
 import { ComunicazioneComponent } from './components/comunicazione/comunicazione.component';
 //import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { DocumentiComponent } from './components/documenti/documenti.component';
-
-
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import {MatRadioModule} from '@angular/material/radio';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { TypesLeftPipe } from './pipes/types-left.pipe';
 import { FilterComponent } from './components/filter/filter.component';
+import { TypeLeftComponent } from './components/type-left/type-left.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import { FilterComponent } from './components/filter/filter.component';
     ComunicazioneComponent,
     DocumentiComponent,
     TypesLeftPipe,
-    FilterComponent
+    FilterComponent,
+    TypeLeftComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +51,8 @@ import { FilterComponent } from './components/filter/filter.component';
     MatDialogModule,
     MatProgressSpinnerModule,
     MatSnackBarModule,
+    NgMultiSelectDropDownModule,
+    MatRadioModule
     
    
 

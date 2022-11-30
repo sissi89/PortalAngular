@@ -1,3 +1,5 @@
+<div class="container-lg">
+
 <!-- loader-->
 <div class="center-flex mt-25 c-spinne "*ngIf="services.length <= 0  ">
     <mat-spinner [diameter]="200"></mat-spinner>
@@ -9,29 +11,54 @@
          <h1>Elenco Incarichi</h1>
     </section>
     
-    <div class=' flex'>
+    <div class='  row justify-content-evenly'>
        
-        <div  class="d-flex  rounded  p-2  m0 "  *ngFor="let c of colors">
-            <div class="d-flex justify-content-center column-sm   p-lg-3 p-md-3 ml-0   c-border " [style.backgroundColor]="c.color" [class]="'c-border-'+c.color" (click)="serviceFilter(c.color)">
+        <div  class="  rounded    col-3 m0"  *ngFor="let c of colors">
+            <div class="  d-flex flex-column    p-lg-3 p-md-3 ml-0 p-sm-3  c-border  " [style.backgroundColor]="c.color"  (click)="serviceFilter(c.color)">
                 
+                <h2 class="text-center text-black  " *ngIf="c.color != 'blue'" > {{counter(c.color)}}</h2>
+                
+                <div class="mr-3 " >
+                 <p class="text-center">{{c.tipo}}</p>  
+                </div>
+            </div>
+        </div>
+        <div  class="   rounded    col-3 m0"  >
+            <div class=" d-flex flex-column  p-lg-3 p-md-3 ml-0 p-sm-3  c-border bg-blue "   (click)="all()">
+                
+                <h2 class="text-center text-black  text-white "> {{services.length}}</h2>
+                <div class="mr-3"   >
+                  <p class="text-white text-center"> Tutti </p> 
+                </div>
+            </div>
+        </div>
+      <!--   <div  class=" rounded  p-2  col-3 c-border bg-blue   "  (click)="all()">
+            <div class="   p-lg-3 p-md-3 ml-0 p-sm-3  c-border " >
+                
+                
+            </div>
+              
+       
+            
+        </div> --> 
+        <!-- <div class="card">
+            <div class="card-body d-flex " [style.backgroundColor]="c.color" [class]="'c-border-'+c.color" (click)="serviceFilter(c.color)">
                 <h2 class="text-center text-black  mt-2" *ngIf="c.color != 'blue'" > {{counter(c.color)}}</h2>
-                <h2 class="text-center text-black mt-2 " *ngIf="c.color === 'blue'"> {{services.length}}</h2>
-               
                 <div class="mr-3" style="margin: 1.2em;">
                     {{c.tipo}}
                 </div>
             </div>
         </div>
-        <div  class="d-flex  rounded  p-2  m0 " >
-            <div class="d-flex justify-content-center column-sm   p-lg-3 p-md-3 ml-0   c-border bg-blue " (click)="all()" >
+        <div class="card">
+            <div class="card-body">
                 <h2 class="text-center text-black mt-2 text-white "> {{services.length}}</h2>
                 <div class="mr-3" style="margin: 1.2em;">
-                  <h4 class="text-white"> Tutti gli incarichi</h4> 
+                  <h4 class="text-white "> Tutti gli incarichi</h4> 
                 </div>
             </div>
-            
-        </div>
+          </div> -->
     </div>
+    
     <!-- button -->
     <hr>
     <!--pagination table-->
@@ -47,7 +74,7 @@
         </div>
         <div >
             
-            <table  class="table table-responsive text-nowrap table-striped fl-table testimonial-group" (scroll)='checkthis($event)'>
+            <table  class="table table-responsive text-nowrap table-striped fl-table testimonial-group" >
                 <thead  style="background-color: #002d72;">
                     
                     <tr class="tr-1"> 
@@ -97,8 +124,19 @@
                             <input type="text"  class="form-control" placeholder="Fiduciario" >
                         </th>
                         <th class="th-1"> 
-                            <input type="text"  class="form-control" placeholder="T sinistro" > <!-- tipo sinistro select-->
+                            <button type="text"  class="form-control" placeholder="T sinistro" (click)="openDialogFilterLeftType()" > T sinistro </button>
                         </th>
+                      <!--   <th>
+                            <ng-multiselect-dropdown
+                            [placeholder]="'Tipo sinistro'"
+                            [settings]="dropdownSettings"
+                            [data]="typesLeft  "
+                            [(ngModel)]="selectedItems"
+                            (onSelect)="onItemSelect($event)"
+                            (onSelectAll)="onSelectAll($event)"
+                          >
+                          </ng-multiselect-dropdown>
+                        </th> -->
                         <th class="th-1"> 
                             <button type="text"  class="form-control c-grey" placeholder="Data incarico" (click)="openDialogFilter()" > {{today | date:'dd/MM/yy'}}</button>
                         </th>
@@ -120,7 +158,7 @@
                         
                     </tr>
               
-                    <tr *ngFor="let s of servicesFilter | paginate
+                    <tr *ngFor="let s of service.serviziFiltered| paginate
                     : {
                         itemsPerPage: tableSize,
                         currentPage: page,
@@ -142,7 +180,7 @@
                         </td> 
                         <td class="td-1">
                             <!-- con pipe-->
-                            <h4 class="text-uppercase">{{s.tipo_sinistro | typesLeft }}</h4>
+                            <h4 class="text-uppercase" >{{s.tipo_sinistro | typesLeft }}</h4>
                             <!-- con metodo --> 
                         <!--  <h4 class="text-uppercase">{{getNumberleft(s.tipo_sinistro) }}</h4> -->
                         </td>
@@ -173,7 +211,7 @@
               
              
             </table>
-            <div class="arrow " *ngIf="atBottom">
+            <div class="arrow " >
                 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#333366" class="bi bi-arrow-right" viewBox="0 0 16 16">
                      <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
                  </svg> 
@@ -205,4 +243,7 @@
 
 
 
+
+
+</div>
 

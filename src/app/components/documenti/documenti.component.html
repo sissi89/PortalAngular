@@ -1,22 +1,5 @@
  <div class="container p-5 bg-light">
-  <div class="form-control" *ngIf="service?.documents?.length != 0  "> <!--se è truty-->
-
-  <h6 > Documenti presenti</h6> 
-    <div *ngFor="let s of service?.documents" >
-      <div class="d-flex justify-content-between bg-light rounded p-3 mt-3 ">
-        <p class="mt-2 text-capitalize m-3  ">{{s.name}}</p>
-      <p class="mt-2 text-capitalize"> </p>
-    
-      
-      <!-- scarico il file  da url-->
-       <!-- <span class="btn  bg-primary" (click)="download(s.name,s.url)">Download</span>  -->
-     <svg  class="change-my-color" xmlns="http://www.w3.org/2000/svg" fill="#cc3333" class="bi bi-download  " height="30" width="25" viewBox="0 0 16 16" (click)="download(s.name,s.url)">
-      <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-      <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-    </svg> 
-     </div> 
-    </div>
-  </div>
+ 
     <form class="form-control mt-2" [formGroup]="documentForm" (ngSubmit)="onSubmit()" >
       
         <div class="mb-3">
@@ -39,6 +22,24 @@
         
 
     </form>
+    <div class="form-control" *ngIf="service?.documents?.length != 0  "> <!--se è truty-->
+
+      <h6 > Documenti presenti</h6> 
+        <div *ngFor="let s of service?.documents" >
+          <div class="d-flex justify-content-between bg-light rounded p-3 mt-3 ">
+            <p class="mt-2 text-capitalize m-3  ">{{s.name}}</p>
+          <p class="mt-2 text-capitalize"> </p>
+        
+          
+          <!-- scarico il file  da url-->
+           <!-- <span class="btn  bg-primary" (click)="download(s.name,s.url)">Download</span>  -->
+         <svg  class="change-my-color" xmlns="http://www.w3.org/2000/svg" fill="#cc3333" class="bi bi-download  " height="30" width="25" viewBox="0 0 16 16" (click)="download(s.name,s.url)">
+          <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+          <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+        </svg> 
+         </div> 
+        </div>
+      </div>
 
 
 </div> 

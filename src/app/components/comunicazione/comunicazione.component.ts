@@ -29,7 +29,7 @@ export class ComunicazioneComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log('is valid',this.comunicationForm.value)
+   // console.log('is valid',this.comunicationForm.value)
     let camps = this.comunicationForm.value
     if(camps.option && camps.text_area && camps.upload_file){
       // inserire qui il codice dove fare la post 

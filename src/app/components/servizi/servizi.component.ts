@@ -2,12 +2,14 @@
 import { Component,  OnInit} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { Service } from 'src/app/model/model';
 import { Tipologia } from 'src/app/model/tipo';
 import { ServiziService } from 'src/app/services/servizi.service';
 import { FilterComponent } from '../filter/filter.component';
 
 import { TabsComponent } from '../tabs/tabs.component';
+import { TypeLeftComponent } from '../type-left/type-left.component';
 
 @Component({
   selector: 'app-servizi',
@@ -16,6 +18,8 @@ import { TabsComponent } from '../tabs/tabs.component';
 })
 export class ServiziComponent implements OnInit {
   services:Service[]=[];
+  selectedItems:[]=[];
+  dropdownSettings :IDropdownSettings= {};
   nameColumn:string[]=['T','Compagnia','Fiduciario','Tipo Sinistro','Dt. Incarico','Nr. Sinistro','Nr. Incarico','Prestazione richiesta','Assicurato','Controparte'];
   nameColumnLessFiduciario:string[]=['T','Compagnia','Tipo Sinistro','Dt. Incarico','Nr. Sinistro','Nr. Incarico','Prestazione richiesta','Assicurato','Controparte'];
   nameColumn2:string[]=['Nr. Sinistro','Nr. Incarico','Prestazione richiesta','Assicurato','Controparte'];
@@ -33,37 +37,49 @@ export class ServiziComponent implements OnInit {
     
   },{
     "color":"yellow",
-    "tipo":"Incarichi aperti",
+    "tipo":" Aperti",
     
   },{
     "color":"green",
-    "tipo":"Incarichi chiusi"
+    "tipo":" Chiusi"
   }/*, {
     "color":"blue",
     "tipo":"Tutti gli incarichi"
   } */]
   // servizi filtrati
- servicesFilter:Service[]=[];
+  typesLeft:number[]=Array.from({length: 3}, (_, i) => i + 1 )
   constructor(public service:ServiziService, public dialog: MatDialog) { }
 
 
   ngOnInit(): void {
     this.loadServizi();
    // this.services
- 
+
+   console.log(this.serviceFilter)
+   this.typesLeft;
+   this.dropdownSettings = {
+    singleSelection: false,
+    idField: 'item_id',
+    textField: 'typesLeft',
+    selectAllText: 'Select All',
+    unSelectAllText: 'UnSelect All',
+    itemsShowLimit: 3,
+    allowSearchFilter: true
+  };
    
   }
 
-
+ 
   loadServizi(){
     this.getRole();
    // console.log('role',this.role)
     this.service.getAllService().subscribe(data=>{
-      console.log('data:',data);
-      this.services = data;
-      console.log('services:',this.services)
-      this.servicesFilter = data;
-      console.log(data)
+    //  console.log('data:',data);
+     this.services = data;
+    
+     // console.log('services:',this.services)
+      this.service.serviziFiltered = data;
+    //  console.log(data)
       
     })
    
@@ -85,10 +101,11 @@ export class ServiziComponent implements OnInit {
       // per ogni elemento che sodisfa la condizione aggiungo 1 al contatore
       e.tipo === color ? i+=1 : i
     })
-    console.log(i)
+  //  console.log(i)
     return i
     
   }
+
   // modal general
   openDialog(id:string) {
     this.dialog.open(TabsComponent);
@@ -97,6 +114,9 @@ export class ServiziComponent implements OnInit {
   // modal filtro data
   openDialogFilter(){
     this.dialog.open(FilterComponent)
+  }
+  openDialogFilterLeftType(){
+    this.dialog.open(TypeLeftComponent)
   }
   // ruolo
   getRole(){
@@ -107,6 +127,10 @@ export class ServiziComponent implements OnInit {
   getTrustee(){
    
     return Number(localStorage.getItem('fiduciario'));
+  }
+
+  openDialogFilterTipoSinistro(){
+
   }
  
   // numero sinistro fatta anche con una pipe
@@ -131,27 +155,12 @@ export class ServiziComponent implements OnInit {
     
   }
 
-  // mostrare il scroll
-  checkthis(e:any){
-    console.log(e.target.offsetHeight , 
-                e.target.scrollHeight , 
-                e.target.scrollTop,
-                e.target.offsetHeight);
-    if(e.target.scrollWidth < e.target.scrollLeft +e.target.offsetWidth) {
-      // not scrollable
-      this.atBottom = false;
-    } else {
-      // is scrollable
-      this.atBottom = true;
-    }
 
-   
-  }
  
   // filtro per i contatori
   serviceFilter(tipo:string){
   
-    this.servicesFilter = this.services.reduce((filters:Service[],service:Service)=>{
+    this.service.serviziFiltered = this.services.reduce((filters:Service[],service:Service)=>{
   // se è uguale a quello che stiamo cercando allora l ho inseriamo nell array
        (service.tipo === tipo ) && filters.push(service)
 
@@ -168,7 +177,14 @@ export class ServiziComponent implements OnInit {
     // richiamo tutti i servizi
   return this.loadServizi();
   }
+// filtro tipo sinistro
 
+onItemSelect(item: any) {
+  console.log(item);
+}
+onSelectAll(items: any) {
+  console.log(items);
+}
 
 
 

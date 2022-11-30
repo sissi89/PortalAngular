@@ -35,11 +35,7 @@ $red:#cc3333;
    
 }
 // contatori
-.flex{
-    display: flex;
-    justify-content: center;
-    
-}
+
 .cdk-overlay-pane {
     position: absolute;
     pointer-events: auto;
@@ -132,9 +128,7 @@ $red:#cc3333;
 
 
 tr:hover {
-    /*   color:$red;
-      transform: scale(1.10, 1.10);
-      transition: all .4s cubic-bezier(0.175, 0.885, 0, 1); */
+   
      background-color:   rgb(33, 153, 232);
   
     
@@ -151,9 +145,7 @@ table {
     white-space: nowrap;
 }
 
-.m0{
-    margin: -5px;
-}
+
 /* scroll bar*/
 
 .testimonial-group > .row {
@@ -165,24 +157,10 @@ table {
     float: none;
   }
 
- // freccia
-  .arrow{
-    display: flex;
-    justify-content: center;
-    animation: slide1 1s ease-in-out infinite;
-  margin-left: 9px;
-}
-@keyframes slide1 {
-    0%,
-    100% {
-      transform: translate(0, 0);
-    }
-  
-    50% {
-      transform: translate(10px, 0);
-    }
-  }
-  
+ .arrow{
+    display: none;
+ }
+ 
 
 
 
@@ -200,7 +178,7 @@ table {
  }
 /* Responsive */
 
-@media (max-width: 768px) {
+@media (max-width: 830px) {
    
    .column-sm{
     flex-direction: column;
@@ -224,17 +202,23 @@ table {
       transform: translate(10px, 0);
     }
   }
-  
-}
-
-tr:active {
+  tr:active {
     /*   color:$red;
       transform: scale(1.10, 1.10);
       transition: all .4s cubic-bezier(0.175, 0.885, 0, 1); */
      background-color:   rgb(33, 153, 232);
   
     
-  } 
+  }
+
+  .p-sm-3{
+    padding: 0.75rem;
+  }
+  
+}
+
+ 
+
 
 /* div {
     width: 100px;

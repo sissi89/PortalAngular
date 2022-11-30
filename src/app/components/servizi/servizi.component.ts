@@ -26,7 +26,7 @@ export class ServiziComponent implements OnInit {
   title = 'dataTableDemo';
   page: number = 1;
   count: number = 0;
-  tableSize: number = 2;
+  tableSize: number = 5;
   tableSizes: any = [3, 6, 9, 12];
   red:number = 0;
   atBottom:boolean = false;
@@ -47,7 +47,7 @@ export class ServiziComponent implements OnInit {
     "tipo":"Tutti gli incarichi"
   } */]
   // servizi filtrati
-  typesLeft:number[]=Array.from({length: 3}, (_, i) => i + 1 )
+
   constructor(public service:ServiziService, public dialog: MatDialog) { }
 
 
@@ -56,7 +56,7 @@ export class ServiziComponent implements OnInit {
    // this.services
 
    console.log(this.serviceFilter)
-   this.typesLeft;
+
    this.dropdownSettings = {
     singleSelection: false,
     idField: 'item_id',

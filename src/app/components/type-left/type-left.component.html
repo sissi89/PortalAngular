@@ -23,7 +23,7 @@
    
   </div>
   <div class="form-check">
-    <
+    
           <ul class="list-group">
             <li class="list-group-item">
               <input
@@ -45,7 +45,7 @@
                 name="list_name"
                 value="{{ item.id }}"
                 (change)="isAllSelected()"
-                class="btn "
+                class="form-check-input"
               />
               
               {{ item.value | typesLeft }}
@@ -54,8 +54,7 @@
         </div>
         <div class="col-md-6">
           <button class="btn btn-red" (click)="onRegister()">Register</button>
-          <br />
-          <p>{{ checkedList }}</p>
+        
         </div>
    
   

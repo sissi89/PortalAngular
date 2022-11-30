@@ -6,7 +6,7 @@ export interface Service{
     tipo:'red'|'green'|'yellow',
     compa:number,
     fiduciario:string,
-    tipo_sinistro:string,
+    tipo_sinistro:number,
     data_incarico:Date,
     nr_sinistro:string | number,
     nr_incarico:number,

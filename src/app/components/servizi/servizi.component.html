@@ -32,31 +32,6 @@
                 </div>
             </div>
         </div>
-      <!--   <div  class=" rounded  p-2  col-3 c-border bg-blue   "  (click)="all()">
-            <div class="   p-lg-3 p-md-3 ml-0 p-sm-3  c-border " >
-                
-                
-            </div>
-              
-       
-            
-        </div> --> 
-        <!-- <div class="card">
-            <div class="card-body d-flex " [style.backgroundColor]="c.color" [class]="'c-border-'+c.color" (click)="serviceFilter(c.color)">
-                <h2 class="text-center text-black  mt-2" *ngIf="c.color != 'blue'" > {{counter(c.color)}}</h2>
-                <div class="mr-3" style="margin: 1.2em;">
-                    {{c.tipo}}
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <h2 class="text-center text-black mt-2 text-white "> {{services.length}}</h2>
-                <div class="mr-3" style="margin: 1.2em;">
-                  <h4 class="text-white "> Tutti gli incarichi</h4> 
-                </div>
-            </div>
-          </div> -->
     </div>
     
     <!-- button -->
@@ -91,34 +66,12 @@
                     </tr> 
                     
                 </thead>
-                    
-                    <!-- <tr *ngIf=" getRole() > 0 && getRole() <  3  " > 
-                        <th  *ngFor=" let c of nameColumn">
-                        <input type="text"  class="form-control" >
-                        </th> 
-               
-                    </tr>
-                    <tr *ngIf="getRole() === 3" > 
-                        <th  *ngFor=" let c of nameColumnLessFiduciario">
-                        <input type="text"  class="form-control" >
-                        </th> 
-               
-                    </tr> -->
                     <tr class="tr-1">
                         <th class="th-1">   
                             <input type="text"  class="form-control" placeholder="T urgenza" >
                         </th>
                         <th class="th-1"> 
                             <input type="text"  class="form-control"  placeholder="Compagnia">
-                          <!--   <div class="form-group">
-                                <input class="form-control" formControlName="luogo_partenza" placeholder="Da dove vuoi partire?"
-                                  type="text" list="codes" [(ngModel)]="selectedItem" (change)="filter(selectedItem)" />
-                                <datalist id="codes">
-                                  <option *ngFor="let c of cities" [value]="c.citta">
-                                    {{ c.citta }}
-                                  </option>
-                                </datalist>
-                            </div> -->
                         </th>
                         <th *ngIf=" getRole() > 0 && getRole() <  3  " class="th-1"  placeholder="Fiduciario"> 
                             <input type="text"  class="form-control" placeholder="Fiduciario" >
@@ -126,17 +79,7 @@
                         <th class="th-1"> 
                             <button type="text"  class="form-control c-grey" placeholder="T sinistro" (click)="openDialogFilterLeftType()" > T sinistro </button>
                         </th>
-                      <!--   <th>
-                            <ng-multiselect-dropdown
-                            [placeholder]="'Tipo sinistro'"
-                            [settings]="dropdownSettings"
-                            [data]="typesLeft  "
-                            [(ngModel)]="selectedItems"
-                            (onSelect)="onItemSelect($event)"
-                            (onSelectAll)="onSelectAll($event)"
-                          >
-                          </ng-multiselect-dropdown>
-                        </th> -->
+                      
                         <th class="th-1"> 
                             <button type="text"  class="form-control c-grey" placeholder="Data incarico" (click)="openDialogFilter()" > {{today | date:'dd/MM/yy'}}</button>
                         </th>
@@ -208,8 +151,6 @@
                         </td>
 
                     </tr>
-              
-             
             </table>
             <div class="arrow " >
                 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#333366" class="bi bi-arrow-right" viewBox="0 0 16 16">

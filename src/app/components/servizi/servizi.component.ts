@@ -34,19 +34,17 @@ export class ServiziComponent implements OnInit {
   colors:Tipologia[]=[{
     "color":"red",
     "tipo":"Urgenze",
-    
   },{
     "color":"yellow",
     "tipo":" Aperti",
-    
   },{
     "color":"green",
     "tipo":" Chiusi"
-  }/*, {
+  }]/*, {
     "color":"blue",
     "tipo":"Tutti gli incarichi"
-  } */]
-  // servizi filtrati
+  } ]*/
+  
 
   constructor(public service:ServiziService, public dialog: MatDialog) { }
 

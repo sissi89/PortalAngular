@@ -30,7 +30,7 @@ export class TypeLeftComponent implements OnInit {
     value: i + 1,
     isSelected: false,
   })); // checklist
-  masterSelected: boolean;
+  masterSelected: boolean = false;
   checkedList: TypoLeft[] = [];
 
   constructor(
@@ -39,7 +39,7 @@ export class TypeLeftComponent implements OnInit {
     public dialogRef: MatDialogRef<ServiziComponent>,
     private toast: ToastService
   ) {
-    this.masterSelected = false;
+  
     this.typesLeft;
   }
   ngOnInit(): void {
@@ -69,7 +69,7 @@ export class TypeLeftComponent implements OnInit {
     });
     // this.checkedList = JSON.stringify(this.checkedList);
   }
-  onRegister() {
+  filterTypeLeft() {
     // console.log(this.checkedList[0].value)
     //console.log('services:',this.service.serviziFiltered)
     console.log('number', this.checkedList.length);

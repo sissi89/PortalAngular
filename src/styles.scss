@@ -2,5 +2,15 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
 html, body { height: 100%; }
-body { margin: 0; font-family: "Arvo" !important;}
+
+*{
+    font-family: "CrimisonText";
+}
+@font-face {
+    font-family: "CrimisonText";
+    src: local("Crimisontext"), url(./assets/font/Crimson_Text/CrimsonText-Regular.ttf) format("truetype");
+   //src: url("assets/font/CrimisoCrimsonTexts-Regular.ttf");
+}  
+
+body { margin: 0; font-family: "CrimisonText" !important;}
 

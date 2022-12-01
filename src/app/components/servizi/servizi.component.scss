@@ -18,6 +18,8 @@ $red:#cc3333;
 }
 .text-color{
     color: $blue;
+    font-family: "CrimisonText";
+    font-size: xx-large;
 }
 
 
@@ -164,6 +166,7 @@ table {
 
 
 
+
 /* .c-border-blue{
     border-bottom-right-radius: 12px;
     border-top-right-radius: 12px;
@@ -214,6 +217,12 @@ table {
   .p-sm-3{
     padding: 0.75rem;
   }
+
+  .text-color{
+    color: $blue;
+    font-family: "CrimisonText";
+    font-size: large;
+}
   
 }
 

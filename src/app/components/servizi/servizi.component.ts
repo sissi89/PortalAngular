@@ -2,7 +2,6 @@
 import { Component,  OnInit} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
-import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { Service } from 'src/app/model/model';
 import { Tipologia } from 'src/app/model/tipo';
 import { ServiziService } from 'src/app/services/servizi.service';
@@ -19,17 +18,16 @@ import { TypeLeftComponent } from '../type-left/type-left.component';
 export class ServiziComponent implements OnInit {
   services:Service[]=[];
   selectedItems:[]=[];
-  dropdownSettings :IDropdownSettings= {};
+
   nameColumn:string[]=['T','Compagnia','Fiduciario','Tipo Sinistro','Dt. Incarico','Nr. Sinistro','Nr. Incarico','Prestazione richiesta','Assicurato','Controparte'];
   nameColumnLessFiduciario:string[]=['T','Compagnia','Tipo Sinistro','Dt. Incarico','Nr. Sinistro','Nr. Incarico','Prestazione richiesta','Assicurato','Controparte'];
   nameColumn2:string[]=['Nr. Sinistro','Nr. Incarico','Prestazione richiesta','Assicurato','Controparte'];
-  title = 'dataTableDemo';
+
   page: number = 1;
   count: number = 0;
   tableSize: number = 5;
   tableSizes: any = [3, 6, 9, 12];
   red:number = 0;
-  atBottom:boolean = false;
   today=moment(new Date()).format("YYYY-MM-DD");
   colors:Tipologia[]=[{
     "color":"red",
@@ -55,15 +53,7 @@ export class ServiziComponent implements OnInit {
 
    console.log(this.serviceFilter)
 
-   this.dropdownSettings = {
-    singleSelection: false,
-    idField: 'item_id',
-    textField: 'typesLeft',
-    selectAllText: 'Select All',
-    unSelectAllText: 'UnSelect All',
-    itemsShowLimit: 3,
-    allowSearchFilter: true
-  };
+  
    
   }
 
@@ -95,7 +85,7 @@ export class ServiziComponent implements OnInit {
   counter(color:string):number{
     // inizializzo il contatore
     let i = 0;
-    this.services.filter((e:Service)=>{
+    this.service.serviziFiltered.filter((e:Service)=>{
       // per ogni elemento che sodisfa la condizione aggiungo 1 al contatore
       e.tipo === color ? i+=1 : i
     })
@@ -142,7 +132,7 @@ export class ServiziComponent implements OnInit {
         case 3 :
           return  number = 'C.V.T';
         default:
-          return 'nnnn';
+          return 'nAn';
       }
 
     }
@@ -158,7 +148,7 @@ export class ServiziComponent implements OnInit {
   // filtro per i contatori
   serviceFilter(tipo:string){
   
-    this.service.serviziFiltered = this.services.reduce((filters:Service[],service:Service)=>{
+    this.service.serviziFiltered = this.service.serviziFiltered.reduce((filters:Service[],service:Service)=>{
   // se è uguale a quello che stiamo cercando allora l ho inseriamo nell array
        (service.tipo === tipo ) && filters.push(service)
 
@@ -175,8 +165,8 @@ export class ServiziComponent implements OnInit {
     // richiamo tutti i servizi
   return this.loadServizi();
   }
-// filtro tipo sinistro
 
+// filtro tipo sinistro
 onItemSelect(item: any) {
   console.log(item);
 }

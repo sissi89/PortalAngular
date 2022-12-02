@@ -24,6 +24,8 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { TypesLeftPipe } from './pipes/types-left.pipe';
 import { FilterComponent } from './components/filter/filter.component';
 import { TypeLeftComponent } from './components/type-left/type-left.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +54,9 @@ import { TypeLeftComponent } from './components/type-left/type-left.component';
     MatProgressSpinnerModule,
     MatSnackBarModule,
     NgMultiSelectDropDownModule,
-    MatRadioModule
+    MatRadioModule,
+    MatInputModule,
+    MatIconModule
     
    
 

@@ -34,10 +34,20 @@
         </div>
     </div>
     
-    <!-- button -->
+    <!-- end contatori-->
     <hr>
-    <!--pagination table-->
+    <!-- button -->
+    <div *ngIf="getRole() === 2 || getRole() === 1" >
+        <h6>Filtro per fiduciario</h6>
+        <input class="form-control w-auto"  [(ngModel)]="selectedFiduciario"   type="text" list="codes" placeholder="  Filtra &#61442; " (change)="filterFiduciario()"/>
+        <datalist id="codes">
+          <option *ngFor="let c of fiduciari " [value]="c"></option>
+        </datalist>  
+       
+    </div>
 
+    <hr>
+        <!--pagination table-->
     <div *ngIf="getRole() > 1 || getRole() <= 3 " class="testimonial-group">
        
         <div  class="d-flex justify-content-center">
@@ -51,7 +61,6 @@
             
             <table  class="table table-responsive text-nowrap table-striped fl-table testimonial-group" >
                 <thead  style="background-color: #002d72;">
-                    
                     <tr class="tr-1"> 
                      <th class="th-1">Tipo di Urgenza</th>
                      <th class="th-1">Compagnia</th>
@@ -74,7 +83,10 @@
                             <input type="text"  class="form-control"  placeholder="Compagnia">
                         </th>
                         <th *ngIf=" getRole() > 0 && getRole() <  3  " class="th-1"  placeholder="Fiduciario"> 
-                            <input type="text"  class="form-control" placeholder="Fiduciario" >
+                            <input class="form-control "  [(ngModel)]="selectedFiduciario"   type="text" list="codes" placeholder="  Filtra &#61442; " (change)="filterFiduciario()"/>
+                            <datalist id="codes">
+                              <option *ngFor="let c of fiduciari" [value]="c.fiduciario"></option>
+                            </datalist> 
                         </th>
                         <th class="th-1"> 
                             <button type="text"  class="form-control c-grey" placeholder="T sinistro" (click)="openDialogFilterLeftType()" > T sinistro </button>
@@ -149,7 +161,6 @@
                         <td>
                             <p class="text-uppercase size-large lead">{{s.targa_controparte}}</p>
                         </td>
-
                     </tr>
             </table>
             <div class="arrow " >
@@ -172,7 +183,7 @@
 </div>
 
 
-
+{{this.fiduciari}}
 
 
 

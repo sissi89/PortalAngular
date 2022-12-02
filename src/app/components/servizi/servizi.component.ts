@@ -19,11 +19,11 @@ import { TypeLeftComponent } from '../type-left/type-left.component';
 export class ServiziComponent implements OnInit {
  // services:Service[]=[];
   selectedItems:[]=[];
-
+  selectedFiduciario:string = '';
   nameColumn:string[]=['T','Compagnia','Fiduciario','Tipo Sinistro','Dt. Incarico','Nr. Sinistro','Nr. Incarico','Prestazione richiesta','Assicurato','Controparte'];
   nameColumnLessFiduciario:string[]=['T','Compagnia','Tipo Sinistro','Dt. Incarico','Nr. Sinistro','Nr. Incarico','Prestazione richiesta','Assicurato','Controparte'];
   nameColumn2:string[]=['Nr. Sinistro','Nr. Incarico','Prestazione richiesta','Assicurato','Controparte'];
-
+  fiduciari:any[]=[];
   page: number = 1;
   count: number = 0;
   tableSize: number = 5;
@@ -51,8 +51,9 @@ export class ServiziComponent implements OnInit {
   ngOnInit(): void {
     this.loadServizi();
    // this.services
-
-   console.log(this.serviceFilter)
+this.getFiduciari();
+console.log('fan ....',this.getFiduciari())
+   console.log(this.service.serviziFiltered)
 
   
    
@@ -62,16 +63,27 @@ export class ServiziComponent implements OnInit {
   loadServizi(){
     this.getRole();
    // console.log('role',this.role)
-    this.service.getAllService().subscribe(data=>{
-    //  console.log('data:',data);
+    this.service.getAllService().subscribe((data)=>{
+     // console.log('data:',data[0].fiduciario);
      this.service.services = data;
     
      // console.log('services:',this.services)
       this.service.serviziFiltered = data;
     //  console.log(data)
-      
+    console.log('primaaaaaaa',this.fiduciari)
+   this.fiduciari =   data.reduce((arr:any,item:any)=>{
+     console.log('1',item.fiduciario)
+     arr.includes(item.fiduciario) ?     console.log('non include') :  arr.push(item.fiduciario)
+     
+ 
+    return arr
+    },[]) 
+ 
+
+ 
+ 
     })
-   
+  
   }
   onTableDataChange(event:number) {
     this.page = event;
@@ -167,14 +179,27 @@ export class ServiziComponent implements OnInit {
   return this.loadServizi();
   }
 
-// filtro tipo sinistro
-onItemSelect(item: any) {
-  console.log(item);
-}
-onSelectAll(items: any) {
-  console.log(items);
-}
 
+
+filterFiduciario(){
+  console.log(' selectedFiduciario:', this.selectedFiduciario)
+}
+/* uniqueArray = a.filter(function(item, pos) {
+  return a.indexOf(item) == pos;
+}) */
+getFiduciari(){
+  
+ let arr = this.service.serviziFiltered.filter((item:Service,pos:any)=>{
+    this.service.serviziFiltered.indexOf(item)== pos;
+
+  })
+
+  return  this.fiduciari = arr.map(item =>{
+    item.fiduciario
+  })
+
+
+}
 
 
 }

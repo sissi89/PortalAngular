@@ -1,10 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
-
 import { Service } from 'src/app/model/model';
-
 import { ServiziService } from 'src/app/services/servizi.service';
-
 import { MatDialogRef } from '@angular/material/dialog';
 import { ServiziComponent } from '../servizi/servizi.component';
 import { ToastService } from 'src/app/services/toast.service';
@@ -38,6 +35,7 @@ export class TypeLeftComponent implements OnInit {
     this.typesLeft;
   }
   ngOnInit(): void {
+    console.log('servicesssss',this.service.services)
     console.log(this.typesLeft);
   }
 

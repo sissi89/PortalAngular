@@ -69,7 +69,8 @@ export class DocumentiComponent implements OnInit {
        this.toast.snackBar('File inviati','bg-success')
      }) */
       this.dialogRef.close();
-     this.toast.snackBar('File inviati','bg-success')
+     this.toast.snackBar(`File ${camps.document1}`,'bg-success')
+    
     }else{
    
     
@@ -78,8 +79,15 @@ export class DocumentiComponent implements OnInit {
   }
   // monitorare più file
   onFileChange(event:any) {
+
+     /*   return  event.target.files.map((item:Doc) =>{
+      this.myFiles.push(item)
+      this.documentForm.patchValue({
+        fileSource: this.myFiles
+      });
+    }) */
    
-    for (var i = 0; i < event.target.files.length; i++) { 
+    for (let i = 0; i < event.target.files.length; i++) { 
      // console.log('richiamo funzione')
         this.myFiles.push(event.target.files[i]);
         this.documentForm.patchValue({
@@ -87,7 +95,8 @@ export class DocumentiComponent implements OnInit {
 
         });
         
-    }  
+    }   
+
  
  
     
@@ -97,7 +106,7 @@ export class DocumentiComponent implements OnInit {
 deleteFile(file:Doc){
  return  this.myFiles.map((f:Doc,index:number)=>{
     f == file && this.myFiles.splice(index,1)
-    this.toast.snackBar('File rimosso','bg-success')
+    this.toast.snackBar(`Rimosso il file ${f.name}`,'bg-success')
   })
  
   

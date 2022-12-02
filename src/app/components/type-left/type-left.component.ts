@@ -1,15 +1,10 @@
-import { group } from '@angular/animations';
+
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+
 import { Service } from 'src/app/model/model';
-import { TypesLeftPipe } from 'src/app/pipes/types-left.pipe';
+
 import { ServiziService } from 'src/app/services/servizi.service';
-import { IDropdownSettings } from 'ng-multiselect-dropdown';
+
 import { MatDialogRef } from '@angular/material/dialog';
 import { ServiziComponent } from '../servizi/servizi.component';
 import { ToastService } from 'src/app/services/toast.service';
@@ -36,7 +31,6 @@ export class TypeLeftComponent implements OnInit {
 
   constructor(
     public service: ServiziService,
-    public fb: FormBuilder,
     public dialogRef: MatDialogRef<ServiziComponent>,
     private toast: ToastService
   ) {
@@ -47,13 +41,6 @@ export class TypeLeftComponent implements OnInit {
     console.log(this.typesLeft);
   }
 
-  // The master checkbox will check/ uncheck all items
-  checkUncheckAll() {
-    this.typesLeft.map((item:TypoLeft) => {
-      item.isSelected = this.masterSelected;
-    });
-    this.getCheckedItemList();
-  }
   // Check All Checkbox Checked
   isAllSelected() {
     this.masterSelected = this.typesLeft.every((item:TypoLeft) => {
@@ -71,6 +58,7 @@ export class TypeLeftComponent implements OnInit {
     // this.checkedList = JSON.stringify(this.checkedList);
   }
   filterTypeLeft() {
+    this.service.serviziFiltered = this.service.services;
     // console.log(this.checkedList[0].value)
     //console.log('services:',this.service.serviziFiltered)
     console.log('number', this.checkedList.length);
@@ -89,7 +77,7 @@ export class TypeLeftComponent implements OnInit {
         this.toast.snackBar(` Filtro per ${this.service.getNumberleft(Number(type1))}`, 'bg-success');
       this.dialogRef.close();
       console.log(this.service.serviziFiltered);
-      // se il filtro è per più di tipi di sinistri
+      // se il filtro ha più di un tipo si sinistro
     } else if (this.checkedList.length === 2) {
     
       // tipi sinistri salvati dentro l arr
@@ -121,7 +109,7 @@ export class TypeLeftComponent implements OnInit {
       this.toast.snackBar('Massimo 2 filtri per volta', 'bg-danger');
     } else {
       // avviso 0 filtri
-      this.toast.snackBar('nessun filtro inserito', 'bg-danger');
+      this.toast.snackBar('Nessun filtro inserito', 'bg-danger');
     }
   }
 }

@@ -12,6 +12,7 @@ const { api, auth } = environment;
 
 export class ServiziService {
   serviziFiltered:Service[]=[]
+  services:Service[]=[];
   constructor(private http:HttpClient) { }
 
   getAllService():Observable<Service[]>{

@@ -17,7 +17,7 @@ import { TypeLeftComponent } from '../type-left/type-left.component';
   styleUrls: ['./servizi.component.scss']
 })
 export class ServiziComponent implements OnInit {
-  services:Service[]=[];
+ // services:Service[]=[];
   selectedItems:[]=[];
 
   nameColumn:string[]=['T','Compagnia','Fiduciario','Tipo Sinistro','Dt. Incarico','Nr. Sinistro','Nr. Incarico','Prestazione richiesta','Assicurato','Controparte'];
@@ -64,7 +64,7 @@ export class ServiziComponent implements OnInit {
    // console.log('role',this.role)
     this.service.getAllService().subscribe(data=>{
     //  console.log('data:',data);
-     this.services = data;
+     this.service.services = data;
     
      // console.log('services:',this.services)
       this.service.serviziFiltered = data;
@@ -148,7 +148,7 @@ export class ServiziComponent implements OnInit {
  
   // filtro per i contatori
   serviceFilter(tipo:string){
-  
+   // this.service.serviziFiltered = this.service.services;
     this.service.serviziFiltered = this.service.serviziFiltered.reduce((filters:Service[],service:Service)=>{
   // se è uguale a quello che stiamo cercando allora l ho inseriamo nell array
        (service.tipo === tipo ) && filters.push(service)

@@ -26,4 +26,26 @@ export class ServiziService {
     return this.http.get<any>(auth)
   }
 
+  // numero sinistro fatta anche con una pipe
+  getNumberleft(number:any):string{
+    if(number){
+      switch(number){
+        case 1 :
+          return number = 'R.C.A';
+        case 2 :
+          return  number= 'C.A.R.D'; 
+        case 3 :
+          return  number = 'C.V.T';
+        default:
+          return 'nAn';
+      }
+
+    }
+ 
+    return number;
+      
+
+    
+  }
+
 }

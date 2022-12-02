@@ -6,13 +6,13 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TypesLeftPipe implements PipeTransform {
   transform(number: any): string {
     switch (number) {
-      case 1:
+      case "1":
         return number = 'RCA';
 
-      case 2:
+      case "2":
         return number = 'C.A.R.D';
 
-      case 3:
+      case "3":
         return number = 'C.V.T.';
       default:
         return ' Non presente ';

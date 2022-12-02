@@ -5,57 +5,29 @@
       </button>
   
 </div>
-<!--  <ng-multiselect-dropdown
-  [placeholder]="'custom placeholder'"
-  [settings]="dropdownSettings"
-  [data]="typesLeft"
-  [(ngModel)]="selectedItems"
-  (onSelect)="onItemSelect($event)"
-  (onSelectAll)="onSelectAll($event)"
->
-</ng-multiselect-dropdown>  -->
-<!-- <form *ngFor="let value of typesLeft" [formGroup]="form">
-    <button class="btn btn-dark "    (click)="onItemSelect(value)  " formControlName="{{value}}" ngDefaultControl
- > {{value | typesLeft}} </button>
+<div class="form-check">
 
-</form> -->
-<div style="text-align:center">
-   
-  </div>
-  <div class="form-check">
-    
-          <ul class="list-group">
-            <li class="list-group-item">
-              <input
-                type="checkbox"
-                [(ngModel)]="masterSelected"
-                name="list_name"
-                value="m1"
-                (change)="checkUncheckAll()"
-                class="form-check-input"
-              />
-              <strong>Select/ Unselect All</strong>
-            </li>
-          </ul>
-          <ul class="list-group">
-            <li class="list-group-item" *ngFor="let item of  typesLeft">
-              <input
-                type="checkbox"
-                [(ngModel)]="item.isSelected"
-                name="list_name"
-                value="{{ item.id }}"
-                (change)="isAllSelected()"
-                class="form-check-input"
-              />
-              
-              {{ item.value | typesLeft }}
-            </li>
-          </ul>
-        </div>
+  
+    <li class="list-group-item" *ngFor="let item of  typesLeft">
+      <input
+        type="checkbox"
+        [(ngModel)]="item.isSelected"
+        name="list_name"
+        value="{{ item.id }}"
+        (change)="isAllSelected()"
+        class="form-check-input"
+      />
+      
+     <p>{{ item.value.toString() | typesLeft }}</p> 
+    </li>
+
         <div class="col-md-6">
           <button class="btn btn-red" (click)="filterTypeLeft() ">Filtra</button>
         
         </div>
+</div>
+
+
    
   
 

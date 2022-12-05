@@ -11,7 +11,7 @@
          <h1 class="text-color">Elenco Incarichi</h1>
     </section>
     
-    <div class='  row justify-content-evenly'>
+    <div class=' row justify-content-evenly'>
        
         <div  class="  rounded    col-3 m0"  *ngFor="let c of colors">
             <div class="  d-flex flex-column    p-lg-3 p-md-3 ml-0 p-sm-3  c-border  " [style.backgroundColor]="c.color"  (click)="serviceFilter(c.color)" ngClass='{{counter(c.color)  <= 0 ? "opacity-25" : "opacity-100" }}'>

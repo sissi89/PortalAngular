@@ -8,7 +8,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ServiziComponent } from './components/servizi/servizi.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -26,6 +26,8 @@ import { FilterComponent } from './components/filter/filter.component';
 import { TypeLeftComponent } from './components/type-left/type-left.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
+import { ErrorInterceptor } from './services/error.interceptor.service';
+import { JwtInterceptor } from './services/jwtInterceptor.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +63,8 @@ import {MatInputModule} from '@angular/material/input';
    
 
   ],
-  providers: [],
+  providers: [   { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

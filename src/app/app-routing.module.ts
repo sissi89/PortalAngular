@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { ServiziComponent } from './components/servizi/servizi.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -9,7 +10,8 @@ const routes: Routes = [
     component:LoginComponent
   },{
     path:'Servizi',
-    component:ServiziComponent
+    component:ServiziComponent,
+    canActivate:[AuthGuardService]
   },{
     path:'Login',
     component:LoginComponent

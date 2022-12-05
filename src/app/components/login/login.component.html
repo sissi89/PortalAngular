@@ -1,11 +1,11 @@
-<div class=" container gradient-custom vh-76 mt-5 d-flex justify-content-center align-items-center rounded" >
+<div class=" container gradient-custom vh-84 mt-3 d-flex justify-content-center align-items-center rounded" >
   <div class="container">
-    <!-- <h1 class="card-title text-center mt-5" style="-webkit-text-stroke: 1px black;">Login</h1> -->
+    <h1 class="text-center">Login</h1>
     <div class="col d-flex justify-content-center align-content-center mt-5" >
       <div class="card mt-1">
         <div class="card-body">
           <form class="form-signin mt-3" [formGroup]="loginForm" (ngSubmit)=" onSubmit()" >
-         <!--    <form class="form-signin mt-3" [formGroup]="loginForm" (ngSubmit)="onSubmit()"></form> -->
+       
             <div class="form-group">
               <label>Username</label>
               <input type="email" class="form-control" formControlName="username" required placeholder="example@gmail.com">
@@ -17,9 +17,9 @@
                 placeholder="******">
               <p *ngIf="error" class="text-danger mt-3">{{error}}</p>
             </div>
-            <!-- <span *ngIf="!access_token" class="text-danger">{{errors}}</span> -->
+      
 
-            <button type="submit" class="btn btn-block btn-primary mt-3">Log in</button>
+            <button type="submit" class="btn btn-block btn-red  text-white mt-3">Log in</button>
             <div class="col d-flex justify-content-center mt-3">
            
             </div>

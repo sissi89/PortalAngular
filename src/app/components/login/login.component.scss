@@ -1,3 +1,5 @@
+$blue: #333366;
+$red:#cc3333;
 .gradient-custom {
 
     //background: 
@@ -30,13 +32,7 @@ background: linear-gradient(270deg, rgba(2,0,36,1) 0%, rgba(27,107,208,1) 35%, r
     font-family: 'Bebas Neue';
   }
   
-  button {
-    font-family: 'Bebas Neue';
-    font-weight: lighter;
-    font-size: large;
-    background-color: #EBB035;
-    border: solid #EBB035;
-  }
+  
   
   span {
     font-weight: lighter;
@@ -45,8 +41,11 @@ background: linear-gradient(270deg, rgba(2,0,36,1) 0%, rgba(27,107,208,1) 35%, r
     cursor: pointer;
   }
   
-  .vh-76{
-    height: 76vh;
+  .vh-84{
+    height: 84vh;
+  }
+  .btn-red{
+background-color: $red;
   }
   
   @media screen and (min-width: 350px) and (max-width: 540px)   {

@@ -17,7 +17,7 @@
      "nr_int":23,
      "data_ultimo":"2022-9-23",
      "documents":[
-        "https://res.cloudinary.com/demo/image/upload/example_pdf.pdf",
+        "https://www.africau.edu/images/default/sample.pdf",
         ""
 
     ]
@@ -104,8 +104,16 @@
         "nr_int":21,
         "data_ultimo":"2022-9-23",
         "documents":[
-            "https://res.cloudinary.com/demo/image/upload/example_pdf.pdf",
-            ""
+            {
+                "id":1,
+                "name":"Example",
+                "document":"https://res.cloudinary.com/demo/image/upload/example_pdf"
+                
+            },{
+                "id":2,
+                "name":"Sample",
+                "document":"https://www.africau.edu/images/default/sample.pdf"
+            }
 
         ]
     },{

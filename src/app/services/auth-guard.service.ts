@@ -23,9 +23,9 @@ canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         return true;
     }
 
-    // not logged in so redirect to login page with the return url
+    // utente non trovato non effettua l accesso 
     this.router.navigate(['/Login'], { queryParams: { returnUrl: state.url } });
-    console.log('non va')
+    
     return false;
 }
 }

@@ -5,6 +5,7 @@ import * as moment from 'moment';
 
 import { Service } from 'src/app/model/model';
 import { Tipologia } from 'src/app/model/tipo';
+import { AuthService } from 'src/app/services/auth-service.service';
 import { ServiziService } from 'src/app/services/servizi.service';
 import { FilterComponent } from '../filter/filter.component';
 
@@ -45,14 +46,14 @@ export class ServiziComponent implements OnInit {
   } ]*/
   
 
-  constructor(public service:ServiziService, public dialog: MatDialog) { }
+  constructor(public service:ServiziService, public dialog: MatDialog, public authService:AuthService) { }
 
 
   ngOnInit(): void {
     this.loadServizi();
    // this.services
 this.getFiduciari();
-console.log('fan ....',this.getFiduciari())
+
    console.log(this.service.serviziFiltered)
 
   
@@ -121,7 +122,15 @@ console.log('fan ....',this.getFiduciari())
   }
   // ruolo
   getRole(){
- return Number(localStorage.getItem('role'));
+    // return Number(localStorage.getItem('role'));
+    let user = this.authService.userValue;
+
+    if(user?.role){
+    return Number(user.role) 
+    }else{
+      return 0
+    }
+
    
   }
   // Fiduciario
@@ -199,6 +208,10 @@ getFiduciari(){
   })
 
 
+}
+
+filterForFiduciario(){
+  // fare un filtro per fiduciari 
 }
 
 

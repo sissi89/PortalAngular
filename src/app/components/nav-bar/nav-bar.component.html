@@ -10,19 +10,17 @@
             <span class="navbar-toggler-icon c-blue"></span>
         </button>
         <div class="collapse navbar-collapse mr-auto " id="navbarNav" style="justify-content:flex-end">
-          <div class="dropdown">
-            <ul class="navbar-nav" *ngFor="let l of links">
+          <div class="dropdown" *ngIf="!isUser()">
+            <ul  class="navbar-nav" *ngFor="let l of links">
                 <li class="nav-item ">
                     <a class="btn nav-link f-2 a-active  mr-3 text-inherit" routerLink="/{{l}}">{{l}}</a>
                 </li>
            
             </ul>
-            <div class="navbar-nav">
-              <a class="nav-item nav-link" routerLink="/" routerLinkActive="active">Home</a>
-              <button class="btn btn-link nav-item nav-link" (click)="logout()">Logout</button>
+         
           </div>
-          </div>
-            <div class="dropdown">
+         
+            <div class="dropdown" *ngIf="isUser()">
               <a class="btn  dropdown-toggle a-active f-2" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 Servizi
               </a>
@@ -30,6 +28,15 @@
                 <li><a class="btn nav-link  a-active" routerLink="/Servizi">Elenco Incarichi</a></li>
                 
               </ul>
+            </div>
+            <div class="dropdown" *ngIf="isUser()">
+              <ul  class="navbar-nav" >
+                  <li class="nav-item ">
+                    <button class="btn btn-red text-white" (click)="logout()">Esci</button>
+                  </li>
+             
+              </ul>
+           
             </div>
             
         </div>

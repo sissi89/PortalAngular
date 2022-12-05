@@ -4,12 +4,15 @@ import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 
 
+// fake back end
+const users = [{ id: 1, username: 'Fiduciario', password: 'test', role:2 },
+{ id: 1, username: 'fiduciario', password: '123456',  role:1 }];
 
-const users = [{ id: 1, username: 'test', password: 'test', firstName: 'Test', lastName: 'User' ,role:'3'}];
+
 @Injectable({
   providedIn: 'root'
 })
-// falso back end
+
 export class InterceptorsService implements HttpInterceptor {
   userValue: any;
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -44,9 +47,8 @@ export class InterceptorsService implements HttpInterceptor {
         return ok({
             id: user.id,
             username: user.username,
-            firstName: user.firstName,
-            lastName: user.lastName,
             token: 'fake-jwt-token',
+            role:user.role
             
         })
     }

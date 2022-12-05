@@ -17,6 +17,7 @@ export class AuthService {
         private router: Router,
         private http: HttpClient
     ) {
+        // iniziallio nel costruttore un osservable e mi prendo l utente
         this.userSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('user')!));
         this.user = this.userSubject.asObservable();
     }
@@ -28,7 +29,7 @@ export class AuthService {
     login(username: string, password: string) {
         return this.http.post<any>(`${auth}/users/authenticate`, { username, password })
             .pipe(map(user => {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
+                // memorizza i dettagli dell'utente e il token jwt nella memoria locale per mantenere l'utente connesso tra gli aggiornamenti della pagina
                 localStorage.setItem('user', JSON.stringify(user));
                 this.userSubject.next(user);
                 return user;
@@ -36,9 +37,9 @@ export class AuthService {
     }
 
     logout() {
-        // remove user from local storage to log user out
+        // remuove user e va alla login
         localStorage.removeItem('user');
         this.userSubject.next(null);
-        this.router.navigate(['/login']);
+        this.router.navigate(['/Login']);
     }
 }

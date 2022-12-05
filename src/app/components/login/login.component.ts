@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
   error = '';
+  
   constructor( public fb: FormBuilder, public router: Router, public authService:ServiziService, public toast:ToastService,  private route: ActivatedRoute, public authentication :AuthService) {
     this.loginForm = this.fb.group({
       username: new FormControl('',[Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
@@ -46,18 +47,23 @@ export class LoginComponent implements OnInit {
       this.authentication.login(values.username, values.password)
       .pipe(first())
       .subscribe({
+        
           next: () => {
-            console.log(values.username, values.password)
+      
               // get return url from route parameters or default to '/'
               const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+           
               this.router.navigate([returnUrl]);
+              this.router.navigateByUrl('/Servizi');
+         
           },
           error: (error: string) => {
               this.error = error;
+              console.log(error,'err')
               this.loading = false;
           }
       });
-
+     
     }else{
      
      this.toast.snackBar('Compilare tutti i campi','bg-danger')

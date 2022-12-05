@@ -9,16 +9,28 @@ import { AuthService} from 'src/app/services/auth-service.service';
 })
 export class NavBarComponent implements OnInit {
  links:string[] =['Login']
- user?: User | null;
-  constructor(private authenticationService: AuthService) { }
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-
+   this.isUser()
   }
 
   logout() {
-    this.authenticationService.logout();
+    this.authService.logout();
 }
+
+isUser(){
+  let user = this.authService.userValue;
+
+  return user?.role
+  
+
+}
+
+
+
+
 
 
 }

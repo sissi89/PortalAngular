@@ -37,7 +37,7 @@
     <!-- end contatori-->
     <hr>
     <!-- button -->
-    <div *ngIf="getRole() === 2 || getRole() === 1" >
+    <div *ngIf=" getRole() === 1" >
         <h6>Filtro per fiduciario</h6>
         <input class="form-control w-auto"  [(ngModel)]="selectedFiduciario"   type="text" list="codes" placeholder="  Filtra &#61442; " (change)="filterFiduciario()"/>
         <datalist id="codes">
@@ -48,7 +48,7 @@
 
     <hr>
         <!--pagination table-->
-    <div *ngIf="getRole() > 1 || getRole() <= 3 " class="testimonial-group">
+    <div  class="testimonial-group">
        
         <div  class="d-flex justify-content-center">
             <pagination-controls
@@ -64,7 +64,7 @@
                     <tr class="tr-1"> 
                      <th class="th-1">Tipo di Urgenza</th>
                      <th class="th-1">Compagnia</th>
-                     <th  *ngIf="getRole() > 0 && getRole() <  3 " class="th-1">Fiduciario</th>
+                     <th  *ngIf=" getRole() === 1" class="th-1">Fiduciario</th>
                      <th class="th-1"> Tipo sinistro</th>
                      <th class="th-1">Dt.incarico</th>
                      <th class="th-1"> Nr. Sinistro</th>
@@ -82,7 +82,7 @@
                         <th class="th-1"> 
                             <input type="text"  class="form-control"  placeholder="Compagnia">
                         </th>
-                        <th *ngIf=" getRole() > 0 && getRole() <  3  " class="th-1"  placeholder="Fiduciario"> 
+                        <th *ngIf=" getRole() === 1" class="th-1"  placeholder="Fiduciario"> 
                             <input class="form-control "  [(ngModel)]="selectedFiduciario"   type="text" list="codes" placeholder="  Filtra &#61442; " (change)="filterFiduciario()"/>
                             <datalist id="codes">
                               <option *ngFor="let c of fiduciari" [value]="c.fiduciario"></option>
@@ -130,7 +130,7 @@
                             <p class="text-uppercase lead size-large">{{s.compa}} </p>
                         </td>
                         
-                        <td *ngIf="getRole() > 0  && getRole() < 3 "class="td-1">
+                        <td *ngIf=" getRole() === 1" class="td-1">
                             <p  ngClass='{{s.fiduciario.length > 17 ? "size-small" : "size-large" }}' class="text-uppercase lead">{{s.fiduciario}}</p>
                         </td> 
                         <td class="td-1">

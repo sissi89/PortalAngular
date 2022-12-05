@@ -3,9 +3,9 @@
     {
         "id": "1" ,
      "tipo":"red",
-     "compa":329,
+"compa":"sssssssss",
      "fiduciario":" Rossi",
-     "tipo_sinistro":1,
+     "tipo_sinistro":"1",
      "data_incarico":"2022-10-9",
      "nr_sinistro":"231",
      "nr_incarico":"345679",
@@ -15,7 +15,12 @@
      "controparte":"Mario Rossi",
      "targa_controparte":"BG564HY",
      "nr_int":23,
-     "data_ultimo":"2022-9-23"
+     "data_ultimo":"2022-9-23",
+     "documents":[
+        "https://res.cloudinary.com/demo/image/upload/example_pdf.pdf",
+        ""
+
+    ]
 
 
 
@@ -25,9 +30,9 @@
         "tipo":"green",
         "compa":456,
         "fiduciario":" Bianchi",
-        "tipo_sinistro":2,
+        "tipo_sinistro":"2",
         "data_incarico":"2022-10-9",
-        "nr_sinistro":"231",
+        "nr_sinistro":"232",
         "nr_incarico":"3456797777",
         "prestazione_richiesta":"",
         "assicurato":"Mario Bianchi",
@@ -42,7 +47,7 @@
         "tipo":"green",
         "compa":654,
         "fiduciario":" Verdi",
-        "tipo_sinistro":3,
+        "tipo_sinistro":"3",
         "data_incarico":"2022-9-7",
         "nr_sinistro":"456",
         "nr_incarico":"3456797777",
@@ -52,7 +57,12 @@
         "controparte":" Penelope Cruz",
         "targa_controparte":"BG564HY",
         "nr_int":21,
-        "data_ultimo":"2022-9-23"
+        "data_ultimo":"2022-9-23",
+        "documents":[
+            "https://res.cloudinary.com/demo/image/upload/example_pdf.pdf",
+            ""
+
+        ]
 
     },
     {
@@ -60,9 +70,9 @@
         "tipo":"yellow",
         "compa":476,
         "fiduciario":" Rossi",
-        "tipo_sinistro":2,
+        "tipo_sinistro":"2",
         "data_incarico":"2022-9-7",
-        "nr_sinistro":"456",
+        "nr_sinistro":"457",
         "nr_incarico":"3456797777",
         "prestazione_richiesta":"",
         "assicurato":"ATZENI ALESSANDRO",
@@ -70,14 +80,19 @@
         "controparte":" Penelope Cruz",
         "targa_controparte":"BG564OY",
         "nr_int":21,
-        "data_ultimo":"2022-9-23"
+        "data_ultimo":"2022-9-23",
+        "documents":[
+            "https://res.cloudinary.com/demo/image/upload/example_pdf.pdf",
+            ""
+
+        ]
 
     },{
         "id": "5",
         "tipo":"red",
         "compa":875,
         "fiduciario":"Rossi",
-        "tipo_sinistro":1,
+        "tipo_sinistro":"1",
         "data_incarico":"2022-7-7",
         "nr_sinistro":"45676",
         "nr_incarico":"3456797777",
@@ -87,15 +102,20 @@
         "controparte":"Rossi Mario",
         "targa_controparte":"BG564OY",
         "nr_int":21,
-        "data_ultimo":"2022-9-23"
+        "data_ultimo":"2022-9-23",
+        "documents":[
+            "https://res.cloudinary.com/demo/image/upload/example_pdf.pdf",
+            ""
+
+        ]
     },{
         "id": "6",
         "tipo":"red",
         "compa":875,
         "fiduciario":" Bianchi",
-        "tipo_sinistro":3,
+        "tipo_sinistro":"3",
         "data_incarico":"2022-7-7",
-        "nr_sinistro":"45676",
+        "nr_sinistro":"45675",
         "nr_incarico":"3456797777",
         "prestazione_richiesta":"",
         "assicurato":"VERDI ALESSANDRO",
@@ -103,7 +123,11 @@
         "controparte":"Rossi Mario",
         "targa_controparte":"BG564OY",
         "nr_int":21,
-        "data_ultimo":"2022-9-23"
+        "data_ultimo":"2022-9-23",
+        "documents":[
+            
+
+        ]
     }
 ],
 "auth":[
@@ -111,7 +135,7 @@
   {  
     "status":"ok",
     "token":"jwt",
-    "scope":"Fiduciario",
+    "scope":3,
     "fiduciario":" Bianchi",
     "username":"Utente",
     "password":"Utente2022!"}

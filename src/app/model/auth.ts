@@ -11,5 +11,6 @@ export interface User{
     username:string,
     password:string,
     token:string
-    scope:number
+    scope:number,
+    role:string
 }

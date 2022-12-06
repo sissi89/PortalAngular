@@ -19,6 +19,7 @@ import { TypeLeftComponent } from '../type-left/type-left.component';
 })
 export class ServiziComponent implements OnInit {
  // services:Service[]=[];
+ service2:Service[]=[];
   selectedItems:[]=[];
   selectedFiduciario:string = '';
   nameColumn:string[]=['T','Compagnia','Fiduciario','Tipo Sinistro','Dt. Incarico','Nr. Sinistro','Nr. Incarico','Prestazione richiesta','Assicurato','Controparte'];
@@ -50,21 +51,22 @@ export class ServiziComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.loadServizi();
+    this.loadServizi2();
    // this.services
 this.getFiduciari();
 
-   console.log(this.service.serviziFiltered)
+   //console.log(this.service.serviziFiltered)
 
-  
+  this.service.getProva();
    
   }
 
  
   loadServizi(){
-    this.getRole();
+  /*  this.getRole();
+    
    // console.log('role',this.role)
-    this.service.getAllService().subscribe((data)=>{
+    //this.service.getAllService().subscribe((data)=>{
      // console.log('data:',data[0].fiduciario);
      this.service.services = data;
     
@@ -83,8 +85,22 @@ this.getFiduciari();
 
  
  
-    })
+    })*/
   
+  }
+  loadServizi2(){
+    this.getRole();
+  
+    let user = this.authService.userValue;
+
+    if(user){
+      this.service.getAllServiceUsername(user.username).subscribe((data)=>{
+        console.log(data)
+        this.service.services = data;
+        this.service.serviziFiltered = data;
+      })
+    }
+    
   }
   onTableDataChange(event:number) {
     this.page = event;
@@ -111,6 +127,7 @@ this.getFiduciari();
   // modal general
   openDialog(id:string) {
     this.dialog.open(TabsComponent);
+    
     localStorage.setItem('id',id)
   }
   // modal filtro data

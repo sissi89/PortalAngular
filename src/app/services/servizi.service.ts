@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Auth } from '../model/auth';
 import { Service } from '../model/model';
 
-const { api, auth } = environment;
+const { api, auth , api2} = environment;
 @Injectable({
   providedIn: 'root'
 })
@@ -15,14 +15,30 @@ export class ServiziService {
   services:Service[]=[];
   constructor(private http:HttpClient) { }
 
-  getAllService():Observable<Service[]>{
+  /*getAllService():Observable<Service[]>{
+    console.log('service is running')
     return this.http.get<Service[]>(api);
-  }
+  }*/
   getServiceById(id:string):Observable<Service>{
-    return this.http.get<Service>(`${api}/${id}`)
+    console.log('service is running',`${api2}/${id.trim()}`)
+    return this.http.get<Service>(`${api2}/${id}`)
 
   }
 
+  getAllServiceUsername(username:string):Observable<Service[]>{
+
+   console.log(`${api}/${username}`)
+
+    return this.http.get<Service[]>(`${api}/${username}`)
+
+  }
+
+  // get service username and id
+
+  /*getServiceUsernameandId(username:string,id:number):Observable<Service>{
+    console.log('service is nunnig')
+    return this.http.get<Service>(`${api}/${username}`)
+  }*/
   getRole():Observable<any>{
     return this.http.get<any>(auth)
   }
@@ -49,4 +65,8 @@ export class ServiziService {
     
   }
 
+  getProva(){
+    console.log('server fake')
+    this.http.get('http://localhost:4000/prova');
+  }
 }

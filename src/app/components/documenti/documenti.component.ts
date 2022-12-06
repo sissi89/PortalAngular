@@ -50,11 +50,11 @@ export class DocumentiComponent implements OnInit {
   }
   // servizio
   getService(id:string){
-    this.serviziService.getServiceById(id).subscribe(data=>{
+/*     this.serviziService.getServiceById(id).subscribe(data=>{
     // console.log('sono richiamata',data)
      this.service = data;
     //('qqqq',this.service)
-    })
+    }) */
     
 
   }

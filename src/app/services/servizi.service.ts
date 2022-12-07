@@ -19,9 +19,9 @@ export class ServiziService {
     console.log('service is running')
     return this.http.get<Service[]>(api);
   }*/
-  getServiceById(id:string):Observable<Service>{
+  getServiceById(id:string,username:string):Observable<Service>{
     console.log('service is running',`${api2}/${id.trim()}`)
-    return this.http.get<Service>(`${api2}/${id}`)
+    return this.http.get<Service>(`${api2}/${username}/${id}`)
 
   }
 

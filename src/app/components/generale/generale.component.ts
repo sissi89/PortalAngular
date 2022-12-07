@@ -30,7 +30,7 @@ export class GeneraleComponent implements OnInit {
      if(id !=null && user?.username != null){
      
       // return this.getService(id)
-      return this.getService(id)
+      return this.getService(id,user.username)
      } 
  
     
@@ -49,10 +49,10 @@ export class GeneraleComponent implements OnInit {
 
    } */
 
-   getService(id:any){
+   getService(id:any,username:string){
     console.log('ciooooooooooooooooooooooo')
-    this.serviziService.getServiceById(id).subscribe(data=>{
-      console.log(data)
+    this.serviziService.getServiceById(id,username).subscribe(data=>{
+      console.log('ggggg',data)
       this.service = data
     })
    }

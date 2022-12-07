@@ -8,3 +8,15 @@ fiduciario   2
 
 
 Silvana2022!
+
+npm i ng2-charts@2.4.2
+
+npm i charts.js --save 
+
+ng g c charts 
+
+
+un bottone aprire per la schermata per grafici 
+
+grafici tempo medio dell incarico 
+torta 

@@ -9,7 +9,7 @@ import { AuthService} from 'src/app/services/auth-service.service';
 })
 export class NavBarComponent implements OnInit {
  links:string[] =['Login']
-
+dropdown:string[]=['Elenco Incarichi','Grafici']
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {

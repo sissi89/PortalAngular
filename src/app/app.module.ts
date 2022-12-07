@@ -28,6 +28,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import { ErrorInterceptor } from './services/error.interceptor.service';
 import { JwtInterceptor } from './services/jwtInterceptor.service';
+import { GraficiComponent } from './components/grafici/grafici.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,8 @@ import { JwtInterceptor } from './services/jwtInterceptor.service';
     DocumentiComponent,
     TypesLeftPipe,
     FilterComponent,
-    TypeLeftComponent
+    TypeLeftComponent,
+    GraficiComponent
   ],
   imports: [
     BrowserModule,

@@ -37,22 +37,12 @@ export class GeneraleComponent implements OnInit {
  
    }
  
-  /*  getService2(id:string){
-    console.log('id ciaoooo')
-     this.serviziService.getServiceById(id).subscribe(data=>{
-      console.log('sono richiamata',data)
-   
-      this.service = data;
-     //  console.log(this.service)
-     })
-     
 
-   } */
 
    getService(id:any,username:string){
-    console.log('ciooooooooooooooooooooooo')
+
     this.serviziService.getServiceById(id,username).subscribe(data=>{
-      console.log('ggggg',data)
+      console.log('service:',data)
       this.service = data
     })
    }

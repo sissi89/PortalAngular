@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   api2:'http://localhost:4000/users/sinistri/dettagliosinistro',
-  api:'http://localhost:4000/users/sinistri',
+  api:'http://localhost:4000/sinistri/sinistri',
  //api2:'http://localhost:4000/users/sinistro',
   // auth: 'http://localhost:3000/auth',
   auth:'http://localhost:4000',

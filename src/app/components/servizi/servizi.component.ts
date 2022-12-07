@@ -56,8 +56,10 @@ export class ServiziComponent implements OnInit {
 this.getFiduciari();
 
    //console.log(this.service.serviziFiltered)
-
+console.log('provaaaaaaa',this.service.serviziFiltered)
   this.service.getProva();
+
+  console.log('prova ngonit',this.service.serviziFiltered)
    
   }
 
@@ -86,6 +88,7 @@ this.getFiduciari();
  
  
     })*/
+
   
   }
   loadServizi2(){
@@ -95,11 +98,20 @@ this.getFiduciari();
 
     if(user){
       this.service.getAllServiceUsername(user.username).subscribe((data)=>{
-        console.log(data)
+        console.log(data,'dataaaaaa')
         this.service.services = data;
         this.service.serviziFiltered = data;
+      //  this.service.services.push(data)
+      //data.forEach(val =>this.service.serviziFiltered.push(Object.assign({},val)));
+     console.log(this.service.serviziFiltered)
       })
+
+      /*const myArray= [{ a: 'a', b: 'b' }, { a: 'c', b: 'd' }];
+const myClonedArray = [];
+myArray.forEach(val => myClonedArray.push(Object.assign({}, val))); */
+
     }
+    
     
   }
   onTableDataChange(event:number) {
@@ -202,7 +214,11 @@ this.getFiduciari();
  // tutti gli incarichi
   all(){
     // richiamo tutti i servizi
-  return this.loadServizi();
+    console.log(this.service.services,'alll')
+  //return this.loadServizi2();
+  // cosi evito un altra chiamata al server 
+  return this.service.serviziFiltered = this.service.services;
+  
   }
 
 

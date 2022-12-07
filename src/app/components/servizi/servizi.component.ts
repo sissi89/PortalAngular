@@ -106,9 +106,6 @@ console.log('provaaaaaaa',this.service.serviziFiltered)
      console.log(this.service.serviziFiltered)
       })
 
-      /*const myArray= [{ a: 'a', b: 'b' }, { a: 'c', b: 'd' }];
-const myClonedArray = [];
-myArray.forEach(val => myClonedArray.push(Object.assign({}, val))); */
 
     }
     
@@ -215,7 +212,7 @@ myArray.forEach(val => myClonedArray.push(Object.assign({}, val))); */
   all(){
     // richiamo tutti i servizi
     console.log(this.service.services,'alll')
-  //return this.loadServizi2();
+
   // cosi evito un altra chiamata al server 
   return this.service.serviziFiltered = this.service.services;
   
@@ -226,9 +223,7 @@ myArray.forEach(val => myClonedArray.push(Object.assign({}, val))); */
 filterFiduciario(){
   console.log(' selectedFiduciario:', this.selectedFiduciario)
 }
-/* uniqueArray = a.filter(function(item, pos) {
-  return a.indexOf(item) == pos;
-}) */
+
 getFiduciari(){
   
  let arr = this.service.serviziFiltered.filter((item:Service,pos:any)=>{

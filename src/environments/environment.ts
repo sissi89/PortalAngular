@@ -5,9 +5,11 @@
 export const environment = {
   production: false,
   //http://localhost:4000/sinistri/dettagliosinistro/0001/1
-  api2:'http://localhost:4000/sinistri/dettagliosinistro',
   api:'http://localhost:4000/sinistri',
-  
+  // server fisso
+ // api:'http://localhost:4000/sinistri',
+  // server linux
+  //api:"http://localhost:3000/sinistri",
  //api2:'http://localhost:4000/users/sinistro',
   // auth: 'http://localhost:3000/auth',
   auth:'http://localhost:4000',

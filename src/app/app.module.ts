@@ -29,6 +29,7 @@ import {MatInputModule} from '@angular/material/input';
 import { ErrorInterceptor } from './services/error.interceptor.service';
 import { JwtInterceptor } from './services/jwtInterceptor.service';
 import { GraficiComponent } from './components/grafici/grafici.component';
+import { FiduciarioPipe } from './pipes/fiduciario.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +43,8 @@ import { GraficiComponent } from './components/grafici/grafici.component';
     TypesLeftPipe,
     FilterComponent,
     TypeLeftComponent,
-    GraficiComponent
+    GraficiComponent,
+    FiduciarioPipe
   ],
   imports: [
     BrowserModule,

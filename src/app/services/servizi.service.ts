@@ -5,26 +5,35 @@ import { environment } from 'src/environments/environment';
 import { Auth } from '../model/auth';
 import { Service } from '../model/model';
 
-const { api, auth , api2} = environment;
+const { api, auth } = environment;
 @Injectable({
   providedIn: 'root'
 })
 
 export class ServiziService {
+  // variabili di appoccio per evitare di fare chiamate a ogni filtro
   serviziFiltered:Service[]=[]
   services:Service[]=[];
   constructor(private http:HttpClient) { }
 
-  /*getAllService():Observable<Service[]>{
-    console.log('service is running')
-    return this.http.get<Service[]>(api);
-  }*/
+  // sinistri operatore sogesa vede tutti
+  getServicesOperator():Observable<Service[]>{
+    return this.http.get<Service[]>(`${api}`);
+  }
+
+  // sinistro per operatore sogesa
+  getServiceOperator(id:string):Observable<Service>{
+    return this.http.get<Service>(`${api}/sinistro/${id}`)
+  }
+
+  // sinistro per  in base al fiduciario 
   getServiceById(id:string,username:string):Observable<Service>{
-    console.log('service is running',`${api2}/${id.trim()}`)
-    return this.http.get<Service>(`${api2}/${username}/${id}`)
+    console.log('service is running',`${api}/${id.trim()}`)
+    return this.http.get<Service>(`${api}/${username}/${id}`)
 
   }
 
+ // sinistri in base al fiduciario
   getAllServiceUsername(username:string):Observable<Service[]>{
 
    console.log(`${api}/${username}`)
@@ -33,15 +42,6 @@ export class ServiziService {
 
   }
 
-  // get service username and id
-
-  /*getServiceUsernameandId(username:string,id:number):Observable<Service>{
-    console.log('service is nunnig')
-    return this.http.get<Service>(`${api}/${username}`)
-  }*/
-  getRole():Observable<any>{
-    return this.http.get<any>(auth)
-  }
 
   // numero sinistro fatta anche con una pipe
   getNumberleft(number:any):string{
@@ -65,8 +65,5 @@ export class ServiziService {
     
   }
 
-  getProva(){
-    console.log('server fake')
-    this.http.get('http://localhost:4000/prova');
-  }
+ 
 }

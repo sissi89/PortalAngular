@@ -40,11 +40,20 @@ export class GeneraleComponent implements OnInit {
 
 
    getService(id:any,username:string){
+    let user = this.authService.userValue;
+    if(user && user.role === 2){
+      this.serviziService.getServiceById(id,username).subscribe(data=>{
+        console.log('service:',data)
+        this.service = data
+      })
 
-    this.serviziService.getServiceById(id,username).subscribe(data=>{
-      console.log('service:',data)
-      this.service = data
-    })
+    }else if(user && user.role === 1){
+      this.serviziService.getServiceOperator(id).subscribe(data =>{
+        console.log('service:',data)
+        this.service = data
+      })
+    }
+   
    }
    
  

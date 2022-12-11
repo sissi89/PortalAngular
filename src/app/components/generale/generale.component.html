@@ -76,27 +76,27 @@
         <div class="circle-tipy " [style.backgroundColor]="service?.tipo"> </div> 
     </div>
    
-    <table style="width:100%" class="table table-responsive text-nowrap table-striped fl-table">
+    <table style="width:100%" class="table table-responsive text-nowrap table-striped fl-table" *ngIf="service">
         <thead  >
         <tr>
           <th>Fiduciario :</th>
-          <td>{{service?.fiduciario}}</td>
+          <td>{{service.fiduciario | fiduciario}}</td>
         </tr>
         <tr>
           <th>Compagnia :</th>
-          <td>{{service?.compa}}</td>
+          <td>{{service.compa}}</td>
         </tr>
         <tr>
           <th>Data incarico : </th>
-          <td>{{service?.data_incarico | date:'dd/MM/yy'}}</td>
+          <td>{{service.data_incarico | date:'dd/MM/yy'}}</td>
         </tr>
         <tr>
             <th>Numero sinistro :</th>
-            <td>{{service?.nr_sinistro}}</td>
+            <td>{{service.nr_sinistro}}</td>
         </tr>
         <tr>
             <th>Tipo sinistro : </th>
-            <td>{{service?.tipo_sinistro | typesLeft}}</td>
+            <td>{{service.tipo_sinistro | typesLeft}}</td>
         </tr>
         </thead>
       </table>

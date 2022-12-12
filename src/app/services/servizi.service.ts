@@ -18,6 +18,7 @@ export class ServiziService {
 
   // sinistri operatore sogesa vede tutti
   getServicesOperator():Observable<Service[]>{
+    console.log('service da operatore')
     return this.http.get<Service[]>(`${api}`);
   }
 

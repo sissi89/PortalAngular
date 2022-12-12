@@ -3,6 +3,7 @@ import { Service } from 'src/app/model/model';
 import { AuthService } from 'src/app/services/auth-service.service';
 import { ServiziService } from 'src/app/services/servizi.service';
 import Chart from 'chart.js/auto';
+import { Tipologia } from 'src/app/model/tipo';
 @Component({
   selector: 'app-grafici',
   templateUrl: './grafici.component.html',
@@ -10,29 +11,34 @@ import Chart from 'chart.js/auto';
 })
 export class GraficiComponent implements OnInit {
 pieChartOptions: any;
-  
+ label:string = ''; 
+ number = 0;
   constructor(private service: ServiziService, private auth: AuthService) {}
   // Pie
-  public chart: any;
- 
+  
+  public chartPie : any;
+  colors: Tipologia[] = [
+    {
+      color: 'red',
+      tipo: 'Urgenze',
+    },
+    {
+      color: 'yellow',
+      tipo: ' Aperti',
+    },
+    {
+      color: 'green',
+      tipo: ' Chiusi',
+    },
+  ];
 
   
-  // events
-  public chartClicked(e: any): void {
-    console.log(e);
-  }
 
-  public chartHovered(e: any): void {
-    console.log(e);
-  }
   ngOnInit(): void {
-    console.log(this.service.services, 'grafici');
-    console.log(this.service.serviziFiltered, ' grafici 2');
-    console.log(this.counter('red'));
-
-    this.createChart();
+   this.createChartPie();
   }
 
+  // numero tipi servizi
   counter(color: string): number {
     // inizializzo il contatore
     let i = 0;
@@ -43,39 +49,34 @@ pieChartOptions: any;
     //  console.log(i)
     return i;
   }
+ 
 
-  createChart() {
-    this.chart = new Chart('MyChart', {
-      type: 'bar', //this denotes tha type of chart
+  // a torta con valori dei contatori
 
-      data: {
-        // values on X-Axis
-        labels: [
-          '2022-05-10',
-          '2022-05-11',
-          '2022-05-12',
-          '2022-05-13',
-          '2022-05-14',
-          '2022-05-15',
-          '2022-05-16',
-          '2022-05-17',
-        ],
-        datasets: [
-          {
-            label: 'Sales',
-            data: ['467', '576', '572', '79', '92', '574', '573', '576'],
-            backgroundColor: 'blue',
-          },
-          {
-            label: 'Profit',
-            data: ['542', '542', '536', '327', '17', '0.00', '538', '541'],
-            backgroundColor: 'limegreen',
-          },
-        ],
+  createChartPie(){
+    this.chartPie = new Chart('ChartPie',{
+      type : 'pie',
+      data : {
+        labels: 
+          this.colors.map(item =>  item.tipo  )
+        ,
+        datasets: [{
+          label: 'My First Dataset',
+          data: [this.counter('red'),this.counter('green'),this.counter('yellow')],
+        // data:[3,2,1],
+          backgroundColor: [
+            'red',
+            'green',
+            'yellow'
+          ],
+          hoverOffset: 4
+        }]
       },
       options: {
-        aspectRatio: 2.5,
-      },
+        responsive: true,
+        maintainAspectRatio: false,}
+        
+    
     });
   }
 }

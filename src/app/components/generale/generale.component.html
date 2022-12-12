@@ -1,82 +1,12 @@
-<!--  <div class="container bg-light rounded mt-2 pd-2 ">
-     <div class="row justify-content-around">
-        <div class="col-6 " >
-            <div *ngFor="let n of names">
-                <h5>{{n}}</h5>
-            </div>
-           
-        </div>
-    
-        <div class="col-6 ">
-           <h4 *ngIf="service?.fiduciario?.length != 0">{{service?.fiduciario }}</h4>
-            <h4 *ngIf="service?.fiduciario?.length === 0 ">Dato non disponibile</h4>
-            <h4>{{service?.compa}}</h4>
-            <h4>{{service?.data_ultimo}}</h4>
-            <h4>{{service?.data_incarico}}</h4>
-            <h4>{{service?.nr_sinistro}}</h4>
 
-
-        </div>
-
-    </div>
- 
-    <div class="row justify-content-around">
-        <div class="col-6 " >
-            <div *ngFor="let n of names2">
-               <h5>{{n}}</h5>
-            </div>
-           
-        </div>
-        <div class="col-6 ">
-            
-            <h5>{{service?.assicurato}}</h5>
-      
-            <h5>{{service?.tipo_sinistro | typesLeft}}</h5>
-            <h5>{{service?.targa_assicurato}}</h5>
-            <h5>{{service?.controparte}}</h5>
-            <h5>{{service?.targa_controparte}}</h5>
-
-        </div>
-
-    </div>
-
-
-    
-
-</div>  -->
-<!--  <div class="container  d-flex justify-content-between ">
-    <div class=" bg-light rounded mt-2 pd-2 p-3">
-        <h3><b>Dati Generali</b></h3>
-        <h4>Fiduciario :  {{service?.fiduciario}}</h4>
-        <h4>Compagnia : {{service?.compa}}</h4>
-        <h4>Data incarico : {{service?.data_incarico | date:'dd/MM/yy'}}</h4>
-        <h4>Numero sinistro : {{service?.nr_sinistro}}</h4>
-        <h4>Tipo sinistro : {{service?.tipo_sinistro | typesLeft}}</h4>
-        <h4>Data incarico : {{service?.data_incarico}}</h4>
-        
-    </div>
-    <div class=" bg-light rounded mt-2 pd-2 p-3">
-        <div>
-            <h3><b>Assicurato</b></h3>
-            <h4> Nome e cognome:  {{service?.assicurato}}</h4>
-            <h4>Targa : {{service?.targa_assicurato}}</h4>
-        </div>
-        <div>
-            <h3><b>Controparte</b></h3>
-            <h4>Nome e cognome : {{service?.controparte}}</h4>
-            <h4>Targa : {{service?.targa_controparte}} </h4>
-        </div>
-     
-        
-    </div>
-</div>  -->
-<div class="container bg-light p-3">
+<div class="container bg-light p-3" *ngIf="service">
     <div class="d-flex justify-content-between">
-        <h4><b>Dati Generali</b></h4>
-        <div class="circle-tipy " [style.backgroundColor]="service?.tipo"> </div> 
+        <h4><b>Dati Generali {{service.id}}</b></h4>
+        <div class="circle-tipy " [style.backgroundColor]="service.tipo"> </div> 
+        
     </div>
    
-    <table style="width:100%" class="table table-responsive text-nowrap table-striped fl-table" *ngIf="service">
+    <table style="width:100%" class="table table-responsive text-nowrap table-striped fl-table" >
         <thead  >
         <tr>
           <th>Fiduciario :</th>
@@ -107,11 +37,11 @@
                 <thead  >
                     <tr >
                       <th >Nome e Cognome :</th>
-                      <td class="text-capitalize" >{{service?.assicurato}}</td>
+                      <td class="text-capitalize" >{{service.assicurato}}</td>
                     </tr>
                     <tr>
                       <th >Targa :</th>
-                      <td class="text-uppercase" >{{service?.targa_assicurato}}</td>
+                      <td class="text-uppercase" >{{service.targa_assicurato}}</td>
                     </tr>
                   
                     </thead>
@@ -123,10 +53,10 @@
             <table style="width:100%" class="table table-responsive text-nowrap table-striped fl-table">
                 <thead >
                 <tr >
-                  <td class="text-capitalize" >{{service?.controparte}}</td>
+                  <td class="text-capitalize" >{{service.controparte}}</td>
                 </tr>
                 <tr >
-                  <td class="text-uppercase" >{{service?.targa_controparte}}</td>
+                  <td class="text-uppercase" >{{service.targa_controparte}}</td>
                 </tr>
               
                 </thead>

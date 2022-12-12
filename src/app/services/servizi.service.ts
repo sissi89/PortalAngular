@@ -14,6 +14,7 @@ export class ServiziService {
   // variabili di appoccio per evitare di fare chiamate a ogni filtro
   serviziFiltered:Service[]=[]
   services:Service[]=[];
+  fiduciari:any[]=[];
   constructor(private http:HttpClient) { }
 
   // sinistri operatore sogesa vede tutti

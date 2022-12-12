@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Service } from 'src/app/model/model';
 import { AuthService } from 'src/app/services/auth-service.service';
 import { ServiziService } from 'src/app/services/servizi.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-generale',
@@ -12,7 +13,7 @@ export class GeneraleComponent implements OnInit {
   service:Service | undefined;
   names:string[]=['Fiduciario',	' Compagnia'	,	'Data chiusura	',' Data incarico',		'Numero sinistro	'	];
   names2:string[]=['Assicurato','Tipo_sinistro','Targa_assicurato','Controparte','Targa controparte'];
-   constructor(public serviziService:ServiziService , public authService:AuthService) { }
+   constructor(public serviziService:ServiziService , public authService:AuthService, public _snackbar: ToastService) { }
  
    ngOnInit(): void {
 
@@ -31,7 +32,9 @@ export class GeneraleComponent implements OnInit {
      
       // return this.getService(id)
       return this.getService(id,user.username)
-     } 
+     } else{
+      this._snackbar.snackBar('id o user non inseriti','bg-danger')
+     }
  
     
  
@@ -41,12 +44,15 @@ export class GeneraleComponent implements OnInit {
 
    getService(id:any,username:string){
     let user = this.authService.userValue;
+
+    // ruolo fiduciario
     if(user && user.role === 2){
       this.serviziService.getServiceById(id,username).subscribe(data=>{
-        console.log('service:',data)
+        console.log('servicet:',data)
         this.service = data
       })
 
+      // ruolo operatore sogesa
     }else if(user && user.role === 1){
       this.serviziService.getServiceOperator(id).subscribe(data =>{
         console.log('service:',data)

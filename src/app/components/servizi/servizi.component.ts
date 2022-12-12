@@ -114,9 +114,9 @@ export class ServiziComponent implements OnInit {
         // console.log('services:',this.services)
         this.service.serviziFiltered = data;
         //  console.log(data)
-        console.log('primaaaaaaa', this.fiduciari);
+        console.log('primaaaaaaa', this.service.fiduciari);
         // array di fiduciari
-        this.fiduciari = data.reduce((arr: any, item: any) => {
+        this.service.fiduciari = data.reduce((arr: any, item: any) => {
           console.log('1', item.fiduciario);
           arr.includes(item.fiduciario)
             ? console.log('non include')
@@ -159,7 +159,7 @@ export class ServiziComponent implements OnInit {
   openDialogFilterLeftType() {
     this.dialog.open(TypeLeftComponent);
   }
-  // ruolo
+  // ruolo viariso250589!
   getRole() {
     // return Number(localStorage.getItem('role'));
     let user = this.authService.userValue;
@@ -230,5 +230,7 @@ export class ServiziComponent implements OnInit {
 
   filterForFiduciario() {
     // fare un filtro per fiduciari
+
+
   }
 }

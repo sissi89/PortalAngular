@@ -41,7 +41,7 @@
         <h6>Filtro per fiduciario</h6>
         <input class="form-control w-auto"  [(ngModel)]="selectedFiduciario"   type="text" list="codes" placeholder="  Filtra &#61442; " (change)="filterFiduciario()"/>
         <datalist id="codes">
-          <option *ngFor="let c of fiduciari " [value]="c">{{c | fiduciario}}</option>
+          <option *ngFor="let c of service.fiduciari " [value]="c">{{c | fiduciario}}</option>
         </datalist>  
        
     </div>
@@ -85,7 +85,7 @@
                         <th *ngIf=" getRole() === 1" class="th-1"  placeholder="Fiduciario"> 
                             <input class="form-control "  [(ngModel)]="selectedFiduciario"   type="text" list="codes" placeholder="  Filtra &#61442; " (change)="filterFiduciario()"/>
                             <datalist id="codes">
-                              <option *ngFor="let c of fiduciari" >{{c.fiduciario | fiduciario}}</option>
+                              <option *ngFor="let c of service.fiduciari" >{{c.fiduciario | fiduciario}}</option>
                             </datalist> 
                         </th>
                         <th class="th-1"> 

@@ -15,7 +15,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         // try catch
         return next.handle(request).pipe(catchError(err => {
             if ([401, 403].includes(err.status)) {
-                // disconnessione iautomatica in caso di errore 400 ecc
+                // disconnessione automatica in caso di errore 400 ecc
                 this.authenticationService.logout();
             }
 

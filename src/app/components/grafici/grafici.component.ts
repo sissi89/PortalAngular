@@ -61,7 +61,7 @@ pieChartOptions: any;
           this.colors.map(item =>  item.tipo  )
         ,
         datasets: [{
-          label: 'My First Dataset',
+          label: '',
           data: [this.counter('red'),this.counter('green'),this.counter('yellow')],
         // data:[3,2,1],
           backgroundColor: [
@@ -69,7 +69,7 @@ pieChartOptions: any;
             'green',
             'yellow'
           ],
-          hoverOffset: 4
+        //  hoverOffset: 4
         }]
       },
       options: {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/model/auth';
 import { AuthService} from 'src/app/services/auth-service.service';
+import { ServiziService } from 'src/app/services/servizi.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,7 +11,9 @@ import { AuthService} from 'src/app/services/auth-service.service';
 export class NavBarComponent implements OnInit {
  links:string[] =['Login']
 dropdown:string[]=['Elenco Incarichi','Grafici']
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService  ,   public service: ServiziService,
+  
+   ) { }
 
   ngOnInit(): void {
    this.isUser()
@@ -27,6 +30,7 @@ isUser(){
   
 
 }
+
 
 
 

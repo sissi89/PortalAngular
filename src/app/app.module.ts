@@ -30,6 +30,9 @@ import { ErrorInterceptor } from './services/error.interceptor.service';
 import { JwtInterceptor } from './services/jwtInterceptor.service';
 import { GraficiComponent } from './components/grafici/grafici.component';
 import { FiduciarioPipe } from './pipes/fiduciario.pipe';
+import { NgChartsModule } from 'ng2-charts';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +55,7 @@ import { FiduciarioPipe } from './pipes/fiduciario.pipe';
     BrowserAnimationsModule,
     MatButtonModule,
     FormsModule,
+    NgChartsModule,
     ReactiveFormsModule,
     HttpClientModule,
     NgxPaginationModule ,
@@ -62,8 +66,8 @@ import { FiduciarioPipe } from './pipes/fiduciario.pipe';
     NgMultiSelectDropDownModule,
     MatRadioModule,
     MatInputModule,
-    MatIconModule
-    
+    MatIconModule,
+   
    
 
   ],

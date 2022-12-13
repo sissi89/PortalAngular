@@ -23,24 +23,25 @@ export class ServiziService {
     return this.http.get<Service[]>(`${api}`);
   }
 
-  // sinistro per operatore sogesa
+  // sinistro per operatore sogesa  get id back
   getServiceOperator(id:string):Observable<Service>{
-    return this.http.get<Service>(`${api}/sinistro/${id}`)
+
+    return this.http.post<Service>(`${api}/sinistro/`,{id})
   }
 
   // sinistro per  in base al fiduciario 
-  getServiceById(id:string,username:string):Observable<Service>{
+   getServiceById(id:string,username:string):Observable<Service>{
     console.log('service is running',`${api}/${id.trim()}`)
     return this.http.get<Service>(`${api}/${username}/${id}`)
 
-  }
+  } 
 
  // sinistri in base al fiduciario
   getAllServiceUsername(username:string):Observable<Service[]>{
 
    console.log(`${api}/${username}`)
 
-    return this.http.get<Service[]>(`${api}/${username}`)
+    return this.http.post<Service[]>(`${api}/fiduciario`,{username})
 
   }
 

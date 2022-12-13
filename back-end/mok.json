@@ -3,7 +3,7 @@
     {
         "id": "1" ,
      "tipo":"red",
-"compa":"sssssssss",
+    "compa":"sssssssss",
      "fiduciario":" Rossi",
      "tipo_sinistro":"1",
      "data_incarico":"2022-10-9",
@@ -28,7 +28,7 @@
     },{
         "id":" 2",
         "tipo":"green",
-        "compa":456,
+        "compa":"456",
         "fiduciario":" Bianchi",
         "tipo_sinistro":"2",
         "data_incarico":"2022-10-9",
@@ -45,7 +45,7 @@
     },{
         "id":" 3",
         "tipo":"green",
-        "compa":654,
+        "compa":"654",
         "fiduciario":" Verdi",
         "tipo_sinistro":"3",
         "data_incarico":"2022-9-7",
@@ -68,7 +68,7 @@
     {
         "id": "4",
         "tipo":"yellow",
-        "compa":476,
+        "compa":"476",
         "fiduciario":" Rossi",
         "tipo_sinistro":"2",
         "data_incarico":"2022-9-7",
@@ -90,7 +90,7 @@
     },{
         "id": "5",
         "tipo":"red",
-        "compa":875,
+        "compa":"875",
         "fiduciario":"Rossi",
         "tipo_sinistro":"1",
         "data_incarico":"2022-7-7",
@@ -101,7 +101,7 @@
         "targa_assicurato":"CG918TG",
         "controparte":"Rossi Mario",
         "targa_controparte":"BG564OY",
-        "nr_int":21,
+        "nr_int":"21",
         "data_ultimo":"2022-9-23",
         "documents":[
             {
@@ -130,7 +130,7 @@
         "targa_assicurato":"CG918TG",
         "controparte":"Rossi Mario",
         "targa_controparte":"BG564OY",
-        "nr_int":21,
+        "nr_int":"21",
         "data_ultimo":"2022-9-23",
         "documents":[
             

@@ -1,5 +1,6 @@
 export interface Tipologia{
     color:string,
-    tipo:string
+    tipo:string,
+    value?:number
 
 }

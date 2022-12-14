@@ -25,12 +25,14 @@ export class ServiziService {
 
   // sinistro per operatore sogesa  get id back
   getServiceOperator(id:string):Observable<Service>{
-
+console.log(`${api}/sinistro/`,{id})
+id = id.trim();
     return this.http.post<Service>(`${api}/sinistro/`,{id})
   }
 
   // sinistro per  in base al fiduciario 
    getServiceById(id:string,username:string):Observable<Service>{
+    // trim rimuove gli spazi di una stringa 
     console.log('service is running',`${api}/${id.trim()}`)
     return this.http.get<Service>(`${api}/${username}/${id}`)
 

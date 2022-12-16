@@ -1,4 +1,4 @@
-export interface Doc{
+export interface DetailDoc{
     name: string, 
     url:string,
     lastModified: string,
@@ -12,3 +12,10 @@ export interface Download {
     progress: number;
     state: "PENDING" | "IN_PROGRESS" | "DONE";
   }
+
+export interface Doc{
+    id:string,
+    name:string,
+    documento:DetailDoc
+}
+

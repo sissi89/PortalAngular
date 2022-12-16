@@ -16,8 +16,9 @@ export interface Service{
     controparte:string,
     targa_controparte:string,
     nr_int:number,
-    data_ultimo:Date;
-    documents:Doc[];
+    data_ultimo:Date,
+    documents:Doc[],
+   
 
 
 }

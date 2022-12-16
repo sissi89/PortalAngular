@@ -6,6 +6,7 @@ import { Service } from 'src/app/model/model';
 import { Tipologia } from 'src/app/model/tipo';
 import { AuthService } from 'src/app/services/auth-service.service';
 import { ServiziService } from 'src/app/services/servizi.service';
+import { ToastService } from 'src/app/services/toast.service';
 import { FilterComponent } from '../filter/filter.component';
 
 import { TabsComponent } from '../tabs/tabs.component';
@@ -51,7 +52,7 @@ export class ServiziComponent implements OnInit {
     'Assicurato',
     'Controparte',
   ];
-  fiduciari: any[] = [];
+  fiduciari: any = [];
   page: number = 1;
   count: number = 0;
   tableSize: number = 5;
@@ -79,8 +80,9 @@ export class ServiziComponent implements OnInit {
   constructor(
     public service: ServiziService,
     public dialog: MatDialog,
-    public authService: AuthService
-  ) {}
+    public authService: AuthService,
+    public _toast: ToastService
+  ) { }
 
   ngOnInit(): void {
     this.loadServizi2();
@@ -103,8 +105,7 @@ export class ServiziComponent implements OnInit {
         console.log(data, 'dataaaaaa');
         this.service.services = data;
         this.service.serviziFiltered = data;
-        //  this.service.services.push(data)
-        //data.forEach(val =>this.service.serviziFiltered.push(Object.assign({},val)));
+
         console.log(this.service.serviziFiltered);
       });
     } else if (user && user.role === 1) {
@@ -205,32 +206,44 @@ export class ServiziComponent implements OnInit {
     );
   }
 
+  // filtro per fiduciari 
+  trusteeFilter(truste: string) {
+    let user = this.authService.userValue;
+    if (user && user.role === 1) {
+
+      this.service.serviziFiltered = this.service.serviziFiltered.reduce((arr: Service[], item: Service) => {
+        item.fiduciario === truste && arr.push(item)
+        return arr;
+      }, [])
+      return this.service.serviziFiltered;
+    } else {
+      this._toast.snackBar("Ruolo Fiduciario", "bg-danger")
+      return null;
+    }
+  }
+
   // tutti gli incarichi
   all() {
     // richiamo tutti i servizi
     console.log(this.service.services, 'alll');
 
+    this.selectedFiduciario = '';
     // cosi evito un altra chiamata al server
     return (this.service.serviziFiltered = this.service.services);
   }
 
-  filterFiduciario() {
-    console.log(' selectedFiduciario:', this.selectedFiduciario);
-  }
 
-  getFiduciari() {
+  // lista di fiduciari 
+  getFiduciari(){
     let arr = this.service.serviziFiltered.filter((item: Service, pos: any) => {
+      // restituisce il primo valore uguale 
       this.service.serviziFiltered.indexOf(item) == pos;
     });
-
+    // alla fine mappo un array di appoccio con  solo nomi dei fiduciari
     return (this.fiduciari = arr.map((item) => {
       item.fiduciario;
     }));
   }
 
-  filterForFiduciario() {
-    // fare un filtro per fiduciari
 
-
-  }
 }

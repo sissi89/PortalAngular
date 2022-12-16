@@ -31,7 +31,7 @@ export class GeneraleComponent implements OnInit {
      if(id !=null && user?.username != null){
      
       // return this.getService(id)
-      return this.getService(id)
+      return this.getService(id,user.username)
      } else{
       this._snackbar.snackBar('id o user non inseriti','bg-danger')
      }
@@ -42,7 +42,7 @@ export class GeneraleComponent implements OnInit {
  
 
 
-   /* getService(id:any,username:string){
+   getService(id:any,username:string){
     let user = this.authService.userValue;
 
     // ruolo fiduciario
@@ -50,6 +50,7 @@ export class GeneraleComponent implements OnInit {
       this.serviziService.getServiceById(id,username).subscribe(data=>{
         console.log('servicet:',data)
         this.service = data
+        console.log(this.service.documents)
       })
 
       // ruolo operatore sogesa
@@ -60,13 +61,13 @@ export class GeneraleComponent implements OnInit {
       })
     }
    
-   } */
-   getService(id:string){
+   } 
+ /*   getService(id:string){
     this.serviziService.getServiceOperator(id).subscribe(data =>{
       console.log('service:',data)
       this.service = data
     })
-   }
+   } */
    
  
    

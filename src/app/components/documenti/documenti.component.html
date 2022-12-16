@@ -18,7 +18,7 @@
       />
     </div>
 
-    <div *ngIf="myFiles.length > 0">
+  <!--   <div *ngIf="myFiles.length > 0">
       <div *ngFor="let f of myFiles">
         <div class="d-flex justify-content-between">
           <small
@@ -30,7 +30,7 @@
           <span class="btn btn-danger s-dim" (click)="deleteFile(f)"> x</span>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <button type="submit" class="btn bg-danger">Invia</button>
   </form>
@@ -42,10 +42,10 @@
     <h6>Documenti presenti</h6>
     <div *ngFor="let s of service?.documents">
       <div class="d-flex justify-content-between bg-light rounded p-3 mt-3">
-        <p class="mt-2 text-capitalize m-3">{{ s.name }}</p>
+        <p class="mt-2 text-capitalize m-3">{{ s }}</p>
         <p class="mt-2 text-capitalize"></p>
 
-        <!-- <span class="btn  bg-primary" (click)="download(s.name,s.url)">Download</span>  -->
+        <!-- <span class="btn  bg-primary" (click)="download(s.name,s.url)">Download</span> (click)="download(s)" -->
         <svg
           class="change-my-color"
           xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +54,7 @@
           height="30"
           width="25"
           viewBox="0 0 16 16"
-          (click)="download(s.name, s.url)"
+          
           
         >
           <path

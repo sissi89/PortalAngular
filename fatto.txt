@@ -1,0 +1,9 @@
+Cose che ho fatto
+
+Sistemato tutte le chiamte eliminando fake json  , fetch dati da :   http://localhost:3000/sinistri
+
+creato swagger http://localhost:4000/swagger/index.html#/ istallando la libreria e seguendo vari passaggi 
+
+filtro fiduciari da sistemare via front end 
+bug fix di angular sistemando chiamate api con grafici 
+

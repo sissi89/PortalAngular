@@ -21,10 +21,11 @@ un bottone aprire per la schermata per grafici
 grafici tempo medio dell incarico 
 torta 
 
-martedi pranzo al volo pollo e spinaci riscaldati con piadina
+da fare oggi filtri per ogni colonna via front end , 
+try catch chiamate back end 
 
-mercoledi lenticchie e avena 
 
-giovedi pasta con la philadelfia e pistacchio
 
-venerdi farro merluzzo grana 
+
+
+

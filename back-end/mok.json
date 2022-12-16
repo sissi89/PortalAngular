@@ -1,153 +1,188 @@
 {
-    "sinistri":[
-    {
-        "id": "1" ,
-     "tipo":"red",
-    "compa":"sssssssss",
-     "fiduciario":"0001",
-     "tipo_sinistro":"1",
-     "data_incarico":"2022-10-9",
-     "nr_sinistro":"231",
-     "nr_incarico":"345679",
-     "prestazione_richiesta":"",
-     "assicurato":"Silvana Mazzaglia",
-     "targa_assicurato":"AX918HG",
-     "controparte":"Mario Rossi",
-     "targa_controparte":"BG564HY",
-     "nr_int":23,
-     "data_ultimo":"2022-9-23",
-     "documents":[
-        "https://www.africau.edu/images/default/sample.pdf",
-        ""
-
+    "sinistri": [
+        {
+            "id": "1",
+            "tipo": "red",
+            "compa": "sssssssss",
+            "fiduciario": "0001",
+            "tipo_sinistro": "1",
+            "data_incarico": "2022-10-9",
+            "nr_sinistro": "231",
+            "nr_incarico": "345679",
+            "prestazione_richiesta": "",
+            "assicurato": "Silvana Mazzaglia",
+            "targa_assicurato": "AX918HG",
+            "controparte": "Mario Rossi",
+            "targa_controparte": "BG564HY",
+            "nr_int": 23,
+            "data_ultimo": "2022-9-23",
+            "documents": [
+                {
+                    "id": 1,
+                    "name": "Example",
+                    "documento": "https://res.cloudinary.com/demo/image/upload/example_pdf"
+                },
+                {
+                    "id": 2,
+                    "name": "Sample",
+                    "documento": "https://www.africau.edu/images/default/sample.pdf"
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "tipo": "green",
+            "compa": "456",
+            "fiduciario": "0002",
+            "tipo_sinistro": "2",
+            "data_incarico": "2022-10-9",
+            "nr_sinistro": "232",
+            "nr_incarico": "3456797777",
+            "prestazione_richiesta": "",
+            "assicurato": "Mario Bianchi",
+            "targa_assicurato": "AX918YU",
+            "controparte": " Penelope Cruz",
+            "targa_controparte": "BY564HY",
+            "nr_int": 21,
+            "data_ultimo": "2022-9-23",
+            "documents": [
+                {
+                    "id": 1,
+                    "name": "Example",
+                    "documento": "https://res.cloudinary.com/demo/image/upload/example_pdf"
+                },
+                {
+                    "id": 2,
+                    "name": "Sample",
+                    "documento": "https://www.africau.edu/images/default/sample.pdf"
+                }
+            ]
+        },
+        {
+            "id": "3",
+            "tipo": "green",
+            "compa": "654",
+            "fiduciario": "0001",
+            "tipo_sinistro": "3",
+            "data_incarico": "2022-9-7",
+            "nr_sinistro": "456",
+            "nr_incarico": "3456797777",
+            "prestazione_richiesta": "",
+            "assicurato": "Mario Bianchi",
+            "targa_assicurato": "AX918HG",
+            "controparte": " Penelope Cruz",
+            "targa_controparte": "BG564HY",
+            "nr_int": 21,
+            "data_ultimo": "2022-9-23",
+            "documents": [
+                {
+                    "id": 1,
+                    "name": "Example",
+                    "documento": "https://res.cloudinary.com/demo/image/upload/example_pdf"
+                },
+                {
+                    "id": 2,
+                    "name": "Sample",
+                    "documentoo": "https://www.africau.edu/images/default/sample.pdf"
+                }
+            ]
+        },
+        {
+            "id": "4",
+            "tipo": "yellow",
+            "compa": "476",
+            "fiduciario": "0002",
+            "tipo_sinistro": "2",
+            "data_incarico": "2022-9-7",
+            "nr_sinistro": "457",
+            "nr_incarico": "3456797777",
+            "prestazione_richiesta": "",
+            "assicurato": "ATZENI ALESSANDRO",
+            "targa_assicurato": "AX918TG",
+            "controparte": " Penelope Cruz",
+            "targa_controparte": "BG564OY",
+            "nr_int": 21,
+            "data_ultimo": "2022-9-23",
+            "documents": [
+                {
+                    "id": 1,
+                    "name": "Example",
+                    "documento": "https://res.cloudinary.com/demo/image/upload/example_pdf"
+                },
+                {
+                    "id": 2,
+                    "name": "Sample",
+                    "documento": "https://www.africau.edu/images/default/sample.pdf"
+                }
+            ]
+        },
+        {
+            "id": "9",
+            "tipo": "red",
+            "compa": "875",
+            "fiduciario": "0001",
+            "tipo_sinistro": "1",
+            "data_incarico": "2022-7-7",
+            "nr_sinistro": "45676",
+            "nr_incarico": "3456797777",
+            "prestazione_richiesta": "",
+            "assicurato": "VERDI ALESSANDRO",
+            "targa_assicurato": "CG918TG",
+            "controparte": "Rossi Mario",
+            "targa_controparte": "BG564OY",
+            "nr_int": "21",
+            "data_ultimo": "2022-9-23",
+            "documents": [
+                {
+                    "id": 1,
+                    "name": "Example",
+                    "documento": "https://res.cloudinary.com/demo/image/upload/example_pdf"
+                },
+                {
+                    "id": 2,
+                    "name": "Sample",
+                    "documento": "https://www.africau.edu/images/default/sample.pdf"
+                }
+            ]
+        },
+        {
+            "id": "6",
+            "tipo": "red",
+            "compa": 875,
+            "fiduciario": "0002",
+            "tipo_sinistro": "2",
+            "data_incarico": "2022-7-7",
+            "nr_sinistro": "45675",
+            "nr_incarico": "3456797777",
+            "prestazione_richiesta": "",
+            "assicurato": "VERDI ALESSANDRO",
+            "targa_assicurato": "CG918TG",
+            "controparte": "Rossi Mario",
+            "targa_controparte": "BG564OY",
+            "nr_int": "21",
+            "data_ultimo": "2022-9-23",
+            "documents": [
+                {
+                    "id": 1,
+                    "name": "Example",
+                    "documento": "https://res.cloudinary.com/demo/image/upload/example_pdf"
+                },
+                {
+                    "id": 2,
+                    "name": "Sample",
+                    "documento": "https://www.africau.edu/images/default/sample.pdf"
+                }
+            ]
+        }
+    ],
+    "auth": [
+        {
+            "status": "ok",
+            "token": "jwt",
+            "scope": 3,
+            "fiduciario": "Bianchi",
+            "username": "Utente",
+            "password": "Utente2022!"
+        }
     ]
-
-
-
-
-    },{
-        "id":" 2",
-        "tipo":"green",
-        "compa":"456",
-        "fiduciario":"0002",
-        "tipo_sinistro":"2",
-        "data_incarico":"2022-10-9",
-        "nr_sinistro":"232",
-        "nr_incarico":"3456797777",
-        "prestazione_richiesta":"",
-        "assicurato":"Mario Bianchi",
-        "targa_assicurato":"AX918YU",
-        "controparte":" Penelope Cruz",
-        "targa_controparte":"BY564HY",
-        "nr_int":21,
-        "data_ultimo":"2022-9-23"
-
-    },{
-        "id":" 3",
-        "tipo":"green",
-        "compa":"654",
-        "fiduciario":"0001",
-        "tipo_sinistro":"3",
-        "data_incarico":"2022-9-7",
-        "nr_sinistro":"456",
-        "nr_incarico":"3456797777",
-        "prestazione_richiesta":"",
-        "assicurato":"Mario Bianchi",
-        "targa_assicurato":"AX918HG",
-        "controparte":" Penelope Cruz",
-        "targa_controparte":"BG564HY",
-        "nr_int":21,
-        "data_ultimo":"2022-9-23",
-        "documents":[
-            "https://res.cloudinary.com/demo/image/upload/example_pdf.pdf",
-            ""
-
-        ]
-
-    },
-    {
-        "id": "4",
-        "tipo":"yellow",
-        "compa":"476",
-        "fiduciario":"0002",
-        "tipo_sinistro":"2",
-        "data_incarico":"2022-9-7",
-        "nr_sinistro":"457",
-        "nr_incarico":"3456797777",
-        "prestazione_richiesta":"",
-        "assicurato":"ATZENI ALESSANDRO",
-        "targa_assicurato":"AX918TG",
-        "controparte":" Penelope Cruz",
-        "targa_controparte":"BG564OY",
-        "nr_int":21,
-        "data_ultimo":"2022-9-23",
-        "documents":[
-            "https://res.cloudinary.com/demo/image/upload/example_pdf.pdf",
-            ""
-
-        ]
-
-    },{
-        "id": "5",
-        "tipo":"red",
-        "compa":"875",
-        "fiduciario":"0001",
-        "tipo_sinistro":"1",
-        "data_incarico":"2022-7-7",
-        "nr_sinistro":"45676",
-        "nr_incarico":"3456797777",
-        "prestazione_richiesta":"",
-        "assicurato":"VERDI ALESSANDRO",
-        "targa_assicurato":"CG918TG",
-        "controparte":"Rossi Mario",
-        "targa_controparte":"BG564OY",
-        "nr_int":"21",
-        "data_ultimo":"2022-9-23",
-        "documents":[
-            {
-                "id":1,
-                "name":"Example",
-                "document":"https://res.cloudinary.com/demo/image/upload/example_pdf"
-                
-            },{
-                "id":2,
-                "name":"Sample",
-                "document":"https://www.africau.edu/images/default/sample.pdf"
-            }
-
-        ]
-    },{
-        "id": "6",
-        "tipo":"red",
-        "compa":875,
-        "fiduciario":"0002",
-        "tipo_sinistro":"2",
-        "data_incarico":"2022-7-7",
-        "nr_sinistro":"45675",
-        "nr_incarico":"3456797777",
-        "prestazione_richiesta":"",
-        "assicurato":"VERDI ALESSANDRO",
-        "targa_assicurato":"CG918TG",
-        "controparte":"Rossi Mario",
-        "targa_controparte":"BG564OY",
-        "nr_int":"21",
-        "data_ultimo":"2022-9-23",
-        "documents":[
-            
-
-        ]
-    }
-],
-"auth":[
-
-  {  
-    "status":"ok",
-    "token":"jwt",
-    "scope":3,
-    "fiduciario":" Bianchi",
-    "username":"Utente",
-    "password":"Utente2022!"}
-]
-
-
 }

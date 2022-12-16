@@ -33,12 +33,12 @@ export class DocumentiComponent implements OnInit {
   
 
   ngOnInit(): void {
-  this.getId()
+ // this.getId()
   
    // console.log(this.service,'ssssss')
   }
  
-  // id service
+ /*  // id service
   getId(){
   //  console.log(localStorage.getItem('id'))
     let id = localStorage.getItem('id');
@@ -47,17 +47,17 @@ export class DocumentiComponent implements OnInit {
     }
    
   
-  }
+  } */
   // servizio
-  getService(id:string){
-/*     this.serviziService.getServiceById(id).subscribe(data=>{
+  /* getService(id:string){
+    this.serviziService.getServiceById(id).subscribe(data=>{
     // console.log('sono richiamata',data)
      this.service = data;
     //('qqqq',this.service)
-    }) */
+    }) 
     
 
-  }
+  } */
   // invia form
   onSubmit(): void{
     let camps = this.documentForm.value
@@ -106,7 +106,7 @@ export class DocumentiComponent implements OnInit {
 deleteFile(file:Doc){
  return  this.myFiles.map((f:Doc,index:number)=>{
     f == file && this.myFiles.splice(index,1)
-    this.toast.snackBar(`Rimosso il file ${f.name}`,'bg-success')
+  //  this.toast.snackBar(`Rimosso il file ${f.name}`,'bg-success')
   })
  
   

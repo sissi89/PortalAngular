@@ -1,5 +1,9 @@
+<div class="center-flex mt-25 c-spinne "*ngIf="service === undefined || service === null  ">
+  <mat-spinner [diameter]="100"></mat-spinner>
+</div>
 
 <div class="container bg-light p-3" *ngIf="service">
+  
     <div class="d-flex justify-content-between">
         <h4><b>Dati Generali {{service.id}}</b></h4>
         <div class="circle-tipy " [style.backgroundColor]="service.tipo"> </div> 

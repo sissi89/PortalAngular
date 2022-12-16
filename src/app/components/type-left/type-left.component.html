@@ -5,10 +5,10 @@
       </button>
   
 </div>
-<div class="form-check">
+<div class="form-check "> <!-- ovviamente applicare la flex-->
 
   
-    <li class="list-group-item" *ngFor="let item of  typesLeft">
+    <li class="list-group-item" *ngFor="let item of  typesLeft" >
       <input
         type="checkbox"
         [(ngModel)]="item.isSelected"

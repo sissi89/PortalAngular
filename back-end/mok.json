@@ -2,7 +2,7 @@
     "sinistri": [
         {
             "id": "1",
-            "tipo": "red",
+            "sinisterState": "red",
             "compa": "sssssssss",
             "fiduciario": "0001",
             "tipo_sinistro": "1",
@@ -31,10 +31,10 @@
         },
         {
             "id": "2",
-            "tipo": "green",
+            "sinisterState": "green",
             "compa": "456",
             "fiduciario": "0002",
-            "tipo_sinistro": "2",
+            "tipo_sinistro": "8",
             "data_incarico": "2022-10-9",
             "nr_sinistro": "232",
             "nr_incarico": "3456797777",
@@ -60,7 +60,7 @@
         },
         {
             "id": "3",
-            "tipo": "green",
+            "sinisterState": "green",
             "compa": "654",
             "fiduciario": "0001",
             "tipo_sinistro": "3",
@@ -89,7 +89,7 @@
         },
         {
             "id": "4",
-            "tipo": "yellow",
+            "sinisterState": "yellow",
             "compa": "476",
             "fiduciario": "0002",
             "tipo_sinistro": "2",
@@ -118,7 +118,7 @@
         },
         {
             "id": "9",
-            "tipo": "red",
+            "sinisterState": "red",
             "compa": "875",
             "fiduciario": "0001",
             "tipo_sinistro": "1",
@@ -147,7 +147,7 @@
         },
         {
             "id": "6",
-            "tipo": "red",
+            "sinisterState": "red",
             "compa": 875,
             "fiduciario": "0002",
             "tipo_sinistro": "2",

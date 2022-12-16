@@ -54,6 +54,7 @@ pieChartOptions: any;
   ngOnInit(): void {
    this.createChartPie();
    this.createChartLine();
+this.service.services;
    //console.log(this.arr)
   }
 
@@ -63,7 +64,7 @@ pieChartOptions: any;
     let i = 0;
     this.service.serviziFiltered.filter((e: Service) => {
       // per ogni elemento che sodisfa la condizione aggiungo 1 al contatore
-      e.tipo === color ? (i += 1) : i;
+      e.sinisterState === color ? (i += 1) : i;
     });
     //  console.log(i)
     return i;

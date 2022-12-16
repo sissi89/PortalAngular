@@ -3,7 +3,7 @@ import { Doc } from "./doc";
 
 export interface Service{
     id:string,
-    tipo:'red'|'green'|'yellow',
+    sinisterState:'red'|'green'|'yellow',
     compa:number,
     fiduciario:string,
     tipo_sinistro: string,

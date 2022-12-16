@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
+import { User } from 'src/app/model/auth';
 
 import { Service } from 'src/app/model/model';
 import { Tipologia } from 'src/app/model/tipo';
@@ -21,37 +22,8 @@ export class ServiziComponent implements OnInit {
   // services:Service[]=[];
   service2: Service[] = [];
   selectedItems: [] = [];
-  selectedFiduciario: string = '';
-  nameColumn: string[] = [
-    'T',
-    'Compagnia',
-    'Fiduciario',
-    'Tipo Sinistro',
-    'Dt. Incarico',
-    'Nr. Sinistro',
-    'Nr. Incarico',
-    'Prestazione richiesta',
-    'Assicurato',
-    'Controparte',
-  ];
-  nameColumnLessFiduciario: string[] = [
-    'T',
-    'Compagnia',
-    'Tipo Sinistro',
-    'Dt. Incarico',
-    'Nr. Sinistro',
-    'Nr. Incarico',
-    'Prestazione richiesta',
-    'Assicurato',
-    'Controparte',
-  ];
-  nameColumn2: string[] = [
-    'Nr. Sinistro',
-    'Nr. Incarico',
-    'Prestazione richiesta',
-    'Assicurato',
-    'Controparte',
-  ];
+  selectedFiduciario: string = ' ';
+  user:User | null = this.authService.userValue;
   fiduciari: any = [];
   page: number = 1;
   count: number = 0;
@@ -98,20 +70,20 @@ export class ServiziComponent implements OnInit {
   loadServizi2() {
     this.getRole();
 
-    let user = this.authService.userValue;
+   
 
-    if (user && user.role === 2) {
-      this.service.getAllServiceUsername(user.username).subscribe((data) => {
+    if (this.user && this.user.role === 2) {
+      this.service.getAllServiceUsername(this.user.username).subscribe((data) => {
         console.log(data, 'dataaaaaa');
         this.service.services = data;
         this.service.serviziFiltered = data;
 
         console.log(this.service.serviziFiltered);
       });
-    } else if (user && user.role === 1) {
+    } else if (this.user && this.user.role === 1) {
       this.service.getServicesOperator().subscribe((data) => {
         this.service.services = data;
-
+        console.log(data, 'dataaaaaa');
         // console.log('services:',this.services)
         this.service.serviziFiltered = data;
         //  console.log(data)
@@ -141,7 +113,7 @@ export class ServiziComponent implements OnInit {
     let i = 0;
     this.service.serviziFiltered.filter((e: Service) => {
       // per ogni elemento che sodisfa la condizione aggiungo 1 al contatore
-      e.tipo === color ? (i += 1) : i;
+      e.sinisterState === color ? (i += 1) : i;
     });
     //  console.log(i)
     return i;
@@ -198,7 +170,7 @@ export class ServiziComponent implements OnInit {
     this.service.serviziFiltered = this.service.serviziFiltered.reduce(
       (filters: Service[], service: Service) => {
         // se è uguale a quello che stiamo cercando allora l ho inseriamo nell array
-        service.tipo === tipo && filters.push(service);
+        service.sinisterState === tipo && filters.push(service);
 
         return filters;
       },
@@ -208,15 +180,23 @@ export class ServiziComponent implements OnInit {
 
   // filtro per fiduciari 
   trusteeFilter(truste: string) {
-    let user = this.authService.userValue;
-    if (user && user.role === 1) {
-
-      this.service.serviziFiltered = this.service.serviziFiltered.reduce((arr: Service[], item: Service) => {
-        item.fiduciario === truste && arr.push(item)
-        return arr;
-      }, [])
-      return this.service.serviziFiltered;
-    } else {
+   
+    if (this.user && this.user.role === 1) {
+      // se è falsy 
+        if(!truste){
+          return this.all();
+        }else{
+          this.service.serviziFiltered = this.service.services.reduce((arr: Service[], item: Service) => {
+            this.transform(this.selectedFiduciario);
+            console.log( )
+           item.fiduciario=== truste ? arr.push(item) : console.log('non è uguale')
+            return arr;
+          }, [])
+          this.transform(truste);
+          return this.service.serviziFiltered;
+        }
+        }
+     else {
       this._toast.snackBar("Ruolo Fiduciario", "bg-danger")
       return null;
     }
@@ -235,14 +215,29 @@ export class ServiziComponent implements OnInit {
 
   // lista di fiduciari 
   getFiduciari(){
-    let arr = this.service.serviziFiltered.filter((item: Service, pos: any) => {
+    let arr= this.service.serviziFiltered.filter((item, pos: any) => {
       // restituisce il primo valore uguale 
       this.service.serviziFiltered.indexOf(item) == pos;
     });
     // alla fine mappo un array di appoccio con  solo nomi dei fiduciari
-    return (this.fiduciari = arr.map((item) => {
-      item.fiduciario;
+    
+   return (this.fiduciari = arr.map((item) => {
+    this.transform(item.fiduciario)
     }));
+   
+    
+  }
+  transform(string: string): string {
+    switch (string) {
+      case "ROSSI":
+        return string = '0001';
+
+      case "BIANCHI":
+        return string = '0002';
+
+      default:
+        return ' Non presente ';
+    }
   }
 
 

@@ -17,11 +17,13 @@ interface TypoLeft {
 })
 export class TypeLeftComponent implements OnInit {
   // tipi di sinistri
-  typesLeft: any[] = Array.from({ length: 3 }, (_, i) => ({
+  typesLeft: any[] = Array.from({ length: 20 }, (_, i) => ({
     id: i + 1,
     value: i + 1,
     isSelected: false,
   })); 
+
+
   // checklist
   masterSelected: boolean = false;
   checkedList: TypoLeft[] = [];
@@ -41,6 +43,7 @@ export class TypeLeftComponent implements OnInit {
 
   // Check All Checkbox Checked
   isAllSelected() {
+    // metodo verifica se tutti gli elementi nell'array superano il test
     this.masterSelected = this.typesLeft.every((item:TypoLeft) => {
       return item.isSelected == true;
     });
@@ -49,7 +52,7 @@ export class TypeLeftComponent implements OnInit {
   // Get List of Checked Items
   getCheckedItemList() {
     this.checkedList = [];
-
+// filtro per tipo 
     this.typesLeft.filter((item:TypoLeft) => {
       item.isSelected && this.checkedList.push(item);
     });
@@ -72,9 +75,11 @@ export class TypeLeftComponent implements OnInit {
           return arr;
         },[]);
         
-        this.toast.snackBar(` Filtro per ${this.service.getNumberleft(Number(type1))}`, 'bg-success');
+        console.log(type1)
+      
+        this.toast.snackBar(` Filtro per ${this.service.getNumberleft(type1.toString())}`, 'bg-success');
       this.dialogRef.close();
-      console.log(this.service.serviziFiltered);
+   //   console.log(this.service.serviziFiltered);
       // se il filtro ha più di un tipo si sinistro
     } else if (this.checkedList.length === 2) {
     
@@ -86,7 +91,7 @@ export class TypeLeftComponent implements OnInit {
         (arr: Service[], item: Service) => {
          // console.log('aaaaa',item.tipo_sinistro)
           if (type1 === Number(item.tipo_sinistro) || type2 === Number(item.tipo_sinistro)) {
-            // se è uguale a quello che stiamo cercando allora l ho inseriamo nell array
+            //   che stiamo cercando allora l ho inseriamo nell array
             arr.push(item);
           }
           return arr;
@@ -95,7 +100,7 @@ export class TypeLeftComponent implements OnInit {
       );
    
       // modifico l array in modo che l utente riesce a leggerla
-     let arrNew =  this.checkedList.map(i => this.service.getNumberleft(Number(i.value)) )
+     let arrNew =  this.checkedList.map(i => this.service.getNumberleft(i.value.toString()) )
      
         // result 
       this.toast.snackBar(`ok! ${arrNew.toString()}`, 'bg-success');

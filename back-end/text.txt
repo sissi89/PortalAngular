@@ -16,7 +16,6 @@ npm i charts.js --save
 ng g c charts 
 
 
-un bottone aprire per la schermata per grafici 
 
 grafici tempo medio dell incarico 
 torta 

@@ -5,6 +5,7 @@ import { User } from 'src/app/model/auth';
 
 import { Service } from 'src/app/model/model';
 import { Tipologia } from 'src/app/model/tipo';
+import { FiduciarioPipe } from 'src/app/pipes/fiduciario.pipe';
 import { AuthService } from 'src/app/services/auth-service.service';
 import { ServiziService } from 'src/app/services/servizi.service';
 import { ToastService } from 'src/app/services/toast.service';
@@ -23,7 +24,7 @@ export class ServiziComponent implements OnInit {
   service2: Service[] = [];
   selectedItems: [] = [];
   selectedFiduciario: string = ' ';
-  user:User | null = this.authService.userValue;
+  user: User | null = this.authService.userValue;
   fiduciari: any = [];
   page: number = 1;
   count: number = 0;
@@ -57,7 +58,7 @@ export class ServiziComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loadServizi2();
+    this.loadServizi();
     // this.services
     this.getFiduciari();
 
@@ -67,10 +68,13 @@ export class ServiziComponent implements OnInit {
     console.log('prova ngonit', this.service.serviziFiltered);
   }
 
-  loadServizi2() {
+  isEquals():boolean{
+   return this.service.services === this.service.serviziFiltered
+  }
+  loadServizi() {
     this.getRole();
 
-   
+
 
     if (this.user && this.user.role === 2) {
       this.service.getAllServiceUsername(this.user.username).subscribe((data) => {
@@ -111,6 +115,8 @@ export class ServiziComponent implements OnInit {
   counter(color: string): number {
     // inizializzo il contatore
     let i = 0;
+   
+ 
     this.service.serviziFiltered.filter((e: Service) => {
       // per ogni elemento che sodisfa la condizione aggiungo 1 al contatore
       e.sinisterState === color ? (i += 1) : i;
@@ -180,23 +186,27 @@ export class ServiziComponent implements OnInit {
 
   // filtro per fiduciari 
   trusteeFilter(truste: string) {
-   
+    console.log(truste, 'truste')
+    this.selectedFiduciario.toUpperCase();
+    console.log(this.selectedFiduciario);
     if (this.user && this.user.role === 1) {
       // se è falsy 
-        if(!truste){
-          return this.all();
-        }else{
-          this.service.serviziFiltered = this.service.services.reduce((arr: Service[], item: Service) => {
-            this.transform(this.selectedFiduciario);
-            console.log( )
-           item.fiduciario=== truste ? arr.push(item) : console.log('non è uguale')
-            return arr;
-          }, [])
-          this.transform(truste);
-          return this.service.serviziFiltered;
-        }
-        }
-     else {
+      if (!truste) {
+        return this.all();
+      } else {
+        // let string =  this.transform2(truste);
+        //   console.log(string, 'stringa trasformata');
+        this.service.serviziFiltered = this.service.services.reduce((arr: Service[], item: Service) => {
+
+
+          item.fiduciario === truste ? arr.push(item) : console.log('non è uguale')
+          return arr;
+        }, [])
+
+        return this.service.serviziFiltered;
+      }
+    }
+    else {
       this._toast.snackBar("Ruolo Fiduciario", "bg-danger")
       return null;
     }
@@ -206,7 +216,7 @@ export class ServiziComponent implements OnInit {
   all() {
     // richiamo tutti i servizi
     console.log(this.service.services, 'alll');
-
+    // resetto la variabile a stringa 
     this.selectedFiduciario = '';
     // cosi evito un altra chiamata al server
     return (this.service.serviziFiltered = this.service.services);
@@ -214,31 +224,40 @@ export class ServiziComponent implements OnInit {
 
 
   // lista di fiduciari 
-  getFiduciari(){
-    let arr= this.service.serviziFiltered.filter((item, pos: any) => {
+  getFiduciari() {
+    let arr = this.service.serviziFiltered.filter((item, pos: any) => {
       // restituisce il primo valore uguale 
       this.service.serviziFiltered.indexOf(item) == pos;
     });
     // alla fine mappo un array di appoccio con  solo nomi dei fiduciari
-    
-   return (this.fiduciari = arr.map((item) => {
-    this.transform(item.fiduciario)
+
+    return (this.fiduciari = arr.map((item) => {
+
     }));
-   
+
+
+  }
+
+  trusteFilterBackEnd(truste:string) {
+    if (this.user && truste ) {
+      this.service.getAllServiceUsername(truste).subscribe((data) => {
+        console.log(data, 'dataaaaaa');
     
-  }
-  transform(string: string): string {
-    switch (string) {
-      case "ROSSI":
-        return string = '0001';
+        this.service.serviziFiltered = data;
 
-      case "BIANCHI":
-        return string = '0002';
+        console.log(this.service.serviziFiltered);
+      });
+      this._toast.snackBar(`filtro per fiduciario : ${truste}`,'bg-success');
+      return this.service.serviziFiltered;
 
-      default:
-        return ' Non presente ';
+    }else{ 
+      this._toast.snackBar(`nessun filtro inserito`,"bg-danger");
+      return this.service.serviziFiltered = this.service.services;
     }
+
   }
+
+
 
 
 }

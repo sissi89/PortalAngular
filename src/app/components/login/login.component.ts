@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
    
     this.submitted = true;
     let values = this.loginForm.value;
+ 
     // se i campi sono truty
     if(values.username && values.password){
       this.error = '';

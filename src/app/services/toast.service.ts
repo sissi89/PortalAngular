@@ -14,8 +14,8 @@ export class ToastService {
     let config = new MatSnackBarConfig();
     config.duration = 3000;
     config.panelClass = [style];
-    config.verticalPosition ='top';
-    config.horizontalPosition ='right';
+    config.verticalPosition ='bottom';
+    config.horizontalPosition ='left';
 
     this._snackBar.open(messagge,'',config);
   }

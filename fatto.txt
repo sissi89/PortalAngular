@@ -4,6 +4,11 @@ Sistemato tutte le chiamte eliminando fake json  , fetch dati da :   http://loca
 
 creato swagger http://localhost:4000/swagger/index.html#/ istallando la libreria e seguendo vari passaggi 
 
-filtro fiduciari da sistemare via front end 
+filtro fiduciari 
+disabled contatori 0 
+inseriti i tipi sinistri nella pipe 
+
+
 bug fix di angular sistemando chiamate api con grafici 
 
+diblasi per  ritirare il progetto formativo dalle ore 10

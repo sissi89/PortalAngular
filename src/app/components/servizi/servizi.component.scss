@@ -5,6 +5,7 @@ $red:#cc3333;
 }
 .btn-red{
     background-color: $red;
+    color:#fff;
 }
 .circle-tipy{
     height: 1rem;
@@ -150,7 +151,13 @@ table {
     white-space: nowrap;
 }
 
+.w-95{
+    width: 95%;
+}
 
+.w-100{
+    width: 100%;
+}
 /* scroll bar*/
 
 .testimonial-group > .row {
@@ -166,8 +173,22 @@ table {
     display: none;
  }
  
+.btn-animate{
+ animation: animatebtn 5s infinite;
 
+}
+@keyframes animatebtn {
+   0%{
+    background-color: $red;
+    color:#fff;
 
+   }
+   100%{
+    background-color: #fff;
+    color: $red;
+  }
+ 
+}
 
 
 /* .c-border-blue{

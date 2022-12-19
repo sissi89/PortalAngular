@@ -14,41 +14,46 @@
         <div class=' row justify-content-evenly'>
 
             <div class="  rounded    col-3 m0" *ngFor="let c of colors">
-                <div class="  d-flex flex-column    p-lg-3 p-md-3 ml-0 p-sm-3  c-border  "
-                    [style.backgroundColor]="c.color" (click)="serviceFilter(c.color)"
-                    ngClass='{{counter(c.color)  <= 0 ? "opacity-25" : "opacity-100" }}'>
+                <button class="  d-flex flex-column  btn  p-lg-3 p-md-3 ml-0 p-sm-3  c-border w-100 "
+                    [style.backgroundColor]="c.color" [disabled]="counter(c.color) <= 0 "
+                    (click)="serviceFilter(c.color)">
 
-                    <h2 class="text-center text-black  " *ngIf="c.color != 'blue'"> {{counter(c.color)}}</h2>
+                    <h2 class="text-center text-black btn w-95 " *ngIf="c.color != 'blue'">
+                        <h2>{{counter(c.color)}}</h2>
+                    </h2>
 
-                    <div class="mr-3 ">
+                    <div class="mr-3 w-95 ">
                         <p class="text-center">{{c.tipo}}</p>
                     </div>
-                </div>
+                </button>
             </div>
             <div class="   rounded    col-3 m0">
-                <div class=" d-flex flex-column  p-lg-3 p-md-3 ml-0 p-sm-3  c-border bg-blue " (click)="all()">
+                <button class=" d-flex flex-column  p-lg-3 p-md-3 ml-0 p-sm-3  c-border bg-blue w-100 " (click)="all()">
 
-                    <h2 class="text-center text-black  text-white "> {{service.services.length}}</h2>
-                    <div class="mr-3">
+                    <h2 class="text-center text-black  btn text-white w-95 ">
+                        <h2>{{service.services.length}}</h2>
+                    </h2>
+                    <div class="mr-3 w-95">
                         <p class="text-white text-center"> Tutti </p>
                     </div>
-                </div>
+                </button>
             </div>
         </div>
 
         <!-- end contatori-->
         <hr>
-        <!-- button -->
+        <!-- button  filtro fiduciari solo per operatore -->
         <div *ngIf=" getRole() === 1" class="d-flex justify-content-around">
             <div>
-               
+
                 <input class="form-control w-auto" [(ngModel)]="selectedFiduciario" type="text" list="codes"
-                    placeholder="  Filtra &#61442; " (change)="  trusteeFilter(transform(selectedFiduciario))" />
+                    placeholder="  Filtra &#61442; " (change)="trusteFilterBackEnd(selectedFiduciario)" />
                 <datalist id="codes">
-                    <option *ngFor="let c of service.fiduciari " [value]="c ">{{c | fiduciario}}</option>
+                    <option *ngFor="let c of service.fiduciari " [value]="c">{{c | fiduciario}}</option>
                 </datalist>
             </div>
-           <button class="btn btn-red text-white " (click)="all()"> Reset filtri</button>
+            <h4 *ngIf="service.serviziFiltered.length  <=0 "> Non ci sono sinistri con i filtri inseriti</h4>
+            <button class="btn " [ngClass]="service.serviziFiltered.length <=0 ? 'btn-animate' : 'btn-red'" [disabled]="isEquals()"(click)="all()" > Reset filtri</button>
 
 
 
@@ -65,12 +70,12 @@
             </div>
             <div>
 
-                <table class="table table-responsive text-nowrap table-striped fl-table testimonial-group">
+                <table class="table table-responsive text-nowrap table-striped fl-table testimonial-group" *ngIf="service.serviziFiltered.length > 0">
                     <thead style="background-color: #002d72;">
                         <tr class="tr-1">
                             <th class="th-1">Stato sinistro</th>
                             <th class="th-1">Compagnia</th>
-                            <th *ngIf=" getRole() === 1" class="th-1">Fiduciario</th>
+                            <th *ngIf=" getRole()=== 1" class="th-1">Fiduciario</th>
                             <th class="th-1"> Tipo sinistro</th>
                             <th class="th-1">Dt.incarico</th>
                             <th class="th-1"> Nr. Sinistro</th>
@@ -123,12 +128,12 @@
 
                     </tr>
 
-                    <tr *ngFor="let s of service.serviziFiltered| paginate
+                    <tr *ngFor="let s of service.serviziFiltered| paginate 
                     : {
                         itemsPerPage: tableSize,
                         currentPage: page,
                         totalItems: count
-                    }; let i = index" (click)=" openDialog(s.id)  ">
+                    }; let i = index" (click)=" openDialog(s.id)  " >
 
                         <td class="td-1">
 

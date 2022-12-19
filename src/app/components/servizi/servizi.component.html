@@ -52,7 +52,7 @@
                     <option *ngFor="let c of service.fiduciari " [value]="c">{{c | fiduciario}}</option>
                 </datalist>
             </div>
-            <h4 *ngIf="service.serviziFiltered.length  <=0 "> Non ci sono sinistri con i filtri inseriti</h4>
+            <h4 *ngIf="service.serviziFiltered.length  <=0 "> Non ci sono <b class="text-danger ">SINISTRI</b> con i filtri inseriti</h4>
             <button class="btn " [ngClass]="service.serviziFiltered.length <=0 ? 'btn-animate' : 'btn-red'" [disabled]="isEquals()"(click)="all()" > Reset filtri</button>
 
 
@@ -62,7 +62,7 @@
 
         <hr>
         <!--pagination table-->
-        <div class="testimonial-group">
+        <div class="testimonial-group" *ngIf="service.serviziFiltered.length > 0">
 
             <div class="d-flex justify-content-center">
                 <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
@@ -70,7 +70,7 @@
             </div>
             <div>
 
-                <table class="table table-responsive text-nowrap table-striped fl-table testimonial-group" *ngIf="service.serviziFiltered.length > 0">
+                <table class="table table-responsive text-nowrap table-striped fl-table testimonial-group" >
                     <thead style="background-color: #002d72;">
                         <tr class="tr-1">
                             <th class="th-1">Stato sinistro</th>

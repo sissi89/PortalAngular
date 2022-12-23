@@ -14,8 +14,16 @@ export interface Download {
   }
 
 export interface Doc{
-    id:string,
-    name:string,
-    documento:DetailDoc
+  id:string,
+  nome:string,
+  tipo:string,
+  dim:number,
+  daCom:boolean,
+  idCom:any,
+  nomeViewUrl:string,
+  downUrl:string,
+  sizeKB:string,
+  daComIcon:string,
+  comUrl:string
 }
 

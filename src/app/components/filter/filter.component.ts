@@ -4,6 +4,7 @@ import { ToastService } from 'src/app/services/toast.service';
 import * as moment from 'moment';
 import { ServiziComponent } from '../servizi/servizi.component';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ServiziService } from 'src/app/services/servizi.service';
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
@@ -11,9 +12,8 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class FilterComponent implements OnInit {
   dateForm:FormGroup;
-
   today=moment(new Date()).format("YYYY-MM-DD");
-  constructor( private fb: FormBuilder, private toast:ToastService,public dialogRef: MatDialogRef<ServiziComponent>) { 
+  constructor( private fb: FormBuilder, private toast:ToastService,public dialogRef: MatDialogRef<ServiziComponent>, public service:ServiziService) { 
     this.dateForm = this.fb.group({
     start:[this.today,Validators.required],
     end:[this.today,Validators.required]
@@ -26,30 +26,54 @@ export class FilterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let dateTime = moment(new Date()).format("YYYY-MM-DD")
-   // console.log('datetime', dateTime)
+   
+  
   }
 
   onSumbit(){
+ 
     const val = this.dateForm.value;
    
-    // se sono truty i primi 2 valori
-    (val.start && val.end) ?
-    // data incarico non può essere nel futuro  e data end non può essere minore di data inizio
+    
+    // se sono validi i campi
+    if(val.start && val.end){
+       // resetto le variabili 
+     
+      // se la data di inizio non è superiore di quella di fine e se entrambi non sono superiori alla data odierna 
+      if(val.start <= val.end && val.end <= this.today && val.start <= this.today){
+        this.service.services = [];
+        this.service.serviziFilterered = [];
+        this.service.getServiceIncarichiWithDate(val.start,val.end).subscribe((data)=>{
+          this.service.services = data;
+          this.service.serviziFilterered = data;
 
-      (val.end <= this.today) && (val.start <= this.today) && ( val.end >= val.start)?
-       // scrivere qui il codice per la chiamata al service
-       //<- chiude la modal del altro componente this.dialogRef.close(); //<- chiude la modal del altro componente
-      
-        this.toast.snackBar(`ok!`,'bg-success') :
+          this.service.fiduciari = data.reduce((arr: any, item: any) => {
+ 
+       
+         !arr.includes(item.nomePer) && arr.push(item.nomePer)
+             
+    
+            return arr;
+          }, []);
+      //    
+        })
+        this.dialogRef.close();
+   
+      }else{
+        this.toast.snackBar('date fuori range','bg-danger');
+      }
+     
 
-        
-        this.toast.snackBar('Data fuori range','bg-danger'):
-      this.toast.snackBar('compilare tutti i campi', 'bg-danger')
+    }else{
+      this.toast.snackBar('compilare tutti i campi','bg-danger');
+    }
+   
+    
+  }
       
      
 
 
   }
 
-}
+

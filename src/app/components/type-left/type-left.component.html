@@ -5,10 +5,13 @@
       </button>
   
 </div>
-<div class="form-check   "> <!-- ovviamente applicare la flex-->
-
+<div class="form-check  "> <!-- ovviamente applicare la flex-->
+ <!--  <div class="">
+    <button class="btn btn-red" (click)="filterTypeLeft() ">Filtra</button>
+  </div> -->
   
-    <li class="list-group-item " *ngFor="let item of  typesLeft" >
+    <li class="list-group-item mt-2 " *ngFor="let item of  typesLeft" >
+
       <input
         type="checkbox"
         [(ngModel)]="item.isSelected"
@@ -18,12 +21,10 @@
         class="form-check-input"
       />
       
-     <p>{{ item.value.toString() | typesLeft }}</p> 
+     <p class="mr-2">{{ item.value.toString() | typesLeft }}</p> 
     </li>
 
-        <div class="col-md-6">
-          <button class="btn btn-red" (click)="filterTypeLeft() ">Filtra</button>
-        </div>
+        
 </div>
 
    

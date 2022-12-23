@@ -31,7 +31,8 @@ import { JwtInterceptor } from './services/jwtInterceptor.service';
 import { GraficiComponent } from './components/grafici/grafici.component';
 import { FiduciarioPipe } from './pipes/fiduciario.pipe';
 import { NgChartsModule } from 'ng2-charts';
-
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { NgChartsModule } from 'ng2-charts';
     FilterComponent,
     TypeLeftComponent,
     GraficiComponent,
-    FiduciarioPipe
+    FiduciarioPipe,
+   
   ],
   imports: [
     BrowserModule,
@@ -67,6 +69,7 @@ import { NgChartsModule } from 'ng2-charts';
     MatRadioModule,
     MatInputModule,
     MatIconModule,
+    MatProgressBarModule
    
    
 

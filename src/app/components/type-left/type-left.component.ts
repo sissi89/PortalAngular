@@ -66,13 +66,13 @@ export class TypeLeftComponent implements OnInit {
     this.dialogRef.close();
     return arrNew;
   }
-  filterTypeLeft() {
+  /* filterTypeLeft() {
   //  this.service.serviziFiltered = this.service.services;
  
     // se il filtro è solo per un tipo di sinistro 
     if (this.checkedList.length === 1) {
       let type1 = this.checkedList[0].value;
-      this.service.serviziFiltered = this.service.serviziFiltered.reduce(
+      this.service.serviziFilterered = this.service.serviziFilterered.reduce(
         (arr: Service[], item: Service) => {
           if (type1 === Number(item.tipo_sinistro)) {
             arr.push(item);
@@ -140,7 +140,7 @@ export class TypeLeftComponent implements OnInit {
       // avviso 0 filtri
       this.toast.snackBar('Nessun filtro inserito', 'bg-danger');
     }
-  }
+  } */
 }
 
 

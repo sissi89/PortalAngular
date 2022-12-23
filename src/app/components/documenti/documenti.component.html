@@ -18,7 +18,7 @@
       />
     </div>
 
-  <!--   <div *ngIf="myFiles.length > 0">
+     <div *ngIf="myFiles.length > 0">
       <div *ngFor="let f of myFiles">
         <div class="d-flex justify-content-between">
           <small
@@ -30,23 +30,24 @@
           <span class="btn btn-danger s-dim" (click)="deleteFile(f)"> x</span>
         </div>
       </div>
-    </div> -->
+    </div> 
 
     <button type="submit" class="btn bg-danger">Invia</button>
   </form>
   <!-- fine invio documenti-->
   <!-- Documenti gia presenti con possibilità di scaricarli-->
-  <div class="form-control" *ngIf="service?.documents?.length != 0">
-    <!--se è truty-->
-
+  <div class="form-control" *ngIf="documents?.length != 0">
+    <!--se è falsy-->
+    <mat-progress-bar mode="indeterminate" *ngIf="!isCompleted" class="fixed"></mat-progress-bar>
     <h6>Documenti presenti</h6>
-    <div *ngFor="let s of service?.documents">
+    <div *ngFor="let s of documents">
       <div class="d-flex justify-content-between bg-light rounded p-3 mt-3">
-        <p class="mt-2 text-capitalize m-3">{{ s }}</p>
+        <p class="mt-2 text-capitalize m-3">{{ s.nome }}</p>
+  
         <p class="mt-2 text-capitalize"></p>
 
         <!-- <span class="btn  bg-primary" (click)="download(s.name,s.url)">Download</span> (click)="download(s)" -->
-        <svg
+         <svg
           class="change-my-color"
           xmlns="http://www.w3.org/2000/svg"
           fill="#cc3333"
@@ -54,7 +55,7 @@
           height="30"
           width="25"
           viewBox="0 0 16 16"
-          
+          (click)="download(s.nome, s.id)"
           
         >
           <path
@@ -63,8 +64,11 @@
           <path
             d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"
           />
-        </svg>
+        </svg>  
+
+   
       </div>
+     
     </div>
   </div>
 </div>

@@ -1,9 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Auth } from '../model/auth';
-import { Service } from '../model/model';
+import { Detail } from '../model/Detail';
+import { Doc } from '../model/doc';
+import { Service, ServiceReal } from '../model/model';
 
 const { api, auth } = environment;
 @Injectable({
@@ -12,25 +14,48 @@ const { api, auth } = environment;
 
 export class ServiziService {
   // variabili di appoccio per evitare di fare chiamate a ogni filtro
-  serviziFiltered: Service[] = []
-  services: Service[] = [];
+
+services:ServiceReal[]=[];
+serviziFilterered:ServiceReal[]=[];
   fiduciari: any[] = [];
   constructor(private http: HttpClient) { }
+  //---- nuovi metodi con api di treia ----//
+ // Incarichi per Sx:
+ getServiceIncarichiFiduciari(fiduciario:string):Observable<ServiceReal>{
+  console.log('url',`${api}/incarichiPer/${fiduciario}`);
+  return this.http.get<ServiceReal>(`${api}/incarichiPer/${fiduciario}`);
+}
+ // Tutti i SX ( per data ):
+ getServiceIncarichiWithDate(start:string,end:string):Observable<ServiceReal[]>{
+  console.log('url',`${api}/${start}/${end}`);
+  return this.http.get<ServiceReal[]>(`${api}/${start}/${end}`);
+ } 
 
-  // sinistri operatore sogesa vede tutti
-  getServicesOperator(): Observable<Service[]> {
-    console.log('service da operatore')
-    return this.http.get<Service[]>(`${api}`);
-  }
+ // get dettaglio incarico
 
-  // sinistro per operatore sogesa  get id back
-  getServiceOperator(id: string): Observable<Service> {
-    console.log(`${api}/sinistro/`, { id })
-    id = id.trim(); // per eliminare gli spazi di una stringa
-    
-    return this.http.post<Service>(`${api}/sinistro/`, { id })
-  }
+ getDettailSx(idIncarico:string):Observable<Detail>{
+  //incarichi/{idInc}
+  
+  console.log('service is running ',`${api}/incarichi/${idIncarico}`)
+  return this.http.get<Detail>(`${api}/incarichi/${idIncarico}`);
+ }
+ getDocumentsInc(idInc:string):Observable<Doc[]>{
+  //http://localhost:4000/sinistri/incarichi/documents/_SO2255549
 
+  return this.http.get<Doc[]>(`${api}/incarichi/documents/${idInc}`);
+
+ }
+ downSingleDocument(idInc:string):Observable<any>{
+  //http://localhost:4000/sinistri/documents/singolo/8498499
+  console.log('service is running ',`${api}/documents/singolo/${idInc}&down`)
+  let headers = new HttpHeaders();
+  headers = headers.set('Accept', 'application/pdf');
+  return this.http.get<any>(`${api}/documents/singolo/${idInc}&down`,{
+     headers: headers,  responseType: 'blob' as 'json',
+   // responseType: "blob"
+  });
+ }
+//------- sinistri con vecchie api --------//
   // sinistro per  in base al fiduciario 
   getServiceById(id: string, username: string): Observable<Service> {
     // trim rimuove gli spazi di una stringa 
@@ -47,6 +72,21 @@ export class ServiziService {
 
     return this.http.post<Service[]>(`${api}/fiduciario`, { username })
 
+  }
+  
+  // sinistri operatore sogesa vede tutti
+  getServicesOperator(): Observable<Service[]> {
+    console.log('service da operatore')
+    return this.http.get<Service[]>(`${api}`);
+  }
+ 
+ 
+  // sinistro per operatore sogesa  get id back
+  getServiceOperator(id: string): Observable<Service> {
+    console.log(`${api}/sinistro/`, { id })
+    id = id.trim(); // per eliminare gli spazi di una stringa
+    
+    return this.http.post<Service>(`${api}/sinistro/`, { id })
   }
 
 

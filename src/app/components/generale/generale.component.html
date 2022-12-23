@@ -4,33 +4,33 @@
 
 <div class="container bg-light p-3" *ngIf="service">
   
-    <div class="d-flex justify-content-between">
+    <!-- <div class="d-flex justify-content-between">
         <h4><b>Dati Generali {{service.id}}</b></h4>
         <div class="circle-tipy " [style.backgroundColor]="service.sinisterState"> </div> 
         
-    </div>
+    </div> -->
    
     <table style="width:100%" class="table table-responsive text-nowrap table-striped fl-table" >
         <thead  >
         <tr>
           <th>Fiduciario :</th>
-          <td>{{service.fiduciario | fiduciario}}</td>
+          <td>{{fiduciario}}</td>
         </tr>
         <tr>
           <th>Compagnia :</th>
-          <td>{{service.compa}}</td>
+          <td>{{service.codComp}}</td>
         </tr>
         <tr>
           <th>Data incarico : </th>
-          <td>{{service.data_incarico | date:'dd/MM/yy'}}</td>
+          <td>{{service.data | date:'dd/MM/yy'}}</td>
         </tr>
         <tr>
             <th>Numero sinistro :</th>
-            <td>{{service.nr_sinistro}}</td>
+            <td>{{service.numsx}}</td>
         </tr>
         <tr>
             <th>Tipo sinistro : </th>
-            <td>{{service.tipo_sinistro | typesLeft}}</td>
+            <td>non definito</td>
         </tr>
         </thead>
       </table>
@@ -41,11 +41,11 @@
                 <thead  >
                     <tr >
                       <th >Nome e Cognome :</th>
-                      <td class="text-capitalize" >{{service.assicurato}}</td>
+                      <td class="text-capitalize" >non definito</td>
                     </tr>
                     <tr>
                       <th >Targa :</th>
-                      <td class="text-uppercase" >{{service.targa_assicurato}}</td>
+                      <td class="text-uppercase" >non definito</td>
                     </tr>
                   
                     </thead>
@@ -57,10 +57,10 @@
             <table style="width:100%" class="table table-responsive text-nowrap table-striped fl-table">
                 <thead >
                 <tr >
-                  <td class="text-capitalize" >{{service.controparte}}</td>
+                  <td class="text-capitalize" >non definito</td>
                 </tr>
                 <tr >
-                  <td class="text-uppercase" >{{service.targa_controparte}}</td>
+                  <td class="text-uppercase" >non definito</td>
                 </tr>
               
                 </thead>

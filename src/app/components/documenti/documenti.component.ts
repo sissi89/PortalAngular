@@ -3,12 +3,13 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
-import { Doc, Download } from 'src/app/model/doc';
+import { DetailDoc, Doc, Download } from 'src/app/model/doc';
 import { Service } from 'src/app/model/model';
 import { ServiziService } from 'src/app/services/servizi.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { TabsComponent } from '../tabs/tabs.component';
 import { saveAs } from 'file-saver';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-documenti',
   templateUrl: './documenti.component.html',
@@ -17,11 +18,15 @@ import { saveAs } from 'file-saver';
 export class DocumentiComponent implements OnInit {
   service: Service | undefined;
   documentForm : FormGroup;
-  myFiles:Doc [] = [];
+  documents:Doc[]=[];
+  myFiles:DetailDoc [] = [];
+  url:any;
+  isCompleted:boolean = true;
+  
 
   
   download$: Observable<Download> | undefined
-  constructor(public fb:FormBuilder, public dialogRef: MatDialogRef<TabsComponent>, public toast: ToastService, 
+  constructor(public fb:FormBuilder, public dialogRef: MatDialogRef<TabsComponent>, public toast: ToastService, public http:HttpClient,
     public serviziService:ServiziService,  @Inject(DOCUMENT) private document: Document) { 
     this.documentForm = this.fb.group({
       document1: new FormControl(null,Validators.required),
@@ -34,7 +39,7 @@ export class DocumentiComponent implements OnInit {
 
   ngOnInit(): void {
  // this.getId()
-  
+  this.loadDocuments();
    // console.log(this.service,'ssssss')
   }
  
@@ -58,6 +63,8 @@ export class DocumentiComponent implements OnInit {
     
 
   } */
+  
+ 
   // invia form
   onSubmit(): void{
     let camps = this.documentForm.value
@@ -76,6 +83,17 @@ export class DocumentiComponent implements OnInit {
     
      this.toast.snackBar('Compilare tutti i campi','bg-danger')
     }
+  }
+  // get documents
+  loadDocuments(){
+    let id = localStorage.getItem('id');
+    
+   id && this.serviziService.getDocumentsInc(id).subscribe((data)=>{
+    console.log(data);
+    this.documents = data;
+    console.log(this.documents,'myfiles')
+   })
+
   }
   // monitorare più file
   onFileChange(event:any) {
@@ -103,8 +121,8 @@ export class DocumentiComponent implements OnInit {
 }
 // delete file caricato
 
-deleteFile(file:Doc){
- return  this.myFiles.map((f:Doc,index:number)=>{
+deleteFile(file:DetailDoc){
+ return  this.myFiles.map((f:DetailDoc,index:number)=>{
     f == file && this.myFiles.splice(index,1)
   //  this.toast.snackBar(`Rimosso il file ${f.name}`,'bg-success')
   })
@@ -115,14 +133,45 @@ deleteFile(file:Doc){
 
   // dowload file
 
-  download(url:string, name:string){
-    var blob = new Blob([url],{type:'application/pdf'});
-    var file = new File([blob],name,{type:'application/pdf'});
-    saveAs(file)
+  download( name:string,id:string){
+    this.isCompleted = false;
+    id && this.serviziService.downSingleDocument(id).subscribe((data)=>{
+      this.url = data;
+      console.log('bbbbbb',data);
+    });
+    if(this.url != null){
+      console.log('dentro l if ')
+      setTimeout(()=>{  
+        var blob = new Blob([this.url],{type:'application/pdf'});
+        var file = new File([blob],name,{type:'application/pdf'});                         
+        saveAs(file)
+       this.isCompleted = true;
+        console.log('else è completo?',this.isCompleted)
+    }, 3000);
+    }else{
+      console.log('dentro l else',this.isCompleted)
+      setTimeout(()=>{  
+        var blob = new Blob([this.url],{type:'application/pdf'});
+        var file = new File([blob],name,{type:'application/pdf'});                         
+        saveAs(file)
+        this.isCompleted = true;
+        console.log('else è completo?',this.isCompleted)
+    }, 3000);
+    }
+
   }
 
+  getDocumentSingle(id:string){
+   console.log('chiamo la funzione');
+   
+  return  id && this.serviziService.downSingleDocument(id).subscribe((data)=>{
+    this.url = data;
+    console.log('bbbbbb',data);
+  });
 
 
+
+  }
 
 
 
@@ -168,3 +217,5 @@ deleteFile(file:Doc){
   } */
 
 }
+
+

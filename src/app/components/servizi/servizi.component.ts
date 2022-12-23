@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
 import { User } from 'src/app/model/auth';
 
-import { Service } from 'src/app/model/model';
+import { Service, ServiceReal } from 'src/app/model/model';
 import { Tipologia } from 'src/app/model/tipo';
 import { FiduciarioPipe } from 'src/app/pipes/fiduciario.pipe';
 import { AuthService } from 'src/app/services/auth-service.service';
@@ -22,16 +23,21 @@ import { TypeLeftComponent } from '../type-left/type-left.component';
 export class ServiziComponent implements OnInit {
   // services:Service[]=[];
   service2: Service[] = [];
+  isClick: boolean = false;
   selectedItems: [] = [];
   selectedFiduciario: string = ' ';
   user: User | null = this.authService.userValue;
   fiduciari: any = [];
   page: number = 1;
   count: number = 0;
-  tableSize: number = 5;
+  tableSize: number = 25;
   tableSizes: any = [3, 6, 9, 12];
   red: number = 0;
+  // oggi 
   today = moment(new Date()).format('YYYY-MM-DD');
+  // oggi - 3 giorni 
+  start = moment(Date.now() - 5 * 24 * 3600 * 1000).format('YYYY-MM-DD');
+  dateForm: FormGroup;
   colors: Tipologia[] = [
     {
       color: 'red',
@@ -48,62 +54,118 @@ export class ServiziComponent implements OnInit {
   ]; /*, {
     "color":"blue",
     "tipo":"Tutti gli incarichi"
-  } ]*/
+  } ]
+    dateForm:FormGroup;
+
+  today=moment(new Date()).format("YYYY-MM-DD");
+  constructor( private fb: FormBuilder, private toast:ToastService,public dialogRef: MatDialogRef<ServiziComponent>) { 
+    this.dateForm = this.fb.group({
+    start:[this.today,Validators.required],
+    end:[this.today,Validators.required]
+    }
+      
+
+    )
+     
+    
+  }*/
 
   constructor(
     public service: ServiziService,
     public dialog: MatDialog,
     public authService: AuthService,
-    public _toast: ToastService
-  ) { }
+    public _toast: ToastService,
+    private fb: FormBuilder
+
+  ) {
+    this.dateForm = this.fb.group({
+      start: [this.today, Validators.required],
+      end: [this.today, Validators.required]
+    }
+
+
+    )
+  }
 
   ngOnInit(): void {
-    this.loadServizi();
-    // this.services
-    this.getFiduciari();
 
-    //console.log(this.service.serviziFiltered)
-    console.log('provaaaaaaa', this.service.serviziFiltered);
-
-    console.log('prova ngonit', this.service.serviziFiltered);
+    this.loadSinistriWithDate()
   }
 
-  isEquals():boolean{
-   return this.service.services === this.service.serviziFiltered
+  isEquals(): boolean {
+    return this.service.services === this.service.serviziFilterered
   }
-  loadServizi() {
-    this.getRole();
+  // sinistri in base al fiduciario
+  loadSinistrIncarichiFiduciarii() {
+    //Produzione = "https://webapp.sogesa.net/portale/jarvis.php?do=incarichi&numsx="
+    this.service.getServiceIncarichiFiduciari("0044587201670335665").subscribe((data) => {
+      console.log("data:", data)
+      //  this.service.serviziFilterered = data;
+
+    })
 
 
-
-    if (this.user && this.user.role === 2) {
-      this.service.getAllServiceUsername(this.user.username).subscribe((data) => {
-        console.log(data, 'dataaaaaa');
-        this.service.services = data;
-        this.service.serviziFiltered = data;
-
-        console.log(this.service.serviziFiltered);
-      });
-    } else if (this.user && this.user.role === 1) {
-      this.service.getServicesOperator().subscribe((data) => {
-        this.service.services = data;
-        console.log(data, 'dataaaaaa');
-        // console.log('services:',this.services)
-        this.service.serviziFiltered = data;
-        //  console.log(data)
-        console.log('primaaaaaaa', this.service.fiduciari);
-        // array di fiduciari
-        this.service.fiduciari = data.reduce((arr: any, item: any) => {
-          console.log('1', item.fiduciario);
-          arr.includes(item.fiduciario)
-            ? console.log('non include')
-            : arr.push(item.fiduciario);
-
-          return arr;
-        }, []);
-      });
-    }
   }
+
+  loadSinistriWithDate() {
+    this.isClick = false;
+
+  
+    this.service.getServiceIncarichiWithDate(this.start, this.today).subscribe((data) => {
+      this.service.services = data;
+      this.service.serviziFilterered = data;
+    
+      this.service.fiduciari = data.reduce((arr: any, item: any) => {
+      
+
+        !arr.includes(item.nomePer) && arr.push(item.nomePer)
+
+
+        return arr;
+      }, []);
+      //   
+    })
+    this.isClick = true;
+
+  }
+
+
+
+
+
+  /*  loadServizi() {
+     this.getRole();
+ 
+ 
+ 
+     if (this.user && this.user.role === 2) {
+       this.service.getAllServiceUsername(this.user.username).subscribe((data) => {
+         console.log(data, 'dataaaaaa');
+         this.service.services = data;
+         this.service.serviziFiltered = data;
+ 
+         console.log(this.service.serviziFiltered);
+       });
+     } else if (this.user && this.user.role === 1) {
+       this.service.getServicesOperator().subscribe((data) => {
+         this.service.services = data;
+         console.log(data, 'dataaaaaa');
+         // console.log('services:',this.services)
+         this.service.serviziFiltered = data;
+         //  console.log(data)
+         console.log('primaaaaaaa', this.service.fiduciari);
+         // array di fiduciari
+         this.service.fiduciari = data.reduce((arr: any, item: any) => {
+           console.log('1', item.fiduciario);
+           arr.includes(item.fiduciario)
+             //  ? console.log('non include')
+             && arr.push(item.fiduciario);
+ 
+           return arr;
+         }, []);
+       });
+     }
+   } */
   onTableDataChange(event: number) {
     this.page = event;
   }
@@ -115,30 +177,35 @@ export class ServiziComponent implements OnInit {
   counter(color: string): number {
     // inizializzo il contatore
     let i = 0;
-   
- 
-    this.service.serviziFiltered.filter((e: Service) => {
+
+
+    this.service.serviziFilterered.filter((e: ServiceReal) => {
       // per ogni elemento che sodisfa la condizione aggiungo 1 al contatore
-      e.sinisterState === color ? (i += 1) : i;
+      e.tipo === color ? (i += 1) : i;
     });
     //  console.log(i)
     return i;
   }
 
   // modal general
-  openDialog(id: string) {
+  openDialog(id: string, fiduciario: string) {
     this.dialog.open(TabsComponent);
 
     localStorage.setItem('id', id);
+    localStorage.setItem('fiduciario', fiduciario)
   }
   // modal filtro data
   openDialogFilter() {
     this.dialog.open(FilterComponent);
   }
   openDialogFilterLeftType() {
-    this.dialog.open(TypeLeftComponent);
+    this.dialog.open(TypeLeftComponent, {
+      autoFocus: false,
+      maxHeight: '50vh'
+
+    });
   }
-  // ruolo viariso250589!
+  // ruolo
   getRole() {
     // return Number(localStorage.getItem('role'));
     let user = this.authService.userValue;
@@ -172,16 +239,11 @@ export class ServiziComponent implements OnInit {
 
   // filtro per i contatori
   serviceFilter(tipo: string) {
-    // this.service.serviziFiltered = this.service.services;
-    this.service.serviziFiltered = this.service.serviziFiltered.reduce(
-      (filters: Service[], service: Service) => {
-        // se è uguale a quello che stiamo cercando allora l ho inseriamo nell array
-        service.sinisterState === tipo && filters.push(service);
 
-        return filters;
-      },
-      []
-    );
+    this.service.serviziFilterered = this.service.services.reduce((filteres: ServiceReal[], service: ServiceReal) => {
+      service.tipo === tipo && filteres.push(service);
+      return filteres;
+    }, [])
   }
 
   // filtro per fiduciari 
@@ -196,14 +258,14 @@ export class ServiziComponent implements OnInit {
       } else {
         // let string =  this.transform2(truste);
         //   console.log(string, 'stringa trasformata');
-        this.service.serviziFiltered = this.service.services.reduce((arr: Service[], item: Service) => {
+        this.service.serviziFilterered = this.service.services.reduce((arr: ServiceReal[], item: ServiceReal) => {
 
 
-          item.fiduciario === truste ? arr.push(item) : console.log('non è uguale')
+          item.nomePer === truste ? arr.push(item) : console.log('non è uguale')
           return arr;
         }, [])
 
-        return this.service.serviziFiltered;
+        return this.service.serviziFilterered;
       }
     }
     else {
@@ -219,43 +281,43 @@ export class ServiziComponent implements OnInit {
     // resetto la variabile a stringa 
     this.selectedFiduciario = '';
     // cosi evito un altra chiamata al server
-    return (this.service.serviziFiltered = this.service.services);
+    return (this.service.serviziFilterered = this.service.services);
   }
 
 
   // lista di fiduciari 
   getFiduciari() {
-    let arr = this.service.serviziFiltered.filter((item, pos: any) => {
+    let arr = this.service.serviziFilterered.filter((item, pos: any) => {
       // restituisce il primo valore uguale 
-      this.service.serviziFiltered.indexOf(item) == pos;
+      this.service.serviziFilterered.indexOf(item) == pos;
     });
     // alla fine mappo un array di appoccio con  solo nomi dei fiduciari
 
     return (this.fiduciari = arr.map((item) => {
-
+      item.nomePer
     }));
 
 
   }
 
-  trusteFilterBackEnd(truste:string) {
-    if (this.user && truste ) {
+  /* trusteFilterBackEnd(truste: string) {
+    if (this.user && truste) {
       this.service.getAllServiceUsername(truste).subscribe((data) => {
         console.log(data, 'dataaaaaa');
-    
+
         this.service.serviziFiltered = data;
 
         console.log(this.service.serviziFiltered);
       });
-      this._toast.snackBar(`filtro per fiduciario : ${truste}`,'bg-success');
+      this._toast.snackBar(`filtro per fiduciario : ${truste}`, 'bg-success');
       return this.service.serviziFiltered;
 
-    }else{ 
-      this._toast.snackBar(`nessun filtro inserito`,"bg-danger");
+    } else {
+      this._toast.snackBar(`nessun filtro inserito`, "bg-danger");
       return this.service.serviziFiltered = this.service.services;
     }
 
-  }
+  } */
 
 
 

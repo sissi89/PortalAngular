@@ -23,18 +23,18 @@ pieChartOptions: any;
     {
       color: 'red',
       tipo: 'Urgenze',
-      value:this.counter('red')
+  //    value:this.counter('red')
       
     },
     {
       color: 'yellow',
       tipo: ' Aperti',
-      value:this.counter('yellow')
+  //    value:this.counter('yellow')
     },
     {
       color: 'green',
       tipo: ' Chiusi',
-      value: this.counter('green')
+   //   value: this.counter('green')
     },
   ];
 
@@ -58,7 +58,7 @@ this.service.services;
    //console.log(this.arr)
   }
 
-  // contatore urgenze
+/*   // contatore urgenze
   counter(color: string): number {
     // inizializzo il contatore
     let i = 0;
@@ -68,7 +68,7 @@ this.service.services;
     });
     //  console.log(i)
     return i;
-  }
+  } */
  
 
   // a torta con valori dei contatori
@@ -108,7 +108,7 @@ createChartLine(){
       datasets:[{
         label:'quello che vuoi',
         data:['25','30','20','35'], // differenza tra 2 dati tra data incarico e data fine incarico
-        fill:false,
+        fill:false, 
         borderColor:'red',
         tension:0.1
       }]

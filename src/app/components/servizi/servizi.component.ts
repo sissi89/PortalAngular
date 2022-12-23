@@ -31,12 +31,12 @@ export class ServiziComponent implements OnInit {
   page: number = 1;
   count: number = 0;
   tableSize: number = 25;
-  tableSizes: any = [3, 6, 9, 12];
+  tableSizes: any = [2,10,50];
   red: number = 0;
   // oggi 
   today = moment(new Date()).format('YYYY-MM-DD');
-  // oggi - 3 giorni 
-  start = moment(Date.now() - 5 * 24 * 3600 * 1000).format('YYYY-MM-DD');
+  // oggi - 30 giorni 
+  start = moment(Date.now() - 2 * 24 * 3600 * 1000).format('YYYY-MM-DD');
   dateForm: FormGroup;
   colors: Tipologia[] = [
     {
@@ -169,9 +169,11 @@ export class ServiziComponent implements OnInit {
   onTableDataChange(event: number) {
     this.page = event;
   }
-  onTableSizeChange(event: any): void {
-    this.tableSize = event.target.value;
-    this.page = 1;
+ 
+
+  changeSizePage(event:any){
+    console.log(event.target.value)
+  return  this.tableSize = event.target.value;
   }
   // contatore
   counter(color: string): number {
@@ -244,6 +246,7 @@ export class ServiziComponent implements OnInit {
       service.tipo === tipo && filteres.push(service);
       return filteres;
     }, [])
+    
   }
 
   // filtro per fiduciari 
@@ -264,6 +267,8 @@ export class ServiziComponent implements OnInit {
           item.nomePer === truste ? arr.push(item) : console.log('non è uguale')
           return arr;
         }, [])
+        // resetto la paginazzione
+        this.page = 1;
 
         return this.service.serviziFilterered;
       }

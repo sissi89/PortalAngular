@@ -1,4 +1,5 @@
-<div class="container p-5 bg-light">
+<div class="container p-5 bg-light" *ngIf="documents">
+  
   <!--invio nuovi documenti-->
   <form
     class="form-control mt-2"
@@ -34,13 +35,18 @@
 
     <button type="submit" class="btn bg-danger">Invia</button>
   </form>
+  
   <!-- fine invio documenti-->
+  <div  >
+    <mat-progress-bar mode="indeterminate" *ngIf="!isCompleted"></mat-progress-bar>
+  </div>
+ 
   <!-- Documenti gia presenti con possibilità di scaricarli-->
-  <div class="form-control" *ngIf="documents?.length != 0">
+  <div class="form-control" *ngIf="documents.length >  0">
     <!--se è falsy-->
-    <mat-progress-bar mode="indeterminate" *ngIf="!isCompleted" class="fixed"></mat-progress-bar>
+   
     <h6>Documenti presenti</h6>
-    <div *ngFor="let s of documents">
+    <div *ngFor="let s of documents; index">
       <div class="d-flex justify-content-between bg-light rounded p-3 mt-3">
         <p class="mt-2 text-capitalize m-3">{{ s.nome }}</p>
   
@@ -66,7 +72,7 @@
           />
         </svg>  
 
-   
+        
       </div>
      
     </div>

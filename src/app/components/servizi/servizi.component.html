@@ -78,6 +78,9 @@
 
 
         </div>
+        <div>
+            <select (change)="changeSizePage($event)"><option *ngFor="let p of   tableSizes ">{{p}}</option></select>
+        </div>
        
 
         <hr>

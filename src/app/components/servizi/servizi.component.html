@@ -1,6 +1,6 @@
 <div class="container-lg">
 
- <!--    <form  [formGroup]="dateForm" (ngSubmit)=" loadSinistriWithDate()" *ngIf=" service.services.length <= 0 !isClick  " class="mt-25 center-flex">
+    <!--    <form  [formGroup]="dateForm" (ngSubmit)=" loadSinistriWithDate()" *ngIf=" service.services.length <= 0 !isClick  " class="mt-25 center-flex">
         <div class="d-flex ">
             <div class="form-group">
                 <label for="exampleInputEmail1">Data inizio</label>
@@ -25,18 +25,21 @@
     <!-- button -->
     <div *ngIf="service.services.length > 0" class="container-fluid">
         <section class="mt-2 p-3 text-center ">
-            <h1 class="text-color">Elenco Incarichi <!--dal {{start | date:'dd/MM/yy'}} al {{today | date:'dd/MM/yy'}}--> </h1>
+            <h1 class="text-color">Elenco Incarichi dal {{getStart() |  date:'dd/MM/yy' }} al {{getEnd() |  date:'dd/MM/yy'}}
+                <!--dal {{start | date:'dd/MM/yy'}} al {{today | date:'dd/MM/yy'}}--> </h1>
         </section>
 
         <div class=' row justify-content-evenly'>
 
-            <div class="  rounded    col-3 m0" *ngFor="let c of colors">
+            <div class="  rounded    col-3 m0" *ngFor="let c of colors" >
                 <button class="  d-flex flex-column  btn  p-lg-3 p-md-3 ml-0 p-sm-3  c-border w-100 "
-                    [style.backgroundColor]="c.color" [disabled]="counter(c.color) <= 0 "
-                    (click)="serviceFilter(c.color)">
+                    [style.backgroundColor]="c.color" [disabled]="this.counterIncarichi(c.num, this.service.serviziFilterered) <= 0 "
+                    (click)="serviceFilter(c.num)">
 
                     <h2 class="text-center text-black btn w-95 " *ngIf="c.color != 'blue'">
-                        <h2>{{counter(c.color)}}</h2>
+                        <h2>{{counterServices(c.num)}}</h2>
+                        
+             
                     </h2>
 
                     <div class="mr-3 w-95 ">
@@ -60,12 +63,13 @@
         <!-- end contatori-->
         <hr>
         <!-- button  filtro fiduciari solo per operatore -->
-        <div *ngIf=" getRole() === 1" class="d-flex justify-content-around">
-            <div>
+        <div class="d-flex justify-content-between">
+            <div *ngIf=" getRole() === 1">
 
                 <input class="form-control w-auto" [(ngModel)]="selectedFiduciario" type="text" list="codes"
-                    placeholder="  Filtra &#61442; " (change)="trusteeFilter(selectedFiduciario)" />
+                    placeholder="  {{fiduciario}} " (change)="trusteeFilter(selectedFiduciario)"  />
                 <datalist id="codes">
+                   <!--  <option selected>Tutti i fiduciari</option> -->
                     <option *ngFor="let c of service.fiduciari " [value]="c">{{c}}</option>
                 </datalist>
             </div>
@@ -73,15 +77,18 @@
                 filtri inseriti</h4>
             <button class="btn " [ngClass]="service.serviziFilterered.length <=0 ? 'btn-animate' : 'btn-red'"
                 [disabled]="isEquals()" (click)="all()"> Reset filtri</button>
-              
+
                 
+                    <select (change)="changeSizePage($event)" class="btn border">
+                      
+                        <option *ngFor="let p of   tableSizes ">{{p}}</option>
+                    </select>
+         
+
 
 
         </div>
-        <div>
-            <select (change)="changeSizePage($event)"><option *ngFor="let p of   tableSizes ">{{p}}</option></select>
-        </div>
-       
+
 
         <hr>
         <!--pagination table-->
@@ -90,7 +97,9 @@
             <div class="d-flex justify-content-center">
                 <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
                 </pagination-controls>
+
             </div>
+            
             <div>
 
                 <table class="table table-responsive text-nowrap table-striped fl-table testimonial-group">
@@ -118,7 +127,7 @@
                         </th>
                         <th *ngIf=" getRole() === 1" class="th-1" placeholder="Fiduciario">
                             <input class="form-control " [(ngModel)]="selectedFiduciario" type="text" list="codes"
-                                placeholder="  Filtra &#61442; " (change)="  trusteeFilter(selectedFiduciario)" />
+                                placeholder=" {{fiduciario}}  " (change)="  trusteeFilter(selectedFiduciario)" />
                             <datalist id="codes">
                                 <option *ngFor="let c of service.fiduciari">{{c.fiduciario | fiduciario}}</option>
 
@@ -134,7 +143,7 @@
                                 (click)="openDialogFilter()"> {{today | date:'dd/MM/yy'}}</button>
                         </th>
                         <th class="th-1">
-                            <input type="text" class="form-control" placeholder="Nr. sinistro">
+                            <input type="text" class="form-control"[(ngModel)]="numSx" placeholder="Nr. sinistro" (change)=" numberSxFilter(numSx.trim())" >
                         </th>
                         <th class="th-1">
                             <input type="text" class="form-control" placeholder="Nr. incarico">
@@ -161,7 +170,7 @@
                         <td class="td-1">
 
 
-                            <div class="circle-tipy m-auto" [style.backgroundColor]="s.tipo"> </div>
+                            <div class="circle-tipy m-auto" [style.backgroundColor]="s.tipo | typeUrgency"> </div>
 
                         </td>
                         <td class="td-1">
@@ -169,8 +178,8 @@
                         </td>
 
                         <td *ngIf=" getRole() === 1" class="td-1">
-                            <p ngClass='{{s.nomePer.length > 17 ? "size-small" : "size-large" }}'
-                                class=" lead">{{s.nomePer }}</p>
+                            <p ngClass='{{s.nomePer.length > 17 ? "size-small" : "size-large" }}' class=" lead">
+                                {{s.nomePer }}</p>
                         </td>
                         <td class="td-1">
 

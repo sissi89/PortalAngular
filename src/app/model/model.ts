@@ -1,24 +1,24 @@
 import { Doc } from "./doc";
 
 
-export interface Service{
-    id:string,
-    incaricoState:'red'|'green'|'yellow',
-    compa:number,
-    fiduciario:string,
+export interface Service {
+    id: string,
+    incaricoState: 'red' | 'green' | 'yellow',
+    compa: number,
+    fiduciario: string,
     tipo_sinistro: string,
-    data_incarico:Date,
-    nr_sinistro:string | number,
-    nr_incarico:number,
-    prestazione_richiesta:string,
-    assicurato:string,
-    targa_assicurato:string,
-    controparte:string,
-    targa_controparte:string,
-    nr_int:number,
-    data_ultimo:Date,
-    documents:Doc[],
-   
+    data_incarico: Date,
+    nr_sinistro: string | number,
+    nr_incarico: number,
+    prestazione_richiesta: string,
+    assicurato: string,
+    targa_assicurato: string,
+    controparte: string,
+    targa_controparte: string,
+    nr_int: number,
+    data_ultimo: Date,
+    documents: Doc[],
+
 
 
 }
@@ -41,24 +41,23 @@ export interface Service{
     },
  */
 // sinistri tutti da range data
-export interface ServiceReal{
-    tipo:'green'
-    numSx:string,
-    idInc:string,
-    dtSx:Date,
-    dtInc:Date,
-    codPer:string,
-    nomePer:string, // fiduciario
-    emailper:string,
-    dtPer:Date,
-    dtChiusura:Date,
-    dtRientro:Date,
-    isCom:boolean,
-    numComLeggere:number,
-    isComText:string,
-
-    numsxUrl?:string,
-    idIncUrl?:string
+export interface ServiceReal {
+    tipo: number
+    numSx: string,
+    idInc: string,
+    dtSx: Date,
+    dtInc: Date,
+    codPer: string,
+    nomePer: string, // fiduciario
+    emailper: string,
+    dtPer: Date,
+    dtChiusura: Date,
+    dtRientro: Date,
+    isCom: boolean,
+    numComLeggere: number,
+    isComText: string,
+    numsxUrl?: string,
+    idIncUrl?: string
 
 
 }

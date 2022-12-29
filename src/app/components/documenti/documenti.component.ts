@@ -10,6 +10,7 @@ import { ToastService } from 'src/app/services/toast.service';
 import { TabsComponent } from '../tabs/tabs.component';
 import { saveAs } from 'file-saver';
 import { HttpClient } from '@angular/common/http';
+import { MatSnackBarDismiss } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-documenti',
   templateUrl: './documenti.component.html',
@@ -20,7 +21,6 @@ export class DocumentiComponent implements OnInit {
   documentForm: FormGroup;
   documents: Doc[] = [];
   myFiles: DetailDoc[] = [];
-  url: any;
   isCompleted: boolean = true;
 
 
@@ -43,7 +43,7 @@ export class DocumentiComponent implements OnInit {
     // console.log(this.service,'ssssss')
   }
 
- 
+
 
 
   // invia form
@@ -73,14 +73,19 @@ export class DocumentiComponent implements OnInit {
       console.log(data);
       this.documents = data;
       console.log(this.documents, 'myfiles')
+      this.documents.forEach((item) => {
+        //  Object.assign(a,{quantity:1,total:a.price});
+        Object.assign(item, { isFinisched: false })
+      })
+
     })
 
   }
   // monitorare più file
   onFileChange(event: any) {
-let f = event.value;
-console.log(f);
-   
+    let f = event.value;
+    console.log(f);
+
 
     for (let i = 0; i < event.target.files.length; i++) {
       // console.log('richiamo funzione')
@@ -109,38 +114,25 @@ console.log(f);
   }
 
   // dowload file
-
-  download(name: string, id: string) {
+  download2(name: string, id: string) {
     this.isCompleted = false;
     this.toast.snackBar('il file sara scaricato a breve', 'bg-success');
+
     id && this.serviziService.downSingleDocument(id).subscribe((data) => {
-      this.url = data;
+
+
       console.log('bbbbbb', data);
+      // converto da binario a file 
+      var blob = new Blob([data], { type: 'application/pdf' });
+      // creo file come primo parametro metto il file e come secondo parametro il nome 
+      var file = new File([blob], name, { type: 'application/pdf' });
+      // salvo il file tramite libreria
+
+      saveAs(file)
+      this.isCompleted = true;
+
     });
-    if (this.url != null) {
-      console.log('dentro l if ')
-      setTimeout(() => {
 
-        var blob = new Blob([this.url], { type: 'application/pdf' });
-        var file = new File([blob], name, { type: 'application/pdf' });
-
-        saveAs(file)
-        this.isCompleted = true;
-        console.log('else è completo?', this.isCompleted)
-      }, 2000);
-    } else {
-      console.log('dentro l else', this.isCompleted)
-      setTimeout(() => {
-        this.toast.snackBar('il file sara scaricato a breve', 'bg-success');
-        var blob = new Blob([this.url], { type: 'application/pdf' });
-        var file = new File([blob], name, { type: 'application/pdf' });
-
-        saveAs(file)
-        this.isCompleted = true;
-
-        console.log('else è completo?', this.isCompleted)
-      }, 3000);
-    }
 
   }
 
@@ -148,10 +140,6 @@ console.log(f);
 
 
 
-
-  /* isCompleted(id:string){
-
-  } */
 
 
 

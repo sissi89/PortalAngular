@@ -33,6 +33,7 @@ import { FiduciarioPipe } from './pipes/fiduciario.pipe';
 import { NgChartsModule } from 'ng2-charts';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { TypeUrgencyPipe } from './pipes/type-urgency.pipe';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     TypeLeftComponent,
     GraficiComponent,
     FiduciarioPipe,
+    TypeUrgencyPipe,
    
   ],
   imports: [

@@ -33,7 +33,8 @@ export class FilterComponent implements OnInit {
   onSumbit(){
  
     const val = this.dateForm.value;
-   
+   localStorage.setItem('start',val.start);
+   localStorage.setItem('end',val.end);
     
     // se sono validi i campi
     if(val.start && val.end){
@@ -46,7 +47,11 @@ export class FilterComponent implements OnInit {
         this.service.getServiceIncarichiWithDate(val.start,val.end).subscribe((data)=>{
           this.service.services = data;
           this.service.serviziFilterered = data;
+          this.service.services.forEach((item) => {
 
+            Object.assign(item, { tipo: this.service.randomIntFromInterval(1, 3) })
+          })
+    
           this.service.fiduciari = data.reduce((arr: any, item: any) => {
  
        

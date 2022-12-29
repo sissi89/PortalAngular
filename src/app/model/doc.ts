@@ -25,5 +25,6 @@ export interface Doc{
   sizeKB:string,
   daComIcon:string,
   comUrl:string
+  isFinisched:boolean
 }
 

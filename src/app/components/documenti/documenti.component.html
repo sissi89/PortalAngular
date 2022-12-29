@@ -38,7 +38,7 @@
   
   <!-- fine invio documenti-->
   <div  >
-    <mat-progress-bar mode="indeterminate" *ngIf="!isCompleted"></mat-progress-bar>
+
   </div>
  
   <!-- Documenti gia presenti con possibilità di scaricarli-->
@@ -47,6 +47,7 @@
    
     <h6>Documenti presenti</h6>
     <div *ngFor="let s of documents; index">
+      <!-- <mat-progress-bar mode="indeterminate" *ngIf="!s.isFinisched"></mat-progress-bar> -->
       <div class="d-flex justify-content-between bg-light rounded p-3 mt-3">
         <p class="mt-2 text-capitalize m-3">{{ s.nome }}</p>
   
@@ -61,7 +62,7 @@
           height="30"
           width="25"
           viewBox="0 0 16 16"
-          (click)="download(s.nome, s.id)"
+          (click)="download2(s.nome, s.id)"
           
         >
           <path

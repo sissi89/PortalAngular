@@ -11,4 +11,6 @@ inseriti i tipi sinistri nella pipe
 
 bug fix di angular sistemando chiamate api con grafici 
 
-diblasi per  ritirare il progetto formativo dalle ore 10
+bug fix angular contatori sistemare fiduciario
+
+studiare i data table 

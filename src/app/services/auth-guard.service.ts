@@ -19,7 +19,7 @@ canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     console.log('user')
     if (user) {
         // se esiste l utente user 
-        console.log(user,'userrrrr')
+        console.log(user,'user')
         return true;
     }
 

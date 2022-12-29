@@ -1,5 +1,5 @@
 import { Component, OnInit, ɵpublishDefaultGlobalUtils } from '@angular/core';
-import { Service } from 'src/app/model/model';
+import { Service, ServiceReal } from 'src/app/model/model';
 import { AuthService } from 'src/app/services/auth-service.service';
 import { ServiziService } from 'src/app/services/servizi.service';
 import Chart from 'chart.js/auto';
@@ -23,30 +23,25 @@ pieChartOptions: any;
     {
       color: 'red',
       tipo: 'Urgenze',
-  //    value:this.counter('red')
+      value:this.counter(1),
+      num:1
       
     },
     {
       color: 'yellow',
       tipo: ' Aperti',
-  //    value:this.counter('yellow')
+     value:this.counter(2),
+      num:2
     },
     {
       color: 'green',
       tipo: ' Chiusi',
-   //   value: this.counter('green')
+     value: this.counter(3),
+     num:3
     },
   ];
 
-/*  arr: any  = Array.apply( {length: this.colors2.length}).map((item) =>{
 
- this.colors2.map(c =>{item = {
-  color:c
- }
-
-
- })
- } */
 
 
  
@@ -58,17 +53,17 @@ this.service.services;
    //console.log(this.arr)
   }
 
-/*   // contatore urgenze
-  counter(color: string): number {
+   // contatore urgenze
+  counter(color: number): number {
     // inizializzo il contatore
     let i = 0;
-    this.service.serviziFiltered.filter((e: Service) => {
+    this.service.serviziFilterered.filter((e: ServiceReal) => {
       // per ogni elemento che sodisfa la condizione aggiungo 1 al contatore
-      e.sinisterState === color ? (i += 1) : i;
+      e.tipo === color ? (i += 1) : i;
     });
     //  console.log(i)
     return i;
-  } */
+  } 
  
 
   // a torta con valori dei contatori

@@ -18,7 +18,7 @@
 
     </form> -->
     <!-- loader-->
-    <div class="center-flex mt-25 c-spinne " *ngIf="service.services.length <= 0 && isClick  ">
+    <div class="center-flex mt-25 c-spinne " *ngIf="service.services.length <= 0 ">
         <mat-spinner [diameter]="200"></mat-spinner>
     </div>
     <!-- end loader-->
@@ -146,7 +146,7 @@
                             <input type="text" class="form-control"[(ngModel)]="numSx" placeholder="Nr. sinistro" (change)=" numberSxFilter(numSx.trim())" >
                         </th>
                         <th class="th-1">
-                            <input type="text" class="form-control" placeholder="Nr. incarico">
+                            <input type="text" class="form-control" placeholder="Nr. incarico" [(ngModel)]="idIncarico" placeholder="Nr. sinistro" (change)="   numberIncarico(idIncarico)">
                         </th>
                         <th class="th-1">
                             <input type="text" class="form-control" placeholder="Prestazione ">

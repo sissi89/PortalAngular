@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
 import { User } from 'src/app/model/auth';
 
-import { Service, ServiceReal } from 'src/app/model/model';
+import {  ServiceReal } from 'src/app/model/model';
 import { Tipologia } from 'src/app/model/tipo';
 import { FiduciarioPipe } from 'src/app/pipes/fiduciario.pipe';
 import { AuthService } from 'src/app/services/auth-service.service';
@@ -21,25 +21,27 @@ import { TypeLeftComponent } from '../type-left/type-left.component';
   styleUrls: ['./servizi.component.scss'],
 })
 export class ServiziComponent implements OnInit {
-  // services:Service[]=[];
-  service2: Service[] = [];
-  isClick: boolean = false;
-  selectedItems: [] = [];
+
+ 
+ 
   selectedFiduciario: string = ' ';
+
   fiduciario: string = 'tutti';
   user: User | null = this.authService.userValue;
-  fiduciari: any = [];
+  
   page: number = 1;
   count: number = 0;
   tableSize: number = 25;
   tableSizes: any = [this.tableSize, 2, 10, 50];
-  red: number = 0;
+
   numSx: string = '';
+  idIncarico:string ='';
   // oggi 
   today = moment(new Date()).format('YYYY-MM-DD');
   // oggi - 30 giorni 
   start = moment(Date.now() - 5 * 24 * 3600 * 1000).format('YYYY-MM-DD');
   dateForm: FormGroup;
+  c:number = 0;
   colors: Tipologia[] = [
     {
       color: 'red',
@@ -56,24 +58,7 @@ export class ServiziComponent implements OnInit {
       tipo: ' Chiusi',
       num: 3
     },
-  ]; /*, {
-    "color":"blue",
-    "tipo":"Tutti gli incarichi"
-  } ]
-    dateForm:FormGroup;
-
-  today=moment(new Date()).format("YYYY-MM-DD");
-  constructor( private fb: FormBuilder, private toast:ToastService,public dialogRef: MatDialogRef<ServiziComponent>) { 
-    this.dateForm = this.fb.group({
-    start:[this.today,Validators.required],
-    end:[this.today,Validators.required]
-    }
-      
-
-    )
-     
-    
-  }*/
+  ]; 
 
   constructor(
     public service: ServiziService,
@@ -113,7 +98,7 @@ export class ServiziComponent implements OnInit {
   }
 
   loadSinistriWithDate() {
-    this.isClick = false;
+
 
 
     this.service.getServiceIncarichiWithDate(this.start, this.today).subscribe((data) => {
@@ -136,8 +121,7 @@ export class ServiziComponent implements OnInit {
       //   
     })
     this.setDate()
-    this.isClick = true;
-
+ 
   }
 
 
@@ -308,7 +292,7 @@ export class ServiziComponent implements OnInit {
     });
     // alla fine mappo un array di appoccio con  solo nomi dei fiduciari
 
-    return (this.fiduciari = arr.map((item) => {
+    return (this.service.fiduciari = arr.map((item) => {
       item.nomePer
     }));
 
@@ -318,21 +302,20 @@ export class ServiziComponent implements OnInit {
   all() {
     // richiamo tutti i servizi
     console.log(this.service.services, 'alll');
-    // resetto la variabile a stringa 
+    // resetto le variabili
     this.selectedFiduciario = '';
     this.fiduciario ='tutti';
     this.numSx ='';
-    // cosi evito un altra chiamata al server
+    this.idIncarico ='';
+    this.c =0;
+    // richiamo i service salvati in precendenza
     return (this.service.serviziFilterered = this.service.services);
   }
   /*----- filtri ----- */
   // filtro per i contatori
   serviceFilter(tipo: number) {
     let filteres:ServiceReal[] =[];
-   /*  this.service.serviziFilterered = this.service.serviziFilterered.reduce((filteres: ServiceReal[], service: ServiceReal) => {
-      service.tipo === tipo && filteres.push(service);
-      return filteres;
-    }, []) */
+   
     this.service.serviziFilterered.filter((item:ServiceReal)=>{
       item.tipo === tipo && filteres.push(item)
     })
@@ -369,15 +352,23 @@ export class ServiziComponent implements OnInit {
           item.nomePer === truste && arr.push(item);
         })
 
-        // resetto la paginazzione
+      // aggiungo al contatore dei filtri 
+        this.count +=1;
+        // resetto la paginazione
         this.page = 1;
         this.selectedFiduciario = '';
-        if(arr.length > 0){
+        if(arr.length > 0 && this.count === 0){
           return this.service.serviziFilterered = arr;
         }else{
           this.all();
-          this._toast.snackBar(`Riprova per  ${truste}`,'bg-danger')
-          return this.all();
+          
+        let arr: ServiceReal[] = [];
+          this.service.services.filter((item:ServiceReal)=>{
+            item.nomePer === truste && arr.push(item)
+          })
+         // this._toast.snackBar(`Riprova per  ${truste}`,'bg-danger')
+         
+          return this.service.serviziFilterered = arr;
         }
        
       }
@@ -393,8 +384,9 @@ export class ServiziComponent implements OnInit {
 
   numberSxFilter(numSx: string) {
     let arr: ServiceReal[] = []
+    this.service.serviziFilterered = this.service.services;
     this.service.serviziFilterered = this.service.services.filter((item: ServiceReal) => {
-      console.log(item.numSx === numSx, numSx);
+     // console.log(item.numSx === numSx, numSx);
       item.numSx === numSx && arr.push(item)
 
     })
@@ -405,6 +397,23 @@ export class ServiziComponent implements OnInit {
       return this.service.serviziFilterered;
     } else {
       this._toast.snackBar(`non ci sono sinistri per ${numSx}`, 'bg-danger');
+      return this.all();
+    }
+
+
+  }
+  numberIncarico(idIncarico:string){
+    let arr:ServiceReal[]=[];
+    this.service.serviziFilterered = this.service.services;
+    this.service.serviziFilterered = this.service.services.filter((item:ServiceReal)=>{
+      item.idInc === idIncarico && arr.push(item)
+    })
+    this.service.serviziFilterered = arr;
+    this.page = 1;
+    if (this.service.serviziFilterered.length > 0) {
+      return this.service.serviziFilterered;
+    } else {
+      this._toast.snackBar(`non ci sono sinistri per ${idIncarico}`, 'bg-danger');
       return this.all();
     }
 

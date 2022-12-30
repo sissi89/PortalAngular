@@ -1,26 +1,26 @@
+<div mat-dialog-actions class="d-flex justify-content-end m-1">
 
-    <div mat-dialog-actions class="d-flex justify-content-end m-1">
-      
-        <button  mat-button mat-dialog-close type="button" class="close btn btn-red text-white " aria-label="Close">
-            <span aria-hidden="true"> <b> X</b></span>
-          </button>
-      
-    </div>
-    <form  [formGroup]="dateForm" (ngSubmit)="onSumbit()"  >
-        <div class="d-flex ">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Data inizio</label>
-                <input type="date" class="form-control" id="exampleInputEmail1" formControlName="start" aria-describedby="emailHelp" placeholder="{{today}}" value="{{today}}">
-               
-            </div>
-            <div class="form-group ">
-                <label for="exampleInputPassword1">Data Fine</label>
-                <input type="date" class="form-control " id="exampleInputPassword1" formControlName="end" placeholder="{{today}}" value="{{today}}">
-            </div>
+    <button mat-button mat-dialog-close type="button" class="close btn btn-red text-white " aria-label="Close">
+        <span aria-hidden="true"> <b> X</b></span>
+    </button>
+
+</div>
+<form [formGroup]="dateForm" (ngSubmit)="onSumbit()">
+    <div class="d-flex ">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Data inizio</label>
+            <input type="date" class="form-control" id="exampleInputEmail1" formControlName="start"
+                aria-describedby="emailHelp" placeholder="{{today}}" value="{{today}}">
+
         </div>
-       
-       
-        <button type="submit" class="btn btn-red mt-3 m-l-40 text-white">Filtra</button>
+        <div class="form-group ">
+            <label for="exampleInputPassword1">Data Fine</label>
+            <input type="date" class="form-control " id="exampleInputPassword1" formControlName="end"
+                placeholder="{{today}}" value="{{today}}">
+        </div>
+    </div>
 
-    </form>
 
+    <button type="submit" class="btn btn-red mt-3 m-l-40 text-white">Filtra</button>
+
+</form>

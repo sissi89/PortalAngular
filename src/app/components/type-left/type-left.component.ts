@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-import { Service } from 'src/app/model/model';
+//import { Service } from 'src/app/model/model';
 import { ServiziService } from 'src/app/services/servizi.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ServiziComponent } from '../servizi/servizi.component';

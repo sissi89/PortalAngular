@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Auth } from '../model/auth';
 import { Detail } from '../model/Detail';
 import { Doc } from '../model/doc';
-import { Service, ServiceReal } from '../model/model';
+import {  ServiceReal } from '../model/model';
 
 const { api, auth } = environment;
 @Injectable({
@@ -59,7 +59,7 @@ export class ServiziService {
   }
   //------- sinistri con vecchie api --------//
   // sinistro per  in base al fiduciario 
-  getServiceById(id: string, username: string): Observable<Service> {
+ /*  getServiceById(id: string, username: string): Observable<Service> {
     // trim rimuove gli spazi di una stringa 
     console.log('service is running', `${api}/sinistroFiduciario`, { id, username })
     // primo parametro url e secondo il body
@@ -91,7 +91,7 @@ export class ServiziService {
     return this.http.post<Service>(`${api}/sinistro/`, { id })
   }
 
-
+ */
   // numero sinistro fatta anche con una pipe
   getNumberleft(number: string): string {
     if (number) {

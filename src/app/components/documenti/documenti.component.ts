@@ -4,7 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { DetailDoc, Doc, Download } from 'src/app/model/doc';
-import { Service } from 'src/app/model/model';
+//import { Service } from 'src/app/model/model';
 import { ServiziService } from 'src/app/services/servizi.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { TabsComponent } from '../tabs/tabs.component';
@@ -17,7 +17,7 @@ import { MatSnackBarDismiss } from '@angular/material/snack-bar';
   styleUrls: ['./documenti.component.scss']
 })
 export class DocumentiComponent implements OnInit {
-  service: Service | undefined;
+  //service: Service | undefined;
   documentForm: FormGroup;
   documents: Doc[] = [];
   myFiles: DetailDoc[] = [];

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Detail } from 'src/app/model/Detail';
-import { Service } from 'src/app/model/model';
+//import { Service } from 'src/app/model/model';
 import { AuthService } from 'src/app/services/auth-service.service';
 import { ServiziService } from 'src/app/services/servizi.service';
 import { ToastService } from 'src/app/services/toast.service';

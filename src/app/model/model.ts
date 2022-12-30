@@ -1,7 +1,7 @@
 import { Doc } from "./doc";
 
-
-export interface Service {
+// vecchia mia api
+/* export interface Service {
     id: string,
     incaricoState: 'red' | 'green' | 'yellow',
     compa: number,
@@ -21,28 +21,11 @@ export interface Service {
 
 
 
-}
+} */
 
-/* 
-{
-    "numSx": "0027164811671104511",
-    "idInc": "_SO2255287",
-    "dtsx": "2022-12-05",
-    "dtInc": "2022-12-20",
-    "codPer": "0000",
-    "nomePer": "PERITO NON SPECIFICATO",
-    "emailPer": "CLAIMS@SOGESA.NET",
-    "dtPer": "",
-    "dtChiusura": "",
-    "dtRientro": "",
-    "isCom": true,
-    "numComLeggere": 2,
-    "isComText": null
-    },
- */
 // sinistri tutti da range data
 export interface ServiceReal {
-    tipo: number
+    tipo: number // aggiunto da me tramite assign 
     numSx: string,
     idInc: string,
     dtSx: Date,

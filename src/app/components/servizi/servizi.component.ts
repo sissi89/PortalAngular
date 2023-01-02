@@ -31,9 +31,7 @@ export class ServiziComponent implements OnInit {
 
   // page: number = 1;
   count: number = 0;
-  tableSize: number = 25;
-  tableSizes: any = [this.tableSize, 2, 10, 50];
-
+  tableSize: number = 10;
   numSx: string = '';
   idIncarico: string = '';
   //isFilter:boolean = false;
@@ -128,6 +126,18 @@ this.service.serviziFilterered =[];
 
   }
 
+  // create arrry of  tableSizes
+
+  createArray(length:number){
+    // creo un array di un lunghezza variabile e ogni valore l ho multiplo x 10
+    let array = Array.from({length:length},(_,i)=>(
+      i*10
+      
+    ))
+    array.shift()
+    return array;
+  }
+  
 
   setLocalStorage() {
     localStorage.setItem('end', this.today)

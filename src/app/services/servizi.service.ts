@@ -17,7 +17,10 @@ export class ServiziService {
 
   services: ServiceReal[] = [];
   serviziFilterered: ServiceReal[] = [];
-  fiduciari: any[] = [];
+  fiduciari: any;
+  // pagination
+  page:number = 1;
+  isFilter:boolean = false;
   constructor(private http: HttpClient) { }
   //---- nuovi metodi con api di treglia ----//
   // Incarichi per Sx:

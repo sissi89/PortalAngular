@@ -76,7 +76,7 @@
             <h4 *ngIf="service.serviziFilterered.length  <=0 "> Non ci sono <b class="text-danger ">SINISTRI</b> con i
                 filtri inseriti</h4>
             <button class="btn " [ngClass]="service.serviziFilterered.length <=0 ? 'btn-animate' : 'btn-red'"
-                [disabled]="isEquals()" (click)="all()"> Reset filtri</button>
+                [disabled]=" isDisalbled() " (click)="all()"> Reset filtri</button>
 
                 
                     <select (change)="changeSizePage($event)" class="btn border">
@@ -146,7 +146,7 @@
                             <input type="text" class="form-control"[(ngModel)]="numSx" placeholder="Nr. sinistro" (change)=" numberSxFilter(numSx.trim())" >
                         </th>
                         <th class="th-1">
-                            <input type="text" class="form-control" placeholder="Nr. incarico" [(ngModel)]="idIncarico" placeholder="Nr. sinistro" (change)="   numberIncarico(idIncarico)">
+                            <input type="text" class="form-control" placeholder="Nr. incarico" [(ngModel)]="idIncarico"  (change)="   numberIncarico(idIncarico)">
                         </th>
                         <th class="th-1">
                             <input type="text" class="form-control" placeholder="Prestazione ">
@@ -160,10 +160,10 @@
 
                     </tr>
 
-                    <tr *ngFor="let s of service.serviziFilterered| paginate 
+                    <tr *ngFor="let s of service.serviziFilterered | paginate 
                     : {
                         itemsPerPage: tableSize,
-                        currentPage: page,
+                        currentPage: service.page,
                         totalItems: count
                     }; let i = index" (click)=" openDialog(s.idInc, s.nomePer)  ">
 

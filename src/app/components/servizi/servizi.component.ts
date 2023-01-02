@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
 import { User } from 'src/app/model/auth';
 
-import {  ServiceReal } from 'src/app/model/model';
+import { ServiceReal } from 'src/app/model/model';
 import { Tipologia } from 'src/app/model/tipo';
 import { FiduciarioPipe } from 'src/app/pipes/fiduciario.pipe';
 import { AuthService } from 'src/app/services/auth-service.service';
@@ -22,26 +22,27 @@ import { TypeLeftComponent } from '../type-left/type-left.component';
 })
 export class ServiziComponent implements OnInit {
 
- 
- 
+
+
   selectedFiduciario: string = ' ';
 
   fiduciario: string = 'tutti';
   user: User | null = this.authService.userValue;
-  
-  page: number = 1;
+
+  // page: number = 1;
   count: number = 0;
   tableSize: number = 25;
   tableSizes: any = [this.tableSize, 2, 10, 50];
 
   numSx: string = '';
-  idIncarico:string ='';
+  idIncarico: string = '';
+  //isFilter:boolean = false;
   // oggi 
   today = moment(new Date()).format('YYYY-MM-DD');
   // oggi - 30 giorni 
   start = moment(Date.now() - 5 * 24 * 3600 * 1000).format('YYYY-MM-DD');
   dateForm: FormGroup;
-  c:number = 0;
+  c: number = 0;
   colors: Tipologia[] = [
     {
       color: 'red',
@@ -58,7 +59,7 @@ export class ServiziComponent implements OnInit {
       tipo: ' Chiusi',
       num: 3
     },
-  ]; 
+  ];
 
   constructor(
     public service: ServiziService,
@@ -83,6 +84,7 @@ export class ServiziComponent implements OnInit {
   }
 
   isEquals(): boolean {
+   // this.isFilter = true;
     return this.service.services === this.service.serviziFilterered
   }
   // sinistri in base al fiduciario
@@ -99,7 +101,9 @@ export class ServiziComponent implements OnInit {
 
   loadSinistriWithDate() {
 
-
+this.service.services =[];
+this.service.serviziFilterered =[];
+// sistemare il filtro
 
     this.service.getServiceIncarichiWithDate(this.start, this.today).subscribe((data) => {
       this.service.services = data;
@@ -120,14 +124,15 @@ export class ServiziComponent implements OnInit {
       }, []);
       //   
     })
-    this.setDate()
- 
+    this.setLocalStorage()
+
   }
 
 
-  setDate() {
+  setLocalStorage() {
     localStorage.setItem('end', this.today)
     localStorage.setItem('start', this.start)
+
   }
 
   getEnd() {
@@ -176,13 +181,13 @@ export class ServiziComponent implements OnInit {
      }
    } */
   onTableDataChange(event: number) {
-    this.page = event;
+    this.service.page = event;
   }
 
 
   changeSizePage(event: any) {
     console.log(event.target.value)
-    this.page = 1;
+    this.service.page = 1;
     return this.tableSize = event.target.value;
   }
   // contatore filter
@@ -202,11 +207,11 @@ export class ServiziComponent implements OnInit {
     return this.counterIncarichi(color, this.service.serviziFilterered);
   }
   // contatori services
-  counterServices(color: number): number  {
+  counterServices(color: number): number {
 
     if (this.counter(color) === 0) {
-    
-      return   this.counterIncarichi(color,this.service.services);
+
+      return this.counterIncarichi(color, this.service.services);
     } else {
       return this.counter(color)
     }
@@ -230,6 +235,8 @@ export class ServiziComponent implements OnInit {
   }
   // modal filtro data
   openDialogFilter() {
+    this.isEquals() 
+    console.log(this.isEquals())
     this.dialog.open(FilterComponent);
   }
   openDialogFilterLeftType() {
@@ -298,40 +305,77 @@ export class ServiziComponent implements OnInit {
 
 
   }
-  // tutti gli incarichi
+  // tutti gli incarichi da problemi insieme al filtro fiduciario
   all() {
+    
     // richiamo tutti i servizi
+    this.service.page = 1;
+    console.log(this.service.isFilter,'is filter')
     console.log(this.service.services, 'alll');
     // resetto le variabili
-    this.selectedFiduciario = '';
-    this.fiduciario ='tutti';
-    this.numSx ='';
-    this.idIncarico ='';
-    this.c =0;
+     this.selectedFiduciario = '';
+    this.fiduciario = '';
+    this.numSx = '';
+    this.idIncarico = '';
+    this.c = 0; 
+    
     // richiamo i service salvati in precendenza
-    return (this.service.serviziFilterered = this.service.services);
+     if(this.service.isFilter){
+      console.log('if')
+      this.service.isFilter = false;
+     return    this.loadSinistriWithDate()
+    }else{
+      console.log('else')
+      return (this.service.serviziFilterered = this.service.services);
+    } 
+   // return  this.service.serviziFilterered = this.service.services;
+    
   }
   /*----- filtri ----- */
   // filtro per i contatori
   serviceFilter(tipo: number) {
-    let filteres:ServiceReal[] =[];
-   
-    this.service.serviziFilterered.filter((item:ServiceReal)=>{
+    let filteres: ServiceReal[] = [];
+
+    this.service.serviziFilterered.filter((item: ServiceReal) => {
       item.tipo === tipo && filteres.push(item)
     })
-    if(filteres.length > 0){
-      this.page = 1;
+    this.service.page = 1;
+    if (filteres.length > 0) {
+
       return this.service.serviziFilterered = filteres;
-    }else{
-    
-      this.page = 1;
+    } else {
+
+
       return this.service.serviziFilterered = this.service.services;
     }
 
   }
+  // button disabled 
+  isDisalbled(){
+   
+  /*   if(!this.service.isFilter && !this.isEquals()){
+    // questo non fa vedere
+      return false;
+    }else if(this.isEquals() && !this.service.isFilter){
+    return true;
+    }else if(this.isEquals() && this.service.isFilter){
+      console.log('nel vero')
+      return false;
+    }else{
+      return false;
+    } */
+    /* if(this.isEquals() && !this.service.isFilter){
+      console.log('prova vero',(this.isEquals() && !this.service.isFilter) )
+      return true
+    }else{
+      console.log('prova else',(this.isEquals() && !this.service.isFilter) )
+      return false
+    } */
+    return this.isEquals() && !this.service.isFilter
+  }
 
   // filtro per fiduciari 
-  trusteeFilter(truste: string) {
+ /*  trusteeFilter(truste: string) {
     // console.log(truste, 'truste')
     this.selectedFiduciario.toUpperCase();
     console.log(this.selectedFiduciario);
@@ -352,25 +396,25 @@ export class ServiziComponent implements OnInit {
           item.nomePer === truste && arr.push(item);
         })
 
-      // aggiungo al contatore dei filtri 
-        this.count +=1;
+        // aggiungo al contatore dei filtri 
+        this.count += 1;
         // resetto la paginazione
-        this.page = 1;
+        this.service.page = 1;
         this.selectedFiduciario = '';
-        if(arr.length > 0 && this.count === 0){
+        if (arr.length > 0 && this.count === 0) {
           return this.service.serviziFilterered = arr;
-        }else{
-          this.all();
-          
-        let arr: ServiceReal[] = [];
-          this.service.services.filter((item:ServiceReal)=>{
+        } else {
+        //  this.all();
+
+          let arr: ServiceReal[] = [];
+          this.service.services.filter((item: ServiceReal) => {
             item.nomePer === truste && arr.push(item)
           })
-         // this._toast.snackBar(`Riprova per  ${truste}`,'bg-danger')
-         
+          // this._toast.snackBar(`Riprova per  ${truste}`,'bg-danger')
+
           return this.service.serviziFilterered = arr;
         }
-       
+
       }
 
     }
@@ -378,7 +422,51 @@ export class ServiziComponent implements OnInit {
       this._toast.snackBar("Ruolo Fiduciario", "bg-danger")
       return null;
     }
-  }
+  } */
+  // filtro per fiduciari 
+  trusteeFilter(truste: string) {
+    console.log(truste, 'truste')
+     this.fiduciario = truste;
+    this.selectedFiduciario.toUpperCase();
+    console.log(this.selectedFiduciario);
+    if (this.user && this.user.role === 1) {
+      // se è falsy 
+
+      if (!truste) {
+        return this.all();
+      } else {
+        // let string =  this.transform2(truste);
+        //   console.log(string, 'stringa trasformata');
+        
+        this.service.serviziFilterered = this.service.services.reduce((arr: ServiceReal[], item: ServiceReal) => {
+
+
+          item.nomePer === truste ? arr.push(item) : console.log('non è uguale')
+          return arr;
+        }, [])
+        if(this.service.serviziFilterered.length > 0){
+          // resetto la paginazione
+          this.service.page = 1;
+          this.selectedFiduciario = '';
+          // mando a schermo gli incarichi filtrati
+          return this.service.serviziFilterered;
+          
+        }else{
+          // mando a schermo tutti gli incarichi
+
+          this._toast.snackBar(`Non ci sono incarichi per ${truste}`,'bg-danger');
+          return this.all();
+        }
+
+     
+      }
+      
+    }
+    else {
+      this._toast.snackBar("Ruolo Fiduciario", "bg-danger")
+      return null;
+    }
+  } 
 
   // filtro per nr sinistro 
 
@@ -386,13 +474,13 @@ export class ServiziComponent implements OnInit {
     let arr: ServiceReal[] = []
     this.service.serviziFilterered = this.service.services;
     this.service.serviziFilterered = this.service.services.filter((item: ServiceReal) => {
-     // console.log(item.numSx === numSx, numSx);
+      // console.log(item.numSx === numSx, numSx);
       item.numSx === numSx && arr.push(item)
 
     })
     this.service.serviziFilterered = arr;
     // resetto la paginazzione
-    this.page = 1;
+    this.service.page = 1;
     if (this.service.serviziFilterered.length > 0) {
       return this.service.serviziFilterered;
     } else {
@@ -402,14 +490,14 @@ export class ServiziComponent implements OnInit {
 
 
   }
-  numberIncarico(idIncarico:string){
-    let arr:ServiceReal[]=[];
+  numberIncarico(idIncarico: string) {
+    let arr: ServiceReal[] = [];
     this.service.serviziFilterered = this.service.services;
-    this.service.serviziFilterered = this.service.services.filter((item:ServiceReal)=>{
+    this.service.serviziFilterered = this.service.services.filter((item: ServiceReal) => {
       item.idInc === idIncarico && arr.push(item)
     })
     this.service.serviziFilterered = arr;
-    this.page = 1;
+    this.service.page = 1;
     if (this.service.serviziFilterered.length > 0) {
       return this.service.serviziFilterered;
     } else {
@@ -428,7 +516,7 @@ export class ServiziComponent implements OnInit {
 
 
 
-// call quando ci srà il filtro back end fiduciario
+  // call quando ci srà il filtro back end fiduciario
   /* trusteFilterBackEnd(truste: string) {
     if (this.user && truste) {
       this.service.getAllServiceUsername(truste).subscribe((data) => {

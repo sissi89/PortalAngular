@@ -29,6 +29,8 @@ export class FilterComponent implements OnInit {
 
   loadIncarichi(start: string, end: string) {
     // svuoto i vecchi incarichi
+   // resetto la paginazione
+   this.service.page = 1;
     this.service.services = [];
     this.service.serviziFilterered = [];
     this.service.fiduciari = [];
@@ -53,6 +55,7 @@ export class FilterComponent implements OnInit {
       //    
     })
     // chiudo la modal
+    this.service.isFilter = true;
     this.dialogRef.close();
   }
 
@@ -84,6 +87,7 @@ export class FilterComponent implements OnInit {
     } else {
 
       this.toast.snackBar('compilare tutti i campi', 'bg-danger');
+      
       return null;
     }
 

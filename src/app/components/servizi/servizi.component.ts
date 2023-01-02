@@ -82,7 +82,7 @@ export class ServiziComponent implements OnInit {
   }
 
   isEquals(): boolean {
-   // this.isFilter = true;
+    // this.isFilter = true;
     return this.service.services === this.service.serviziFilterered
   }
   // sinistri in base al fiduciario
@@ -99,14 +99,15 @@ export class ServiziComponent implements OnInit {
 
   loadSinistriWithDate() {
 
-this.service.services =[];
-this.service.serviziFilterered =[];
-// sistemare il filtro
+    this.service.services = [];
+    this.service.serviziFilterered = [];
+    // sistemare il filtro
 
     this.service.getServiceIncarichiWithDate(this.start, this.today).subscribe((data) => {
       this.service.services = data;
       this.service.serviziFilterered = data;
       console.log(data)
+      // aggiungo il tipo incarico
       this.service.serviziFilterered.forEach((item) => {
 
         Object.assign(item, { tipo: this.service.randomIntFromInterval(1, 3) })
@@ -128,16 +129,16 @@ this.service.serviziFilterered =[];
 
   // create arrry of  tableSizes
 
-  createArray(length:number){
+  createArray(length: number) {
     // creo un array di un lunghezza variabile e ogni valore l ho multiplo x 10
-    let array = Array.from({length:length},(_,i)=>(
-      i*10
-      
+    let array = Array.from({ length: length }, (_, i) => (
+      i * 10
+
     ))
     array.shift()
     return array;
   }
-  
+
 
   setLocalStorage() {
     localStorage.setItem('end', this.today)
@@ -200,23 +201,11 @@ this.service.serviziFilterered =[];
     this.service.page = 1;
     return this.tableSize = event.target.value;
   }
-  // contatore filter
-  /* counter(color: number): number {
-    // inizializzo il contatore
-    let i = 0;
-
-
-    this.service.serviziFilterered.filter((e: ServiceReal) => {
-      // per ogni elemento che sodisfa la condizione aggiungo 1 al contatore
-      e.tipo === color ? (i += 1) : i;
-    });
-    //  console.log(i)
-    return i;
-  } */
+  // contatori incarichi 
   counter(color: number) {
     return this.counterIncarichi(color, this.service.serviziFilterered);
   }
-  // contatori services
+
   counterServices(color: number): number {
 
     if (this.counter(color) === 0) {
@@ -245,7 +234,7 @@ this.service.serviziFilterered =[];
   }
   // modal filtro data
   openDialogFilter() {
-    this.isEquals() 
+    this.isEquals()
     console.log(this.isEquals())
     this.dialog.open(FilterComponent);
   }
@@ -317,29 +306,29 @@ this.service.serviziFilterered =[];
   }
   // tutti gli incarichi da problemi insieme al filtro fiduciario
   all() {
-    
+
     // richiamo tutti i servizi
     this.service.page = 1;
-    console.log(this.service.isFilter,'is filter')
+    console.log(this.service.isFilter, 'is filter')
     console.log(this.service.services, 'alll');
     // resetto le variabili
-     this.selectedFiduciario = '';
+    this.selectedFiduciario = '';
     this.fiduciario = '';
     this.numSx = '';
     this.idIncarico = '';
-    this.c = 0; 
-    
+    this.c = 0;
+
     // richiamo i service salvati in precendenza
-     if(this.service.isFilter){
+    if (this.service.isFilter) {
       console.log('if')
       this.service.isFilter = false;
-     return    this.loadSinistriWithDate()
-    }else{
+      return this.loadSinistriWithDate()
+    } else {
       console.log('else')
       return (this.service.serviziFilterered = this.service.services);
-    } 
-   // return  this.service.serviziFilterered = this.service.services;
-    
+    }
+    // return  this.service.serviziFilterered = this.service.services;
+
   }
   /*----- filtri ----- */
   // filtro per i contatori
@@ -361,19 +350,19 @@ this.service.serviziFilterered =[];
 
   }
   // button disabled 
-  isDisalbled(){
-   
-  /*   if(!this.service.isFilter && !this.isEquals()){
-    // questo non fa vedere
-      return false;
-    }else if(this.isEquals() && !this.service.isFilter){
-    return true;
-    }else if(this.isEquals() && this.service.isFilter){
-      console.log('nel vero')
-      return false;
-    }else{
-      return false;
-    } */
+  isDisalbled() {
+
+    /*   if(!this.service.isFilter && !this.isEquals()){
+      // questo non fa vedere
+        return false;
+      }else if(this.isEquals() && !this.service.isFilter){
+      return true;
+      }else if(this.isEquals() && this.service.isFilter){
+        console.log('nel vero')
+        return false;
+      }else{
+        return false;
+      } */
     /* if(this.isEquals() && !this.service.isFilter){
       console.log('prova vero',(this.isEquals() && !this.service.isFilter) )
       return true
@@ -385,58 +374,58 @@ this.service.serviziFilterered =[];
   }
 
   // filtro per fiduciari 
- /*  trusteeFilter(truste: string) {
-    // console.log(truste, 'truste')
-    this.selectedFiduciario.toUpperCase();
-    console.log(this.selectedFiduciario);
-    this.fiduciario = this.selectedFiduciario;
-    if (this.user && this.user.role === 1) {
-      if (this.selectedFiduciario === 'Tutti i fiduciari') {
-        return this.all();
-      }
-      // se è falsy 
-      if (!truste) {
-        return this.all();
-      } else {
-        // let string =  this.transform2(truste);
-        //   console.log(string, 'stringa trasformata');
-
-        let arr: ServiceReal[] = [];
-        this.service.serviziFilterered.filter((item: ServiceReal) => {
-          item.nomePer === truste && arr.push(item);
-        })
-
-        // aggiungo al contatore dei filtri 
-        this.count += 1;
-        // resetto la paginazione
-        this.service.page = 1;
-        this.selectedFiduciario = '';
-        if (arr.length > 0 && this.count === 0) {
-          return this.service.serviziFilterered = arr;
-        } else {
-        //  this.all();
-
-          let arr: ServiceReal[] = [];
-          this.service.services.filter((item: ServiceReal) => {
-            item.nomePer === truste && arr.push(item)
-          })
-          // this._toast.snackBar(`Riprova per  ${truste}`,'bg-danger')
-
-          return this.service.serviziFilterered = arr;
-        }
-
-      }
-
-    }
-    else {
-      this._toast.snackBar("Ruolo Fiduciario", "bg-danger")
-      return null;
-    }
-  } */
+  /*  trusteeFilter(truste: string) {
+     // console.log(truste, 'truste')
+     this.selectedFiduciario.toUpperCase();
+     console.log(this.selectedFiduciario);
+     this.fiduciario = this.selectedFiduciario;
+     if (this.user && this.user.role === 1) {
+       if (this.selectedFiduciario === 'Tutti i fiduciari') {
+         return this.all();
+       }
+       // se è falsy 
+       if (!truste) {
+         return this.all();
+       } else {
+         // let string =  this.transform2(truste);
+         //   console.log(string, 'stringa trasformata');
+ 
+         let arr: ServiceReal[] = [];
+         this.service.serviziFilterered.filter((item: ServiceReal) => {
+           item.nomePer === truste && arr.push(item);
+         })
+ 
+         // aggiungo al contatore dei filtri 
+         this.count += 1;
+         // resetto la paginazione
+         this.service.page = 1;
+         this.selectedFiduciario = '';
+         if (arr.length > 0 && this.count === 0) {
+           return this.service.serviziFilterered = arr;
+         } else {
+         //  this.all();
+ 
+           let arr: ServiceReal[] = [];
+           this.service.services.filter((item: ServiceReal) => {
+             item.nomePer === truste && arr.push(item)
+           })
+           // this._toast.snackBar(`Riprova per  ${truste}`,'bg-danger')
+ 
+           return this.service.serviziFilterered = arr;
+         }
+ 
+       }
+ 
+     }
+     else {
+       this._toast.snackBar("Ruolo Fiduciario", "bg-danger")
+       return null;
+     }
+   } */
   // filtro per fiduciari 
   trusteeFilter(truste: string) {
     console.log(truste, 'truste')
-     this.fiduciario = truste;
+    this.fiduciario = truste;
     this.selectedFiduciario.toUpperCase();
     console.log(this.selectedFiduciario);
     if (this.user && this.user.role === 1) {
@@ -447,36 +436,36 @@ this.service.serviziFilterered =[];
       } else {
         // let string =  this.transform2(truste);
         //   console.log(string, 'stringa trasformata');
-        
+
         this.service.serviziFilterered = this.service.services.reduce((arr: ServiceReal[], item: ServiceReal) => {
 
 
           item.nomePer === truste ? arr.push(item) : console.log('non è uguale')
           return arr;
         }, [])
-        if(this.service.serviziFilterered.length > 0){
+        if (this.service.serviziFilterered.length > 0) {
           // resetto la paginazione
           this.service.page = 1;
           this.selectedFiduciario = '';
           // mando a schermo gli incarichi filtrati
           return this.service.serviziFilterered;
-          
-        }else{
+
+        } else {
           // mando a schermo tutti gli incarichi
 
-          this._toast.snackBar(`Non ci sono incarichi per ${truste}`,'bg-danger');
+          this._toast.snackBar(`Non ci sono incarichi per ${truste}`, 'bg-danger');
           return this.all();
         }
 
-     
+
       }
-      
+
     }
     else {
       this._toast.snackBar("Ruolo Fiduciario", "bg-danger")
       return null;
     }
-  } 
+  }
 
   // filtro per nr sinistro 
 
@@ -495,7 +484,7 @@ this.service.serviziFilterered =[];
       return this.service.serviziFilterered;
     } else {
       this._toast.snackBar(`non ci sono sinistri per ${numSx}`, 'bg-danger');
-      return this.all();
+      return  this.service.serviziFilterered = this.service.services;
     }
 
 
@@ -511,7 +500,7 @@ this.service.serviziFilterered =[];
     if (this.service.serviziFilterered.length > 0) {
       return this.service.serviziFilterered;
     } else {
-      this._toast.snackBar(`non ci sono sinistri per ${idIncarico}`, 'bg-danger');
+      this._toast.snackBar(`non ci sono sinistri per ${idIncarico}`, 'bg-danger','right');
       return this.all();
     }
 

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GeneraleComponent } from './components/generale/generale.component';
+
 import { GraficiComponent } from './components/grafici/grafici.component';
 import { LoginComponent } from './components/login/login.component';
 import { ServiziComponent } from './components/servizi/servizi.component';

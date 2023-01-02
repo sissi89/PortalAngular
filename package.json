@@ -19,6 +19,7 @@
     "@angular/material": "^14.2.6",
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
+    "@angular/pwa": "^0.5.3",
     "@angular/router": "^14.0.0",
     "@mobiscroll/cli": "^1.7.3",
     "@popperjs/core": "^2.11.6",

@@ -116,7 +116,7 @@ export class DocumentiComponent implements OnInit {
   // dowload file
   download2(name: string, id: string) {
     this.isCompleted = false;
-    this.toast.snackBar('il file sara scaricato a breve', 'bg-success');
+    this.toast.snackBar('il file sara scaricato a breve', 'bg-success','left');
 
     id && this.serviziService.downSingleDocument(id).subscribe((data) => {
 
@@ -124,7 +124,7 @@ export class DocumentiComponent implements OnInit {
       console.log('bbbbbb', data);
       // converto da binario a file 
       var blob = new Blob([data], { type: 'application/pdf' });
-      // creo file come primo parametro metto il file e come secondo parametro il nome 
+      // creo file : come primo parametro metto il file e come secondo parametro il nome 
       var file = new File([blob], name, { type: 'application/pdf' });
       // salvo il file tramite libreria
 

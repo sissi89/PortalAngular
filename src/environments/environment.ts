@@ -14,7 +14,7 @@ export const environment = {
   // auth: 'http://localhost:3000/auth',
   auth:'http://localhost:4000',
  // auth:'    http://10.0.100.6:3000/auth',
-  uplaodFile:'https://res.cloudinary.com/demo/image/upload/'
+
 
 };
 

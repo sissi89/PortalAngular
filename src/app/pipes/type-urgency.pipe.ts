@@ -13,6 +13,10 @@ export class TypeUrgencyPipe implements PipeTransform {
         return 'yellow';
       case 3:
         return 'green';
+        case 4:
+          return 'grey';
+        case 5:
+          return 'brown';
       default:
         return 'NaN';
       

@@ -31,8 +31,12 @@ import { JwtInterceptor } from './services/jwtInterceptor.service';
 import { GraficiComponent } from './components/grafici/grafici.component';
 import { FiduciarioPipe } from './pipes/fiduciario.pipe';
 import { NgChartsModule } from 'ng2-charts';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { TypeUrgencyPipe } from './pipes/type-urgency.pipe';
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -70,7 +74,11 @@ import { TypeUrgencyPipe } from './pipes/type-urgency.pipe';
     MatRadioModule,
     MatInputModule,
     MatIconModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatListModule 
    
    
 

@@ -46,8 +46,10 @@
     <!--se è falsy-->
    
     <h6>Documenti presenti</h6>
+    <mat-progress-bar mode="indeterminate" *ngIf="!isCompleted"></mat-progress-bar>
+    <mat-progress-bar mode="determinate" ></mat-progress-bar>
     <div *ngFor="let s of documents; index">
-      <!-- <mat-progress-bar mode="indeterminate" *ngIf="!s.isFinisched"></mat-progress-bar> -->
+      
       <div class="d-flex justify-content-between bg-light rounded p-3 mt-3">
         <p class="mt-2 text-capitalize m-3">{{ s.nome }}</p>
   

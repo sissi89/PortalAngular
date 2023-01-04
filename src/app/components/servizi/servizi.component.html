@@ -31,13 +31,13 @@
 
         <div class=' row justify-content-evenly'>
 
-            <div class="  rounded    col-3 m0" *ngFor="let c of colors" >
+            <div class="  rounded    col-2 m0" *ngFor="let c of colors" >
                 <button class="  d-flex flex-column  btn  p-lg-3 p-md-3 ml-0 p-sm-3  c-border w-100 "
                     [style.backgroundColor]="c.color" [disabled]="this.counterIncarichi(c.num, this.service.serviziFilterered) <= 0 "
                     (click)="serviceFilter(c.num)">
 
                     <h2 class="text-center text-black btn w-95 " *ngIf="c.color != 'blue'">
-                        <h2>{{counterServices(c.num)}}</h2>
+                        <h2 class="text-center">{{counterServices(c.num)}}</h2>
                         
              
                     </h2>
@@ -47,7 +47,7 @@
                     </div>
                 </button>
             </div>
-            <div class="   rounded    col-3 m0">
+            <div class="   rounded    col-2 m0">
                 <button class=" d-flex flex-column  p-lg-3 p-md-3 ml-0 p-sm-3  c-border bg-blue w-100 " (click)="all()">
 
                     <h2 class="text-center text-black  btn text-white w-95 ">

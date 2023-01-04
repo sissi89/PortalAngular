@@ -22,13 +22,9 @@ import { TypeLeftComponent } from '../type-left/type-left.component';
 })
 export class ServiziComponent implements OnInit {
 
-
-
   selectedFiduciario: string = ' ';
-
   fiduciario: string = 'tutti';
   user: User | null = this.authService.userValue;
-
   // page: number = 1;
   count: number = 0;
   tableSize: number = 10;
@@ -38,7 +34,7 @@ export class ServiziComponent implements OnInit {
   // oggi 
   today = moment(new Date()).format('YYYY-MM-DD');
   // oggi - 30 giorni 
-  start = moment(Date.now() - 5 * 24 * 3600 * 1000).format('YYYY-MM-DD');
+  start = moment(Date.now() - 10 * 24 * 3600 * 1000).format('YYYY-MM-DD');
   dateForm: FormGroup;
   c: number = 0;
   colors: Tipologia[] = [
@@ -57,6 +53,15 @@ export class ServiziComponent implements OnInit {
       tipo: ' Chiusi',
       num: 3
     },
+    {
+      color:'grey',
+      tipo:'tipo 4',
+      num: 4
+    },{
+      color:'brown',
+      tipo:'tipo 5',
+      num:5
+    }
   ];
 
   constructor(
@@ -68,7 +73,7 @@ export class ServiziComponent implements OnInit {
 
   ) {
     this.dateForm = this.fb.group({
-      start: [this.today, Validators.required],
+      start: [this.today, [Validators.required] ],
       end: [this.today, Validators.required]
     }
 
@@ -78,6 +83,7 @@ export class ServiziComponent implements OnInit {
 
   ngOnInit(): void {
 
+  //  this.loadSinistriWithDate()
     this.loadSinistriWithDate()
   }
 
@@ -87,20 +93,26 @@ export class ServiziComponent implements OnInit {
   }
   // sinistri in base al fiduciario
   loadSinistrIncarichiFiduciarii() {
-    //Produzione = "http://webapp.sogesa.net/portale/jarvis.php?do=incarichi&numsx="
-    this.service.getServiceIncarichiFiduciari("0044587201670335665").subscribe((data) => {
-      console.log("data:", data)
-      //  this.service.serviziFilterered = data;
+    if (this.service.services.length <= 0) {
+      console.log('siamo nel if')
+      //Produzione = "http://webapp.sogesa.net/portale/jarvis.php?do=incarichi&numsx="
+      this.service.getServiceIncarichiFiduciari("0044587201670335665").subscribe((data) => {
+        console.log("data:", data)
+        //  this.service.serviziFilterered = data;
 
-    })
+      })
+
+    } else {
+      console.log('siamo nell else')
+      this.service.services;
+    }
+
 
 
   }
 
-  loadSinistriWithDate() {
+ /*  loadSinistriWithDate() {
 
-    this.service.services = [];
-    this.service.serviziFilterered = [];
     // sistemare il filtro
 
     this.service.getServiceIncarichiWithDate(this.start, this.today).subscribe((data) => {
@@ -110,7 +122,7 @@ export class ServiziComponent implements OnInit {
       // aggiungo il tipo incarico
       this.service.serviziFilterered.forEach((item) => {
 
-        Object.assign(item, { tipo: this.service.randomIntFromInterval(1, 3) })
+        Object.assign(item, { tipo: this.service.randomIntFromInterval(1,5) })
       })
 
       this.service.fiduciari = data.reduce((arr: any, item: any) => {
@@ -125,6 +137,30 @@ export class ServiziComponent implements OnInit {
     })
     this.setLocalStorage()
 
+  } */
+
+  async loadSinistriWithDate(){
+    let response = await this.service.getServiceIncarichiWithDate2(this.start,this.today)
+ 
+      this.service.serviziFilterered = response
+      this.service.services = response
+      this.service.serviziFilterered.forEach((item) => {
+
+        Object.assign(item, { tipo: this.service.randomIntFromInterval(1,5) })
+      })
+  
+      this.service.fiduciari = response.reduce((arr: any, item: any) => {
+  
+  
+        !arr.includes(item.nomePer) && arr.push(item.nomePer)
+  
+  
+        return arr;
+      }, []);
+    
+    this.setLocalStorage()
+   
+  
   }
 
   // create arrry of  tableSizes
@@ -321,8 +357,9 @@ export class ServiziComponent implements OnInit {
     // richiamo i service salvati in precendenza
     if (this.service.isFilter) {
       console.log('if')
+      this._toast.snackBar('sto richiamando', 'bg-success')
       this.service.isFilter = false;
-      return this.loadSinistriWithDate()
+      return this.loadSinistriWithDate();
     } else {
       console.log('else')
       return (this.service.serviziFilterered = this.service.services);
@@ -484,7 +521,7 @@ export class ServiziComponent implements OnInit {
       return this.service.serviziFilterered;
     } else {
       this._toast.snackBar(`non ci sono sinistri per ${numSx}`, 'bg-danger');
-      return  this.service.serviziFilterered = this.service.services;
+      return this.service.serviziFilterered = this.service.services;
     }
 
 
@@ -500,7 +537,7 @@ export class ServiziComponent implements OnInit {
     if (this.service.serviziFilterered.length > 0) {
       return this.service.serviziFilterered;
     } else {
-      this._toast.snackBar(`non ci sono sinistri per ${idIncarico}`, 'bg-danger','right');
+      this._toast.snackBar(`non ci sono sinistri per ${idIncarico}`, 'bg-danger', 'right');
       return this.all();
     }
 

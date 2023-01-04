@@ -26,6 +26,7 @@ $red: #cc3333;
 }
 
 .text-color {
+    
     color: $blue;
     font-family: "CrimisonText";
     font-size: xx-large;
@@ -120,15 +121,10 @@ $red: #cc3333;
     font-size: 0.75rem;
 }
 
+
+
+
 .fl-table thead .th-1 {
-    color: #ffffff;
-    background: $red;
-    border: $blue;
-    border-radius: 7px;
-}
-
-
-.fl-table thead .th-1:nth-child(odd) {
     color: #ffffff;
     background: $blue;
     border: white;
@@ -206,6 +202,7 @@ table {
     100% {
         background-color: #fff;
         color: $red;
+        
     }
 
 }

@@ -6,7 +6,7 @@ import { Auth } from '../model/auth';
 import { Detail } from '../model/Detail';
 import { Doc } from '../model/doc';
 import {  ServiceReal } from '../model/model';
-
+import { firstValueFrom } from 'rxjs' ;
 const { api, auth } = environment;
 @Injectable({
   providedIn: 'root'
@@ -29,25 +29,40 @@ export class ServiziService {
     return this.http.get<ServiceReal>(`${api}/incarichiPer/${sinistro}`);
   }
   // Tutti i SX ( per data ):
-  getServiceIncarichiWithDate(start: string, end: string): Observable<ServiceReal[]> {
+/*   getServiceIncarichiWithDate(start: string, end: string): Observable<ServiceReal[]> {
     console.log('url', `${api}/${start}/${end}`);
     return this.http.get<ServiceReal[]>(`${api}/${start}/${end}`);
+  } */
+  getServiceIncarichiWithDate(start:string,end:string):Observable<ServiceReal[]>{
+    console.log('url',api)
+    return this.http.post<ServiceReal[]>(api,{start, end})
+    
   }
-
+  // prova con le promise
+  getServiceIncarichiWithDate2(start:string,end:string) {
+    console.log('url',api,'with',start,'e',end)
+    // firstValueFrom https://www.youtube.com/watch?v=3aeK5SfWBSU&ab_channel=TariqSaeed
+    return this.http.post<ServiceReal[]>(api,{start, end}).toPromise() as Promise<ServiceReal[]>
+    
+  }
   // get dettaglio incarico
 
-  getDettailSx(idIncarico: string): Observable<Detail> {
+  getDettailSx(idInc: string): Observable<Detail> {
     //incarichi/{idInc}
 
-    console.log('service is running ', `${api}/incarichi/${idIncarico}`)
-    return this.http.get<Detail>(`${api}/incarichi/${idIncarico}`);
+    console.log('service is running ', `${api}/incarichi`)
+    return this.http.post<Detail>(`${api}/incarichi`,{idInc});
   }
   // docuemnti di tutti gli incarichi
   getDocumentsInc(idInc: string): Observable<Doc[]> {
     //http://localhost:4000/sinistri/incarichi/documents/_SO2255549
 
-    return this.http.get<Doc[]>(`${api}/incarichi/documents/${idInc}`);
+    return this.http.post<Doc[]>(`${api}/incarichi/documents`,{idInc});
 
+  }
+  // prova con le promise 
+  getDocumentsInc2(idInc:string){
+    return  this.http.post<Doc[]>(`${api}/incarichi/documents`,{idInc}).toPromise();
   }
   // downloand doc
   downSingleDocument(idInc: string): Observable<any> {

@@ -10,7 +10,8 @@ import { ToastService } from 'src/app/services/toast.service';
 import { TabsComponent } from '../tabs/tabs.component';
 import { saveAs } from 'file-saver';
 import { HttpClient } from '@angular/common/http';
-import { MatSnackBarDismiss } from '@angular/material/snack-bar';
+import { MatSnackBarDismiss, MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
+import { ServiziComponent } from '../servizi/servizi.component';
 @Component({
   selector: 'app-documenti',
   templateUrl: './documenti.component.html',
@@ -27,7 +28,7 @@ export class DocumentiComponent implements OnInit {
 
   download$: Observable<Download> | undefined
   constructor(public fb: FormBuilder, public dialogRef: MatDialogRef<TabsComponent>, public toast: ToastService, public http: HttpClient,
-    public serviziService: ServiziService, @Inject(DOCUMENT) private document: Document) {
+    public serviziService: ServiziService) {
     this.documentForm = this.fb.group({
       document1: new FormControl(null, Validators.required),
       fileSource: new FormControl('', [Validators.required])
@@ -116,10 +117,10 @@ export class DocumentiComponent implements OnInit {
   // dowload file
   download2(name: string, id: string) {
     this.isCompleted = false;
-    this.toast.snackBar('il file sara scaricato a breve', 'bg-success','left');
+    this.toast.snackBar('il File sarà scaricato a breve', 'bg-success','left');
 
     id && this.serviziService.downSingleDocument(id).subscribe((data) => {
-
+     
 
       console.log('bbbbbb', data);
       // converto da binario a file 
@@ -127,16 +128,23 @@ export class DocumentiComponent implements OnInit {
       // creo file : come primo parametro metto il file e come secondo parametro il nome 
       var file = new File([blob], name, { type: 'application/pdf' });
       // salvo il file tramite libreria
-
+    
       saveAs(file)
       this.isCompleted = true;
 
     });
 
 
+    
   }
 
-
+/*   openSnackBar() {
+    this.snackBarMessageService.open(this.message, this.action, this.durationInSeconds).afterDismissed()
+    .subscribe((matSnackBarDismiss: MatSnackBarDismiss)=>{
+    },(error) => {
+      console.error(error);
+    });
+  } */
 
 
 

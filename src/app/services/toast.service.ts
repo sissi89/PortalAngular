@@ -11,7 +11,7 @@ export class ToastService {
   constructor( public _snackBar:MatSnackBar) { }
 
 
-  snackBar(messagge: string, style: string, horizontalPosition?: MatSnackBarHorizontalPosition, verticalPosition?:MatSnackBarVerticalPosition){
+  snackBar(messagge: any, style: string, horizontalPosition?: MatSnackBarHorizontalPosition, verticalPosition?:MatSnackBarVerticalPosition){
    // verticalPosition && horizontalPosition 
     let config = new MatSnackBarConfig();
     config.duration = 3000;
@@ -21,7 +21,6 @@ export class ToastService {
 
     this._snackBar.open(messagge,'',config);
   }
-  
 
 
 }

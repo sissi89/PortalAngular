@@ -59,6 +59,7 @@ export class TypeLeftComponent implements OnInit {
     return this.checkedList;
   }
 
+
   toStringArr() {
     // modifico l array in modo che l utente riesce a leggerla
     let arrNew = this.checkedList.map(i => this.service.getNumberleft(i.value.toString()));

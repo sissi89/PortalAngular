@@ -19,7 +19,8 @@ const routes: Routes = [
     component:LoginComponent
   },{
     path:'Grafici',
-    component:GraficiComponent
+    component:GraficiComponent,
+    canActivate:[AuthGuardService]
   }
 ];
 

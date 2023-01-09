@@ -23,12 +23,14 @@ export class AuthService {
     }
 
     public get userValue() {
+     // console.log(this.userSubject)
         return this.userSubject.value;
     }
 
     login(username: string, password: string) {
         return this.http.post<User>(`${auth}/users/authenticate`, { username, password })
             .pipe(map(user => {
+                console.log(user,'userggg')
                 // memorizza i dettagli dell'utente e il token jwt nella memoria locale per mantenere l'utente connesso tra gli aggiornamenti della pagina
                 localStorage.setItem('user', JSON.stringify(user));
                 this.userSubject.next(user);

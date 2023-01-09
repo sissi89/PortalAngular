@@ -390,7 +390,7 @@ export class ServiziComponent implements OnInit {
   isDisalbled() {
 
     /*   if(!this.service.isFilter && !this.isEquals()){
-      // questo non fa vedere
+      
         return false;
       }else if(this.isEquals() && !this.service.isFilter){
       return true;

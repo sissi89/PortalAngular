@@ -37,6 +37,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatListModule } from '@angular/material/list';
+import { TypeAssignmentPipe } from './pipes/type-assignment.pipe';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { MatListModule } from '@angular/material/list';
     GraficiComponent,
     FiduciarioPipe,
     TypeUrgencyPipe,
+    TypeAssignmentPipe,
    
   ],
   imports: [

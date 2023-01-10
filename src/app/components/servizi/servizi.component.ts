@@ -34,7 +34,7 @@ export class ServiziComponent implements OnInit {
   // oggi 
   today = moment(new Date()).format('YYYY-MM-DD');
   // oggi - 30 giorni 
-  start = moment(Date.now() - 10 * 24 * 3600 * 1000).format('YYYY-MM-DD');
+  start = moment(Date.now() - 2 * 24 * 3600 * 1000).format('YYYY-MM-DD');
   dateForm: FormGroup;
   c: number = 0;
   colors: Tipologia[] = [
@@ -144,6 +144,7 @@ export class ServiziComponent implements OnInit {
  
       this.service.serviziFilterered = response
       this.service.services = response
+      console.log(response)
       this.service.serviziFilterered.forEach((item) => {
 
         Object.assign(item, { tipo: this.service.randomIntFromInterval(1,5) })
@@ -152,8 +153,9 @@ export class ServiziComponent implements OnInit {
       this.service.fiduciari = response.reduce((arr: any, item: any) => {
   
   
-        !arr.includes(item.nomePer) && arr.push(item.nomePer)
-  
+       !arr.includes(item.nomePer) && arr.push(item.nomePer)
+      // arr.includes(item.nomePer) && [...arr,item]
+  //(arr.includes(item.nomePer)) ? arr :[...arr,item]),[]);
   
         return arr;
       }, []);
@@ -261,12 +263,19 @@ export class ServiziComponent implements OnInit {
   }
 
   // modal general
-  openDialog(id: string, fiduciario: string) {
+  openDialog(incarico:ServiceReal, fiduciario: string) {
     this.dialog.open(TabsComponent);
-
-    localStorage.setItem('id', id);
+// localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('Incarico', JSON.stringify(incarico));
     // cosi sposto dal padre al figlio il nome del perito
     localStorage.setItem('fiduciario', fiduciario)
+    //JSON.parse(localStorage.getItem('user')!)
+    
+/*     var retrievedObject  = localStorage.getItem('Incarico');
+    //JSON.parse
+   var prova:ServiceReal =  retrievedObject &&  JSON.parse(retrievedObject);
+   console.log(prova.nomePer,'nome per')
+    retrievedObject && console.log('uuuuuu',JSON.parse(retrievedObject)) */
   }
   // modal filtro data
   openDialogFilter() {

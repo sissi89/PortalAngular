@@ -3,53 +3,73 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
   name: 'typesLeft',
 })
+/* 0	RCA/INF. GENERICA
+1	RCA
+2	RCA/CID
+3	FURTO
+4	INCENDIO
+5	KASKO
+6	EVENTI SOCIO POLITICI
+7	EVENTI ATMOSFERICI
+8	CRISTALLI
+9	ACCORDI PLURIMI
+10	VARI
+11	RCA RISC. ASS.
+12	RCA/CID RISC. CTP.
+13	RCA/INF. GENERICA
+14	RCA/INF. AUTORITA
+15	RAMI ELEMENTARI
+16	CARD monofirma
+17	CARD doppia firma
+18	RCT/COSE
+81	CTU
+ */
 export class TypesLeftPipe implements PipeTransform {
-  transform(number: any): string {
+  // tipo sinistro
+  transform(number: number): string {
     switch (number) {
-      case "1":
-        return number = 'RCA';
-
-      case "2":
-        return number = 'C.A.R.D doppia firma';
-
-      case "3":
-        return number = 'C.V.T.';
-      case "4":
-        return number = "Accordi Plurimi";
-      case "5":
-        return number = "Card monofirma";
-      case "6":
-        return number = "Amministrativo";
-      case "7":
-        return number = "Cristalli";
-      case "8":
-        return number = "CTU";
-      case "9":
-        return number = "Eventi Atmosferici";
-      case "10":
-        return number = "Eventi Socio Politici";
-      case "11":
-        return number = "Furto";
-      case "12":
-        return number = "Incendio";
-      case "13":
-        return number = "Kasko";
-      case "14":
-        return number = "Rami elementari";
-      case "15":
-        return number = "Rca Risc ASS.";
-      case "16":
-        return number = "Rca/Cid";
-      case "17":
-        return number = "Rca/Cid Risc ctp";
-      case "18":
-        return number = "Rca/Inf. Autorita";
-      case "19":
-        return number = "Rca/inf Genetica";
-      case "20":
-        return number = "Rtc/Cose";
+      case 0:
+        return "RCA/INF.GENETICA";
+      case 1:
+        return "RCA"
+      case 2:
+        return "RCA/CID"
+      case 3:
+        return "FURTO"
+      case 4:
+        return "INCENDIO"
+      case 5:
+        return "KASKO"
+      case 6:
+        return "EVENTI SOCIO POLITICI"
+      case 7:
+        return "EVENTI ATMOSFERICI"
+      case 8:
+        return "CRISTALLI"
+      case 9:
+        return "ACCORDI PLURIMI"
+      case 10:
+        return "VARI"
+      case 11:
+        return "RCA RISC. ASS"
+      case 12:
+        return "RCA/CID RISC. CTP."
+      case 13:
+        return "RCA/INF. GENERICA"
+      case 14:
+        return "RCA/INF AUTORITA"
+      case 15:
+        return "RAMI ELEMENTARI"
+      case 16:
+        return "CARD monofirma"
+      case 17:
+        return "CARD doppio firma"
+      case 18:
+        return "RTC/COSE"
+      case 81:
+        return "CTU"
       default:
-        return ' Non presente ';
+        return " non presente"
     }
   }
 }

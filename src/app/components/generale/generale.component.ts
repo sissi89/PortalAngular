@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Detail } from 'src/app/model/Detail';
+import { ServiceReal } from 'src/app/model/model';
 //import { Service } from 'src/app/model/model';
 import { AuthService } from 'src/app/services/auth-service.service';
 import { ServiziService } from 'src/app/services/servizi.service';
@@ -11,7 +12,8 @@ import { ToastService } from 'src/app/services/toast.service';
   styleUrls: ['./generale.component.scss']
 })
 export class GeneraleComponent implements OnInit {
-  service:Detail | undefined;
+  service:Detail | undefined ;
+  incarico:ServiceReal | undefined;
   fiduciario:string | null = '';
   names:string[]=['Fiduciario',	' Compagnia'	,	'Data chiusura	',' Data incarico',		'Numero sinistro	'	];
   names2:string[]=['Assicurato','Tipo_sinistro','Targa_assicurato','Controparte','Targa controparte'];
@@ -22,7 +24,8 @@ export class GeneraleComponent implements OnInit {
     // this.getId();
      let user = this.authService.userValue;
      console.log(user?.id)
-   this.getIdAndUsername()
+   //this.getIdAndUsername()
+   this.getService();
    }
    getIdAndUsername(){
     //console.log('id ciaoooo')
@@ -76,6 +79,13 @@ export class GeneraleComponent implements OnInit {
     
    }
    
+   getService(){
+    var retrievedObject  = localStorage.getItem('Incarico');
+    //JSON.parse
+ this.incarico =  retrievedObject &&  JSON.parse(retrievedObject);
+ //  console.log(this.incarico.nomePer,'nome per')
+  //  retrievedObject && console.log('uuuuuu',JSON.parse(retrievedObject))
+   }
  
    
  

@@ -19,7 +19,7 @@ creare modello per
 2 date 
 numSx
 idInc
-// 1.50 conad cereali e soia 
+
 documents/{idInc}
 
 /singolo/{idInc}

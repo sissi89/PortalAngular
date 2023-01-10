@@ -1,8 +1,6 @@
-<div class="center-flex mt-25 c-spinne "*ngIf="service === undefined || service === null  ">
-  <mat-spinner [diameter]="100"></mat-spinner>
-</div>
 
-<div class="container bg-light p-3" *ngIf="service">
+
+<div class="container bg-light p-3" *ngIf="incarico">
   
     <!-- <div class="d-flex justify-content-between">
         <h4><b>Dati Generali {{service.id}}</b></h4>
@@ -14,19 +12,19 @@
         <thead  >
         <tr>
           <th>Fiduciario :</th>
-          <td>{{fiduciario}}</td>
+          <td>{{incarico.nomePer}}</td>
         </tr>
         <tr>
           <th>Compagnia :</th>
-          <td>{{service.nomeComp}}</td>
+         <!--  <td>{{incarico.nomeComp}}</td> -->
         </tr>
         <tr>
           <th>Data incarico : </th>
-          <td> Non definito</td>
+          <td>{{incarico.dtInc}}</td>
         </tr>
         <tr>
             <th>Numero sinistro :</th>
-            <td>{{service.numsx}}</td>
+            <td>{{incarico.numSx}}</td>
         </tr>
         <tr>
             <th>Tipo sinistro : </th>
